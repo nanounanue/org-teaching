@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>How to teach using org-mode for fun and profit</title>
+<meta name="author" content="(Olivier Berger)"/>
+<meta name="description" content="Olivier Berger's org-mode framework for teaching"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="./reveal.js/css/theme/simple.css" id="theme"/>
+
+<link rel="stylesheet" href="./presentation.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="copyright" content="Teaching with org-mode / org-reveal for fun and profit -- Olivier Berger  -- 2016" />
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title"><h1><h2>&nbsp;</h2><h2>Example lesson</h2><h3>org-teaching<h3><h3 class="date">2016-12-19</h3>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org6da5f4d">Features</a></li>
+<li><a href="#/slide-org90f7203">HowTo</a></li>
+<li><a href="#/slide-orge239bd8">How it works</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+
+
+
+<section>
+<section id="slide-org6da5f4d" data-background="#dbdbed" class="center">
+<h2 id="org6da5f4d">Features</h2>
+</section>
+</section>
+<section>
+<section id="slide-org9b6962e">
+<h3 id="org9b6962e">Presenter notes</h3>
+<p>
+TBD
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org43560c8">
+<h3 id="org43560c8">Masking content for some audiences</h3>
+<ul>
+<li>Slides only material</li>
+<li>Teachers only material</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org4573966">
+<h3 id="org4573966">Stuff only meant for presentation</h3>
+<div class="outline-text-3" id="text-org4573966">
+</div></section>
+<section id="slide-org9fba419">
+<h4 id="org9fba419">Slides only material</h4>
+<p>
+There should be no "Only in the slides" after this section, in the
+handbooks, as it has been tagged with <code>slidesonly</code>.
+</p>
+
+</section>
+<section id="slide-org397ba4f">
+<h4 id="org397ba4f">Only in the slides</h4>
+<p>
+On the contrary, in the slides view, this appears.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org0ea6744">
+<h3 id="org0ea6744">Stuff only meant for teachers</h3>
+<div class="outline-text-3" id="text-org0ea6744">
+</div></section>
+<section id="slide-org951efbd">
+<h4 id="org951efbd">Teachers only sections</h4>
+<p>
+There should be no "Only for teachers" after this section, in the slides or in the
+students handbook, as it has been tagged with <code>teachersonly</code>.
+</p>
+
+</section>
+<section id="slide-org51a328a">
+<h4 id="org51a328a">Notes only for the teachers</h4>
+<p>
+This slide/section contains notes, but only part of it is displayed in
+the presentation notes included in the handbook, and are kept only for
+the teachers handbook.
+</p>
+
+<p>
+We use a drawer for that.
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+<p>
+This part of the note can be viewed by the students in the handbook,
+but not the rest.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orgadfbfd1">
+<h3 id="orgadfbfd1">Stuff only in the handbooks</h3>
+<p>
+TBD re <code>handbookonly</code> (see <b>Annex</b> section for instance)
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org90f7203" data-background="#dbdbed" class="center">
+<h2 id="org90f7203">HowTo</h2>
+</section>
+</section>
+<section>
+<section id="slide-org7d22bb6">
+<h3 id="org7d22bb6">Configuration</h3>
+<ul>
+<li>Configure <code>org-reveal-title-slide</code> in <code>slides.org</code>.</li>
+
+<li>Configure header (<code>\lhead{...}</code> and <code>\rhead{...}</code>) and footer</li>
+
+</ul>
+<p>
+(<code>\lfoot{...}</code> and <code>\rfoot{...}</code>) elements in the headers like <code>#+LaTeX_HEADER: \rhead{...}</code>
+in <code>handbook.org</code> and <code>teacher-handbook.org</code>.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgaa5cb8b">
+<h3 id="orgaa5cb8b">Exporting slides to HTML with org-reveal</h3>
+<div class="outline-text-3" id="text-orgaa5cb8b">
+</div></section>
+<section id="slide-org8e96dbe">
+<h4 id="org8e96dbe">Printing slides</h4>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb41a1a5">
+<h3 id="orgb41a1a5">Exporting PDF handbooks</h3>
+<div class="outline-text-3" id="text-orgb41a1a5">
+</div></section>
+<section id="slide-orgb15509c">
+<h4 id="orgb15509c">For students</h4>
+
+</section>
+<section id="slide-orge8068d7">
+<h4 id="orge8068d7">For teacher colleagues</h4>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdad465d">
+<h3 id="orgdad465d">Presenting in the classroom</h3>
+<div class="outline-text-3" id="text-orgdad465d">
+</div></section>
+<section id="slide-orge065013">
+<h4 id="orge065013">Firefox issues ?</h4>
+
+</section>
+<section id="slide-org5a50f76">
+<h4 id="org5a50f76">Presenter mode in dual screen</h4>
+
+</section>
+</section>
+<section>
+<section id="slide-orge239bd8" data-background="#dbdbed" class="center">
+<h2 id="orge239bd8">How it works</h2>
+</section>
+</section>
+<section>
+<section id="slide-org3d1669a">
+<h3 id="org3d1669a">Git submodules</h3>
+<ul>
+<li>reveal.js</li>
+<li>org-reveal</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org34606e7">
+<h3 id="org34606e7">Slides appearance</h3>
+<div class="outline-text-3" id="text-org34606e7">
+</div></section>
+<section id="slide-org1989dd4">
+<h4 id="org1989dd4">Reveal.js settings</h4>
+<p>
+See the org-reveal settings for detailed explanation.
+</p>
+
+<p>
+I'm using the following for a "sober" look close to what
+powerpoint or beamer (?) could look like :
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-org"><span style="color: #b22222;">#+REVEAL_HLEVEL: 2</span>
+<span style="color: #b22222;">#+REVEAL_THEME: simple</span>
+<span style="color: #b22222;">#+REVEAL_TRANS: fade</span>
+<span style="color: #b22222;">#+REVEAL_SPEED: fast</span>
+<span style="color: #b22222;">#+REVEAL_MARGIN: 0.0</span>
+<span style="color: #b22222;">#+REVEAL_EXTRA_CSS: ./presentation.css</span>
+<span style="color: #b22222;">#+REVEAL_ROOT: ./reveal.js</span>
+
+<span style="color: #b22222;">#+OPTIONS: reveal_center:nil</span>
+</pre>
+</div>
+</section>
+<section id="slide-org3f616ab">
+<h4 id="org3f616ab">Section separators</h4>
+<div class="org-src-container">
+
+<pre  class="src src-org"><span style="color: #a020f0;">:PROPERTIES:</span>
+<span style="color: #a020f0;">:REVEAL_EXTRA_ATTR:</span> class="center"
+<span style="color: #a020f0;">:reveal_background:</span> #dbdbed
+<span style="color: #a020f0;">:END:</span>
+</pre>
+</div>
+
+
+</section>
+<section id="slide-org6d44762">
+<h4 id="org6d44762">Title screen picture (logos, etc.)</h4>
+<div class="org-src-container">
+
+<pre  class="src src-org"><span style="color: #b22222;">#+REVEAL_TITLE_SLIDE_BACKGROUND: ./media/title-slide-background.png</span>
+</pre>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: false,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+margin: 0.00,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'fast',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+% Created 2016-12-19 lun. 17:40
+% Intended LaTeX compiler: pdflatex
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\input{headers-students}
+\rhead{Example lesson}
+\author{Olivier Berger}
+\date{2016-12-19}
+\title{How to teach using org-mode for fun and profit}
+\hypersetup{
+ pdfauthor={Olivier Berger},
+ pdftitle={How to teach using org-mode for fun and profit},
+ pdfkeywords={},
+ pdfsubject={Olivier Berger's org-mode framework for teaching},
+ pdfcreator={Emacs 24.5.1 (Org mode 9.0)}, 
+ pdflang={English}}
+\begin{document}
+
+\mycustomhandbooktitle{How to teach using org-mode for fun and profit}{Olivier Berger}{(2016-12-19)}{org-teaching - example lesson}
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+
+
+
+
+\section{Features}
+\label{sec:orge09c7fe}
+\subsection{Presenter notes}
+\label{sec:org9691ccf}
+
+TBD
+
+\subsection{Masking content for some audiences}
+\label{sec:orgf0ee536}
+
+\begin{itemize}
+\item Slides only material
+\item Teachers only material
+\end{itemize}
+
+\subsection{Stuff only meant for presentation}
+\label{sec:org4eb065b}
+
+\subsubsection{Slides only material}
+\label{sec:org0750a42}
+
+There should be no "Only in the slides" after this section, in the
+handbooks, as it has been tagged with \texttt{slidesonly}.
+
+\subsection{Stuff only meant for teachers}
+\label{sec:org8d35c81}
+
+\subsubsection{Teachers only sections}
+\label{sec:org1f00fea}
+
+There should be no "Only for teachers" after this section, in the slides or in the
+students handbook, as it has been tagged with \texttt{teachersonly}.
+
+\subsubsection{Notes only for the teachers}
+\label{sec:org175d6a5}
+
+This slide/section contains notes, but only part of it is displayed in
+the presentation notes included in the handbook, and are kept only for
+the teachers handbook.
+
+We use a drawer for that.
+
+\begin{NOTES}
+
+
+This part of the note can be viewed by the students in the handbook,
+but not the rest.
+\end{NOTES}
+
+\subsection{Stuff only in the handbooks}
+\label{sec:org851bbfd}
+
+TBD re \texttt{handbookonly} (see \textbf{Annex} section for instance)
+
+\section{HowTo}
+\label{sec:org5394bf3}
+\subsection{Configuration}
+\label{sec:org7c5c728}
+
+\begin{itemize}
+\item Configure \texttt{org-reveal-title-slide} in \texttt{slides.org}.
+
+\item Configure header (\texttt{\textbackslash{}lhead\{...\}} and \texttt{\textbackslash{}rhead\{...\}}) and footer
+\end{itemize}
+(\texttt{\textbackslash{}lfoot\{...\}} and \texttt{\textbackslash{}rfoot\{...\}}) elements in the headers like \texttt{\#+LaTeX\_HEADER: \textbackslash{}rhead\{...\}}
+in \texttt{handbook.org} and \texttt{teacher-handbook.org}.
+
+\subsection{Exporting slides to HTML with org-reveal}
+\label{sec:org3426e60}
+
+\subsubsection{Printing slides}
+\label{sec:org1f2064c}
+
+\subsection{Exporting PDF handbooks}
+\label{sec:orgb6b9603}
+
+\subsubsection{For students}
+\label{sec:orgacc868f}
+
+\subsubsection{For teacher colleagues}
+\label{sec:orgc1e156d}
+
+\subsection{Presenting in the classroom}
+\label{sec:orga20a65c}
+
+\subsubsection{Firefox issues ?}
+\label{sec:orgc06c3a0}
+
+\subsubsection{Presenter mode in dual screen}
+\label{sec:org87de329}
+
+\section{How it works}
+\label{sec:org290c544}
+\subsection{Git submodules}
+\label{sec:org3738443}
+
+\begin{itemize}
+\item reveal.js
+\item org-reveal
+\end{itemize}
+
+\subsection{Slides appearance}
+\label{sec:org8dbfb12}
+
+\subsubsection{Reveal.js settings}
+\label{sec:org7aab7b5}
+
+See the org-reveal settings for detailed explanation.
+
+I'm using the following for a "sober" look close to what
+powerpoint or beamer (?) could look like :
+
+\begin{verbatim}
+#+REVEAL_HLEVEL: 2
+#+REVEAL_THEME: simple
+#+REVEAL_TRANS: fade
+#+REVEAL_SPEED: fast
+#+REVEAL_MARGIN: 0.0
+#+REVEAL_EXTRA_CSS: ./presentation.css
+#+REVEAL_ROOT: ./reveal.js
+
+#+OPTIONS: reveal_center:nil
+\end{verbatim}
+\subsubsection{Section separators}
+\label{sec:org488d6f8}
+
+\begin{verbatim}
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: class="center"
+:reveal_background: #dbdbed
+:END:
+\end{verbatim}
+
+
+\subsubsection{Title screen picture (logos, etc.)}
+\label{sec:org303646a}
+
+\begin{verbatim}
+#+REVEAL_TITLE_SLIDE_BACKGROUND: ./media/title-slide-background.png
+\end{verbatim}
+
+
+\section{Annex}
+\label{sec:org795a0a7}
+\end{document}

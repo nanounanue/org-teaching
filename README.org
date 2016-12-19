@@ -14,6 +14,14 @@ reveal.js.
 
 Then, RTFM ;-)
 
+See the generated files :
+- slides in: [[file:./slides.html]]
+- the handbook for the students: [[file:./handbook.pdf]]
+- the handbook for the teachers: [[file:./teacher-handbook.pdf]]
+
+All these are generated from the corresponding =.org= files, which all
+include the common lesson content from [[file:./lesson.org]]
+
 * Features
 
 The following features are provided:

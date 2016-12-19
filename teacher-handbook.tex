@@ -1,0 +1,200 @@
+% Created 2016-12-19 lun. 17:40
+% Intended LaTeX compiler: pdflatex
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\input{headers-teachers}
+\lhead{org-teaching}
+\rhead{Example lesson}
+\lfoot{TEACHERS HANDBOOK}
+\newenvironment{NOTES}{\begin{lrbox}{\mybox}\begin{minipage}{0.9\textwidth}\begin{shaded}}{\end{shaded}\end{minipage}\end{lrbox}\fbox{\usebox{\mybox}}}
+\author{Olivier Berger}
+\date{2016-12-19}
+\title{How to teach using org-mode for fun and profit}
+\hypersetup{
+ pdfauthor={Olivier Berger},
+ pdftitle={How to teach using org-mode for fun and profit},
+ pdfkeywords={},
+ pdfsubject={Olivier Berger's org-mode framework for teaching},
+ pdfcreator={Emacs 24.5.1 (Org mode 9.0)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+\begin{ABSTRACT}
+\begin{shaded}
+This document is meant to be read only by the teachers
+\end{shaded}
+\end{ABSTRACT}
+
+
+
+
+\section{Features}
+\label{sec:orge1796c4}
+\subsection{Presenter notes}
+\label{sec:org65f7ec6}
+
+TBD
+
+\subsection{Masking content for some audiences}
+\label{sec:org2cfcf3b}
+
+\begin{itemize}
+\item Slides only material
+\item Teachers only material
+\end{itemize}
+
+\subsection{Stuff only meant for presentation}
+\label{sec:orgb9b4e13}
+
+\subsubsection{Slides only material}
+\label{sec:org1e81c62}
+
+There should be no "Only in the slides" after this section, in the
+handbooks, as it has been tagged with \texttt{slidesonly}.
+
+\subsection{Stuff only meant for teachers}
+\label{sec:orgee69b7e}
+
+\subsubsection{Teachers only sections}
+\label{sec:orgad30e1e}
+
+There should be no "Only for teachers" after this section, in the slides or in the
+students handbook, as it has been tagged with \texttt{teachersonly}.
+
+\subsubsection{Only for teachers}
+\label{sec:org9f60d30}
+
+On the contrary this appears in the teachers handbook.
+
+\subsubsection{Notes only for the teachers}
+\label{sec:orgec1d224}
+
+This slide/section contains notes, but only part of it is displayed in
+the presentation notes included in the handbook, and are kept only for
+the teachers handbook.
+
+We use a drawer for that.
+
+\begin{NOTES}
+
+
+This part of the note can be viewed by the students in the handbook,
+but not the rest.
+
+\begin{description}
+\item[{\textbf{TEACHERSONLY}}] but this part is only for the teachers.
+\end{description}
+\end{NOTES}
+
+\subsection{Stuff only in the handbooks}
+\label{sec:org56902e3}
+
+TBD re \texttt{handbookonly} (see \textbf{Annex} section for instance)
+
+\section{HowTo}
+\label{sec:orgaf41d47}
+\subsection{Configuration}
+\label{sec:org3c23696}
+
+\begin{itemize}
+\item Configure \texttt{org-reveal-title-slide} in \texttt{slides.org}.
+
+\item Configure header (\texttt{\textbackslash{}lhead\{...\}} and \texttt{\textbackslash{}rhead\{...\}}) and footer
+\end{itemize}
+(\texttt{\textbackslash{}lfoot\{...\}} and \texttt{\textbackslash{}rfoot\{...\}}) elements in the headers like \texttt{\#+LaTeX\_HEADER: \textbackslash{}rhead\{...\}}
+in \texttt{handbook.org} and \texttt{teacher-handbook.org}.
+
+\subsection{Exporting slides to HTML with org-reveal}
+\label{sec:org1b36846}
+
+\subsubsection{Printing slides}
+\label{sec:org6874337}
+
+\subsection{Exporting PDF handbooks}
+\label{sec:orgbf0728a}
+
+\subsubsection{For students}
+\label{sec:org1ea4f37}
+
+\subsubsection{For teacher colleagues}
+\label{sec:org41b2e9d}
+
+\subsection{Presenting in the classroom}
+\label{sec:orgd0de969}
+
+\subsubsection{Firefox issues ?}
+\label{sec:org2dc09fb}
+
+\subsubsection{Presenter mode in dual screen}
+\label{sec:org501d3dc}
+
+\section{How it works}
+\label{sec:org9cf0059}
+\subsection{Git submodules}
+\label{sec:org991fad6}
+
+\begin{itemize}
+\item reveal.js
+\item org-reveal
+\end{itemize}
+
+\subsection{Slides appearance}
+\label{sec:org085870f}
+
+\subsubsection{Reveal.js settings}
+\label{sec:org45b4d62}
+
+See the org-reveal settings for detailed explanation.
+
+I'm using the following for a "sober" look close to what
+powerpoint or beamer (?) could look like :
+
+\begin{verbatim}
+#+REVEAL_HLEVEL: 2
+#+REVEAL_THEME: simple
+#+REVEAL_TRANS: fade
+#+REVEAL_SPEED: fast
+#+REVEAL_MARGIN: 0.0
+#+REVEAL_EXTRA_CSS: ./presentation.css
+#+REVEAL_ROOT: ./reveal.js
+
+#+OPTIONS: reveal_center:nil
+\end{verbatim}
+\subsubsection{Section separators}
+\label{sec:orgd3fc9af}
+
+\begin{verbatim}
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: class="center"
+:reveal_background: #dbdbed
+:END:
+\end{verbatim}
+
+
+\subsubsection{Title screen picture (logos, etc.)}
+\label{sec:org6881592}
+
+\begin{verbatim}
+#+REVEAL_TITLE_SLIDE_BACKGROUND: ./media/title-slide-background.png
+\end{verbatim}
+
+
+\section{Annex}
+\label{sec:org3eba9b0}
+\end{document}
