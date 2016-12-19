@@ -5,6 +5,15 @@
 This repository contains an example of how to manage some source files
 of teaching material, using [[http://orgmode.org/][org-mode]] in Emacs.
 
+It uses [[https://github.com/yjwen/org-reveal/][org-reveal]] in addition to the standard LaTeX exporter.
+
+* Testing it
+
+Checkout the git submodules contents to retrieve org-reveal and
+reveal.js.
+
+Then, RTFM ;-)
+
 * Features
 
 The following features are provided:
