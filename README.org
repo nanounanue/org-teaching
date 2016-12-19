@@ -1,5 +1,7 @@
 #+TITLE: Supporting management of teaching material with org-mode
 
+/This file is =README.org= and is best viewed in org-mode in Emacs... go git clone ;-)/
+
 * Goal
 
 This repository contains an example of how to manage some source files
