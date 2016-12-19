@@ -1,0 +1,6 @@
+[submodule "reveal.js"]
+	path = reveal.js
+	url = https://github.com/hakimel/reveal.js.git
+[submodule "elisp/org-reveal"]
+	path = elisp/org-reveal
+	url = https://github.com/yjwen/org-reveal.git
