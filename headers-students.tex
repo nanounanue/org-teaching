@@ -1,0 +1,62 @@
+% This defines the LaTeX headers that will be included in the
+% generated LaTeX source for the handbook, in order to define a
+% handbook title page
+
+% This is a hack as I'm no LaTeX guru, and I just borrowed stuff from
+% colleagues. Clearly could be improved. Contributions welcome.
+
+% \usepackage[french]{babel}
+\usepackage[top=20mm, bottom=20mm, left=25mm , right=25mm]{geometry}
+
+%% \usepackage{amssymb,amsmath}
+\usepackage{fancyhdr} %For headers and footers
+\pagestyle{fancy} %For headers and footers
+\usepackage{lastpage} %For getting page x of y
+%% \usepackage{float} %Allows the figures to be positioned and formatted nicely
+%% \floatstyle{boxed} %using this
+%% \restylefloat{figure} %and this command
+%% \usepackage{url} %Formatting of yrls
+\lhead{Org Teaching}
+\chead{}
+\rhead{}
+\lfoot{Student handbook}
+\cfoot{}
+\rfoot{\thepage}
+
+
+\usepackage{framed}
+\usepackage{xcolor}
+\definecolor{shadecolor}{gray}{.95}
+\newenvironment{NOTES}{\begin{lrbox}{\mybox}\begin{minipage}{0.9\textwidth}\begin{shaded}}{\end{shaded}\end{minipage}\end{lrbox}\fbox{\usebox{\mybox}}}
+
+%%\documentclass[10pt]{article}
+
+%%\usepackage[utf8]{inputenc}
+%%\usepackage[T1]{fontenc} % caractères accentués en entrée, dans emacs
+%%\usepackage[francais,frenchb,english]{babel}
+%%\selectlanguage{frenchb}
+%%\FrenchFootnotes
+
+%%\usepackage{graphicx}
+
+%%\begin{document}
+
+
+\newcommand*{\mycustomhandbooktitle}[4]{%
+  \begin{titlepage}
+    \null\vspace*{\stretch{1}}
+    \rule{\linewidth}{1mm}
+    \begin{center}
+      {\Huge \textsc{#1} \par\vskip 1em}
+      % affiche soit une image (mainlogo) soit le propriologo
+      {\Huge \includegraphics[scale=1.0]{media/your_logo} \par\vskip 1em}
+      {\Large \textsc{#2} \par\vskip 1em}
+      {\Large\textsc{} \par\vskip 1em}
+      {\small #3 \par\vskip 1em}
+      {\huge \textsc{#4} \par\vskip 1em}
+    \end{center}
+    \rule{\linewidth}{1mm}
+    \vfill
+  \end{titlepage}
+}
+

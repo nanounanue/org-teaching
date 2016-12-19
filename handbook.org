@@ -1,0 +1,41 @@
+# This document is meant to be converted to PDF via the LateX exporter
+# of org-mode, to generate a handbook for the students.
+
+# This document shouldn't need to be edited in most cases.
+
+# See also [[./slides.org]] for the version for presentation in the classroom
+# and [[./teacher-handbook.org]] for the version of the handbook
+# provided to the teachers
+
+# Export the PDF via C-c C-e l o
+
+# I've found this hack to manage the generation of a new title
+# page including the lesson's title... maybe that can be improved
+#
+# mycustomhandbooktitle is defined in headers-students.tex
+# This relies on the use of the org-export-allow-bind-keywords local
+# variable (see [[*Footer][COMMENT Footer]])
+#+BIND: org-latex-title-command "\\mycustomhandbooktitle{%t}{%a}{%D}{org-teaching - example lesson}"
+
+#+EXCLUDE_TAGS: slidesonly teachersonly noexport
+
+#+OPTIONS: d:(not "TEACHERSONLY")
+
+#+OPTIONS: toc:1
+
+
+#+LaTeX_HEADER: \input{headers-students}
+
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper]
+
+#+LaTeX_HEADER: \rhead{Example lesson}
+
+
+#+INCLUDE: lesson.org :minlevel 1
+
+* COMMENT Footer 
+
+# Local Variables:
+# org-export-allow-bind-keywords: 't
+# End:

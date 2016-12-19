@@ -1,0 +1,30 @@
+# This document is meant to be converted to HTML for reveal.js.
+
+# It requires the use of the org-mode exporter for reveal:
+
+# made with https://github.com/hakimel/reveal.js/archive/3.3.0.tar.gz
+# and git clone https://github.com/yjwen/org-reveal.git
+# 
+# M-x load-file : elisp/org-reveal/ox-reveal.el
+
+# Then export to HTML viewed in the Web browser: C-c C-e R B
+
+# For printing to PDF : https://github.com/hakimel/reveal.js#pdf-export
+
+# See also [[./handbook.org]] for a PDF version as a handbook
+
+#+EXCLUDE_TAGS: handbookonly teachersonly noexport
+
+#+OPTIONS: d:(not "TEACHERSONLY")
+
+#+OPTIONS: num:nil toc:1
+
+#+INCLUDE: lesson.org :minlevel 1
+
+* COMMENT Footer 
+
+# Local Variables:
+# org-image-actual-width: nil
+# org-reveal-title-slide: "<h1 class=\"title\"><h1><h2>&nbsp;</h2><h2>Example lesson</h2><h3>org-teaching<h3><h3 class=\"date\">2016-12-19</h3>"
+# End:
+

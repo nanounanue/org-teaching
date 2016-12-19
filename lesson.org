@@ -1,0 +1,1053 @@
+
+# Main lesson contents file. Course writing happens here. Please edit
+# at will
+
+# See [[./handbook.org]] or [[./slides.org]], resp for the handbook
+# for students or the slides for presentation in the classroom.
+
+#+TITLE: How to teach using org-mode for fun and profit
+#+DESCRIPTION: Olivier Berger's org-mode framework for teaching
+#+AUTHOR: Olivier Berger
+#+DATE: 2016-12-19
+
+
+
+# won't work for the moment
+# #+REVEAL_HEAD_PREAMBLE: <style type="text/css">
+# #+REVEAL_HEAD_PREAMBLE:<!--/*--><![CDATA[/*><!--*/
+# #+REVEAL_HEAD_PREAMBLE: div.figure { float:right; }
+# #+REVEAL_HEAD_PREAMBLE: /*]]>*/-->
+# #+REVEAL_HEAD_PREAMBLE: </style>
+
+
+#+REVEAL_HLEVEL: 2
+# +REVEAL_THEME: league
+#+REVEAL_THEME: simple
+# +REVEAL_TRANS: none
+#+REVEAL_TRANS: fade
+#+REVEAL_SPEED: fast
+#+REVEAL_MARGIN: 0.0
+#+REVEAL_EXTRA_CSS: ./presentation.css
+#+REVEAL_ROOT: ./reveal.js
+# +REVEAL_TITLE_SLIDE_BACKGROUND: ./media/title-slide-background.png
+
+
+# org-reveal options : 
+#+OPTIONS: reveal_center:nil 
+# + OPTIONS: reveal_title_slide:<h1>%s</h1>
+
+#+OPTIONS: tags:nil ^:nil
+
+#+LANGUAGE: en
+
+
+#+REVEAL_HEAD_PREAMBLE: <meta name="copyright" content="Teaching with org-mode / org-reveal for fun and profit -- Olivier Berger  -- 2016" />
+
+
+
+
+* Features
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: class="center"
+:reveal_background: #dbdbed
+:END:
+
+
+
+** Presenter notes
+
+TBD
+
+** Masking content for some audiences
+
+- Slides only material
+- Teachers only material
+
+** Stuff only meant for presentation
+
+*** Slides only material
+
+There should be no "Only in the slides" after this section, in the
+handbooks, as it has been tagged with =slidesonly=.
+
+*** Only in the slides                                         :slidesonly:
+
+On the contrary, in the slides view, this appears.
+
+** Stuff only meant for teachers
+
+*** Teachers only sections
+
+There should be no "Only for teachers" after this section, in the slides or in the
+students handbook, as it has been tagged with =teachersonly=.
+
+*** Only for teachers                                        :teachersonly:
+
+On the contrary this appears in the teachers handbook.
+
+*** Notes only for the teachers
+
+This slide/section contains notes, but only part of it is displayed in
+the presentation notes included in the handbook, and are kept only for
+the teachers handbook.
+
+We use a drawer for that.
+
+#+BEGIN_NOTES
+
+This part of the note can be viewed by the students in the handbook,
+but not the rest.
+
+:TEACHERSONLY:
+- *TEACHERSONLY* :: but this part is only for the teachers.
+:END:
+
+#+END_NOTES
+
+** Stuff only in the handbooks
+
+TBD re =handbookonly= (see *Annex* section for instance)
+
+* HowTo
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: class="center"
+:reveal_background: #dbdbed
+:END:
+
+** Configuration
+
+- Configure =org-reveal-title-slide= in =slides.org=.
+
+- Configure header (=\lhead{...}= and =\rhead{...}=) and footer
+(=\lfoot{...}= and =\rfoot{...}=) elements in the headers like =#+LaTeX_HEADER: \rhead{...}=
+in =handbook.org= and =teacher-handbook.org=.
+
+** Exporting slides to HTML with org-reveal
+
+*** Printing slides
+
+** Exporting PDF handbooks
+
+*** For students
+
+*** For teacher colleagues
+
+** Presenting in the classroom
+
+*** Firefox issues ?
+
+*** Presenter mode in dual screen
+
+* How it works
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: class="center"
+:reveal_background: #dbdbed
+:END:
+
+** Git submodules
+
+- reveal.js
+- org-reveal
+
+** Slides appearance
+
+*** Reveal.js settings
+
+See the org-reveal settings for detailed explanation.
+
+I'm using the following for a "sober" look close to what
+powerpoint or beamer (?) could look like :
+
+#+BEGIN_SRC org
+  ,#+REVEAL_HLEVEL: 2
+  ,#+REVEAL_THEME: simple
+  ,#+REVEAL_TRANS: fade
+  ,#+REVEAL_SPEED: fast
+  ,#+REVEAL_MARGIN: 0.0
+  ,#+REVEAL_EXTRA_CSS: ./presentation.css
+  ,#+REVEAL_ROOT: ./reveal.js
+
+  ,#+OPTIONS: reveal_center:nil 
+
+
+#+END_SRC
+*** Section separators
+
+#+BEGIN_SRC org
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: class="center"
+:reveal_background: #dbdbed
+:END:
+
+#+END_SRC
+
+
+# * Préface
+# :PROPERTIES:
+# :REVEAL_EXTRA_ATTR: class="center"
+# :reveal_background: #dbdbed
+# :END:
+
+# ** Rappel séances précédentes
+# - Modèle (Doctrine)
+# - Vues (templates Twig, HTML)
+# - Contrôleurs, routeurs, formulaires Symfony, etc.
+
+# ** Objectifs de cette séance
+# - Sessions
+# - Permissions
+# - Sécurité
+
+
+# * Sessions
+# :PROPERTIES:
+# :REVEAL_EXTRA_ATTR: class="center"
+# :reveal_background: #dbdbed
+# :END:
+
+# ** Session d'application Web
+# - Les requêtes HTTP sont déclenchées lors des demandes de transition
+#   d'un état à l'autre de l'application
+# - L'exécution (PHP) résultante s'effectue sur un serveur HTTP sans
+#   mémoire des interactions précédentes entre le client et le serveur (/stateless/)
+# - Offrir à l'utilisateur une impression de continuité d'une seule
+#   session d'utilisation de l'application où les requêtes successives
+#   se suivent et ont des relations de causalité
+# - Différentes solutions techniques, dont les /cookies/
+
+# #+BEGIN_NOTES
+# Une autre solution consiste par exemple à matérialiser l'historique
+# des dialogues requête-réponse précédents entre le même client et le
+# mêm serveur dans l'URL (arguments).
+# #+END_NOTES
+
+# ** Cookies
+
+# - Reconnaître le client HTTP lors de chaque requête
+#   - Permet de raccrocher :
+#     - une nouvelle requête effectuée par un client HTTP (qui transmet dans les en-têtes de requête HTTP
+#       *la valeur d'un /cookie/ existant*)
+#     - avec la *mémoire de l'état précédent* sauvegardé côté serveur à la *fin de la réponse HTTP précédente* pour le même client
+# - Taille limitée
+# - Données en clair dans le stockage de cookies du navigateur
+# - Durée de vie potentiellement grande
+
+# *** Identification du clients par cookie
+
+# # #+ATTR_HTML: :title "multiples clients et pages"
+# # [[file:./media/id-session.png]]
+
+# - Identifie le client
+# - Commun à un ensemble d'URLs
+
+# #+BEGIN_NOTES
+# Identifiant fourni systématiquement au serveur, chaque fois que le
+# même client HTTP se connecte
+
+# Attention, pas nécessairement le même utilisateur final : plusieurs
+# navigateurs ouverts en même temps sur le même site (sur plusieurs
+# machines, ou avec plusieurs profils différents) => plusieurs cookies.
+
+# Est-ce suffisant pour déterminer tout le contexte d'exécution de
+# l'application ?
+# #+END_NOTES
+
+# *** Cookies
+
+# - Juste un "jeton" unique sur un certain périmètre (serveur, chemin
+#   d'URL, application, ...)
+# - Format choisi par le serveur
+# - Peut contenir complètement un état de l'application : des données, mais *taille limitée*
+# - Le serveur peut trouver en base de données des données plus
+#   complètes sur présentation du jeton
+
+# #+BEGIN_NOTES
+# Attention aux problématiques de sécurité : pas de mot de passe dans un
+# Cookie, par exemple.
+
+# Les cookies sont consultables par un attaquant ayant accès aux données
+# stockées dans les données d'un profil du navigateur.
+# #+END_NOTES
+
+# *** Stockage d'une session
+
+# - Session stockée sur le serveur (pas contrainte taille)
+# - Objets de l'application stockés dans la session
+# - Session retrouvée via un identifiant
+#   - Identifiant fourni par un /cookie/
+# - Durée de vie et unicité des sessions au choix du serveur
+# # +REVEAL: split
+
+# # #+ATTR_HTML: :title "stockage session côté serveur"
+# # [[file:./media/utilisation-session.png]]
+
+# #+BEGIN_NOTES
+# La session est potentiellement grosse, peut-être stockée en base de
+# données, ...
+
+# Le "même" document accédé par deux clients présentant des ID
+# différents, ne sera peut-être pas le même document, s'il est généré
+# dynamiquement en fonction des informations présentes dans la session.
+
+# La plate-forme du langage de programmation rend l'utilisation de la
+# session très facile pour le programmeur.
+
+# En pratique, la session n'est pas obligatoirement stockées dans un
+# SGBD, mais plus souvent sur un système de fichiers ou dans une mémoire
+# partagées (pour la gestion de cohérence si le serveur d'application
+# est dans un environnement d'exécution distribuée).
+# #+END_NOTES
+  
+# *** Détails cookie
+
+# - Le serveur crée les cookies et les intégre dans la réponse HTTP
+# - Il utilise le champ "header" particulier "=Set-Cookie=" (sur une
+#   seule ligne)
+#   #+BEGIN_EXAMPLE
+#     Set-Cookie: <nom>=<valeur>;expires=<Date>;domain=<NomDeDomaine>; path=<Path>; secure
+#   #+END_EXAMPLE
+
+#   Exemple de réponse HTTP :
+#   #+BEGIN_EXAMPLE
+#     HTTP/1.1 200 OK
+#     Server: Netscape-Entreprise/2.01
+#     Content-Type: text/html
+#     Content-Length: 100
+#     Set-Cookie: clientID=6969;domain=unsite.com; path=/jeux
+#   #+END_EXAMPLE
+# - Ce cookie sera renvoyé avec chaque requête ayant comme URL de début =http://www.unsite.com/jeux/...=
+
+# #+BEGIN_NOTES
+# Il peut y avoir plusieurs champs "Set-Cookie" dans le message HTTP, afin de
+# représenter plusieurs cookies différents.
+# #+END_NOTES
+
+
+# ** Session PHP
+
+# - Stocker des données au niveau du serveur HTTP entre les requêtes HTTP
+# - Implémente une "session" de navigation en cours dans l'application.
+
+# #+BEGIN_NOTES
+# Les données placées dans la session par un programme PHP lors de
+# l'exécution d'une requête HTTP seront
+# accesibles dans des exécutions futures pour les requêtes ultérieures.
+
+# Équivalent en complexité pour le programmeur PHP à sauvegarder ou
+# recharger des données dans une variable globale, qui n'est pas
+# partagée "dans l'espace" entre différentes fonctions du même programme
+# PHP, mais plutôt "dans le temps" entre différentes exécutions
+# successives des programmes PHP.
+
+# Le stockage clé-valeur est plus facile à utiliser qu'une gestion de
+# base de données relationnelle, par exemple.
+
+# Cf. http://www.w3schools.com/php/php_sessions.asp pour en découvrir plus
+# #+END_NOTES
+
+# *** Détails
+
+# - Accès clé - valeur
+# - Stockage de données volumineuses
+# - Utilise un cookie =PHPSESSID= (ou bien dans l'URL)
+# - Mémorisé localement au niveau du serveur d'exécution PHP :
+#   - stocké dans système de fichiers
+#   - ou partagé (mémoire distribuée, ...) entre différents serveurs
+#     (objectif : session cohérente même si partage de charge entre plusieurs serveurs)
+# - Durée de vie limitée (/garbage collection/) pour protéger le serveur
+#   si l'application est très utilisée (/Denial of Service/ ...)
+
+
+# ** Session Symfony
+
+# - Basé sur sessions PHP (par défaut)
+# - API Objet
+
+#   #+BEGIN_SRC php
+#     $session = $this->get('session');
+
+#     $objet = $session->get('idobjet');
+
+#     $session->set('idobjet', $objet);
+    
+#   #+END_SRC
+# http://symfony.com/doc/current/components/http_foundation/sessions.html
+
+# *** TODO Session courante dans les formulaires                   :noexport:
+
+# app.session.get...
+# *** /Flash messages/ via session
+
+# http://symfony.com/doc/current/components/http_foundation/sessions.html#flash-messages
+
+# #+BEGIN_SRC php
+#   use Symfony\Component\HttpFoundation\Request;
+
+#   public function modificationAction(Request $request)
+#   {
+#       // ...
+
+#       if ($form->isValid()) {
+#           // sauvegarder les données ...
+
+#           $this->addFlash(
+#               'notice',
+#               'Modifications enregistrées !'
+#           );
+#           // $this->addFlash est équivalent à $request->getSession()->getFlashBag()->add
+
+#           return $this->redirectToRoute(...);
+#       }
+
+#       return $this->render(...);
+#   }
+# #+END_SRC
+
+
+# * Sécurité
+# :PROPERTIES:
+# :REVEAL_EXTRA_ATTR: class="center"
+# :reveal_background: #dbdbed
+# :END:
+
+# ** Protéger les données / fonctions
+
+# - La sécurité des applications revêt différents aspects, en général
+#   - Contrôle d'accès
+#   - Confidentialité
+#   - ...
+# # - La sécurité des applications Web ajoute certains éléments spécifiques
+
+# # ** TODO Caractérisation des risques / enjeux
+# # - (D)DOS
+# # - ...
+
+# ** Contrôle des accès
+# - Protéger l'accès aux fonctionnalités de l'application
+# - Qui est autorisé à faire quoi
+
+# *** Sécurité par obscurcissement ?
+# - Ne pas protéger spécifiquement, 
+# - et ne pas documenter / expliquer / rendre visible ?
+
+# Ce n'est pas parce que le code de l'application est caché sur le serveur que les méchants ne trouveront pas des failles !
+
+# *#Fail*
+
+# *** Contrôle effectif
+# - Au niveau du serveur (ne pas permettre aux clients de découvrir les
+#   failles en regardant le source)
+# - Profiter des bienfaits du /framework/ pour le même prix
+# - Mesures complémentaires (audit, etc.)
+
+# ** Modèle général
+
+# - Identification :: l'utilisateur fournit à un service un moyen de le
+#      reconnaître : *identité*
+# - Authentification :: le service *vérifie* cette identité
+# - Autorisation :: le service donne à l'utilisateur certaines *permissions*
+
+# *** Identification
+
+# - L'identification doit être confirmée par l'authentification
+# - Identifiants :
+#   - email
+#   - identifiant d'utilisateur (/login/)
+#   - certificat client X509 (TLS)
+#   - ...
+
+
+# *** Authentification
+
+# - Valide le fait que celui qui essaye d'utiliser le service est bien
+#   le propriétaire légitime de l'identifiant présenté
+# - Protocole de vérification :
+#   - mot-de-passe
+#   - signature valide d'une donnée quelconque (/challenge/) avec la clé privée
+#     associée au certificat client
+#   - service externe
+#   - ...
+
+# *** Autorisations
+
+# - Permissions applicatives associées à l'identifiant
+# - Pour une certaine période
+# - Génération d'un jeton temporaire (session authentifiée)
+#   - /Cookie/
+
+# ** Dans protocole HTTP
+# - Identification / authentification de "bas niveau" dans le protocole
+#   HTTP
+# - Rappel : HTTP est sans état
+#   - Le client HTTP doit se réauthentifier à chaque requête
+# - Permet de transporter l'authentification dans les en-têtes
+# - Alternative : *authentification applicative* + session applicative
+
+# ** /Single Sign-On/ (SSO)                                         :noexport:
+# - Mécanisme permettant de partager une authentification entre
+#   plusieurs applications
+# - Identification commune
+# - Authentification une seule fois pour une certaine période
+# - Chaque application définit ses autorisations
+# - Exemples : CAS, Shibboleth
+
+# ** TODO HTTPS / TLS                                               :noexport:
+
+# - Chiffrement des requêtes / réponses HTTP dans un tunnel TLS
+# - Vérification de l'identité des serveurs (ou clients)
+# - Pas confidentialité ultime
+# - HTTPS par défaut :
+#   - protéger les éléments de sécurité (mots-de-passe, cookies, etc.)
+#   - protéger les clients de la surveillance
+
+# Cf. [[http://www.ssi.gouv.fr/actualite/le-nouveau-guide-de-recommandations-de-securite-relatives-a-tls/][Recommandations de sécurité relatives à TLS]]
+
+# ** Sécurité des applis Web
+
+# Approfondir :
+# -
+#   [[https://wiki.mozilla.org/Security/Guidelines/Web_Security][Guidelines Web Security Mozilla]]
+# - Les 10 risques de sécurité Applicatifs Web les plus critiques : [[https://www.owasp.org/index.php/Top10#tab=OWASP_Top_10_for_2013][OWASP Top 10 2013]] (ou [[http://owasptop10.googlecode.com/files/OWASP%20Top%2010%20-%202013%20-%20French.pdf][en français]])
+# - [[http://www.ssi.gouv.fr/entreprise/guide/recommandations-pour-la-securisation-des-sites-web/][Recommandations pour la sécurisation des sites web ANSSI]]
+
+
+# * Mécanismes d'authentification
+# :PROPERTIES:
+# :REVEAL_EXTRA_ATTR: class="center"
+# :reveal_background: #dbdbed
+# :END:
+
+# ** Authentification au niveau HTTP                                :noexport:
+# :PROPERTIES:
+# :REVEAL_EXTRA_ATTR: class="center"
+# :END:
+
+# *** /HTTP/1.1 Authentification/ (RFC 7235)
+
+# Spécification :
+# [[https://tools.ietf.org/html/rfc7235][Hypertext Transfer Protocol (HTTP/1.1): Authentication - RFC 7235]]
+
+# - Mécanisme *défi/réponse*
+
+# *** Accès à ressource protégée
+
+# 1. Requête =GET= accès à ressource protégée
+# 2. Réponse intermédiaire du serveur : défi
+#    - code de statut =401 Unauthorized=
+#    - en-tête de réponse =WWW-Authenticate=
+# 3. Requête de réponse du client au défi du serveur
+#    - en-tête =Authorization=
+# 4. Réponse finale du serveur :
+#    - contenu ressource demandée (code de statut =200 OK=)
+#    /ou/ :
+#    - code de statut =403 Forbidden= : autorisation refusée
+
+# #+BEGIN_NOTES
+# A priori, le client HTTP ne sait pas que la ressource est protégée. Il le découvre en obtenant un code de réponse =401=.
+
+# Mais s'il le sait, il peut déjà s'y préparer et sauter directement à l'étape 3 en fournissant déjà l'en-tête =Authorization= avec sa requête.
+# #+END_NOTES
+
+# *** Défi
+# - En-tête de réponse =WWW-Authenticate=
+#   - Type d'authentification demandé par le serveur
+#   - Périmètre de l'authentification : "royaume" (/realm/)
+#   - Paramètres additionnels
+# - Exemple :
+
+#   #+BEGIN_EXAMPLE
+#   WWW-Authenticate: Basic realm="INT"
+#   #+END_EXAMPLE
+
+# *** Réponse au défi
+# - En-tête de requête =Authorization=
+#   - données des /lettres de créance/
+
+# ** Exemple type authentification =Basic=                          :noexport:
+
+# Exemple de requête =https://qg.example.org/tresor/= :
+
+# #+BEGIN_EXAMPLE
+# > GET /tresor/ HTTP/1.1
+# > Host: qg.example.org
+# > 
+# < HTTP/1.1 401 Unauthorized
+# < WWW-Authenticate: Basic realm="Acces au tresor"
+# ...
+# #+END_EXAMPLE
+
+# Exemple de réponse au défi avec login =perefouras= mot-de-passe =maitredescles= :
+# #+BEGIN_EXAMPLE
+# ...
+# > GET /tresor/ HTTP/1.1
+# > Authorization: Basic cGVyZWZvdXJhczptYWl0cmVkZXNjbGVz
+# > Host: qg.example.org
+# ...
+# < HTTP/1.1 200 OK
+# #+END_EXAMPLE
+
+# *** Génération de l'en-tête =Authorization= en authentification =Basic=
+
+# - Login =perefouras= + mot-de-passe =maitredescles=
+# - Concaténation des deux, séparés par un =:=
+# - Encodage via variante de /Base64/
+#   #+BEGIN_SRC sh
+#   echo -n "perefouras:maitredescles" | base64
+#   #+END_SRC
+
+# Résultat :
+# #+BEGIN_EXAMPLE
+# Authorization: Basic cGVyZWZvdXJhczptYWl0cmVkZXNjbGVz
+# #+END_EXAMPLE
+
+# *** Décodage de la réponse au défi
+
+# - En-tête =Authorization: Basic cGVyZWZvdXJhczptYWl0cmVkZXNjbGVz=
+# - Décodage Base64 de =cGVyZWZvdXJhczptYWl0cmVkZXNjbGVz=
+#   #+BEGIN_SRC sh
+#   echo "cGVyZWZvdXJhczptYWl0cmVkZXNjbGVz" | base64 --decode
+#   #+END_SRC
+# - Séparation de la chaîne obtenue (=perefouras:maitredescle=)
+
+# *PAS SÛR SUR HTTP EN CLAIR : UTILISER TLS*
+
+# *** TODO Authentification Basic dans le navigateur
+
+# - Boîte dialogue
+# - Mémorisation pour la session
+# - Pas possible de se déconnecter
+
+# *** Autres types d'authentification HTTP
+
+# - OAuth (cf. ci-après)
+# - Extensible
+# - ...
+
+# ** Authentification applicative
+# :PROPERTIES:
+# :REVEAL_EXTRA_ATTR: class="center"
+# :END:
+
+# *** Principe
+
+# - L'authentification est une des fonctionnnalités de l'application, via la session
+# - *Formulaire* d'authentification
+#   - Login
+#   - Mot-de-passe
+# - Création d'un compte
+
+# *** Formulaire d'authentification
+# - Formulaire "standard"
+# - Champs :
+#   - Login ou email
+#   - Mot-de-passe (saisie cachée)
+#   - Réinitialisation du mot-de-passe
+
+# *** Vérification de l'authentification
+
+# - Comparer avec profil d'utilisateur connu (en base de données)
+# - Générer une *session*
+# - Attention : attaques force brute
+#   - Invalider un compte/profil, ou faire une gestion de surcharge qui désactive les tentatives (/throttling/, /blacklist/ réseau, etc.)
+
+# *** Dans Symfony
+# - Composant =Security=
+# - Flexible : gestion souple et extensible de l'authentification
+# - Composant /Firewall/ qui vérifie le routage des requêtes entrantes, et demande l'authentification de l'utilisateur si nécessaire
+# - Utilisera le /bundle/ =FOSUserBundle= pour nous simplifier la vie en gérant les utilisateurs via la base de données
+
+# *** Sécurité                                                     :noexport:
+# - Gestion des mots-de-passe (qualité aléa, longueur, stockage approprié, etc.)
+# - Récupération de compte si oubli mot-de-passe
+#   - Canal sécurisé ou envoi jeton de réinitialisation sur email (implique gestion emails)
+# - Confirmations d'authentification pour sections critiques de l'application
+# - Garder des traces (audit, obligations légales)
+
+# *** Captcha                                                      :noexport:
+
+# /Completely Automated Public Turing test to tell Computers and Humans Apart/
+
+# - Vérifier qu'un humain est aux commandes
+# - Problèmes accessibilité
+# - Travail dissimulé
+# - Surveillance
+# - Pas infaillible
+
+# *** Authentification à double facteur                            :noexport:
+# - Pas uniquement élément connu
+# plus
+# - Élément en possession
+
+# Exemples
+# - carte bancaire (possession) + code PIN (connu)
+# - login + mdp (connu) + SMS reçu (possession mobile)
+# - login + mdp (connu) + badge de sécurité générant un code unique (possession)
+
+# #+BEGIN_NOTES
+# Authentification plus forte.
+
+# Attention : certains mécanismes s'avèrent moins fiable que prévu (SMS)
+
+# Attention aux exigences de sécurité réglementaires.
+# #+END_NOTES
+
+# # ** Certificat client
+
+
+# * Contrôle d'accès et permissions
+# :PROPERTIES:
+# :REVEAL_EXTRA_ATTR: class="center"
+# :reveal_background: #dbdbed
+# :END:
+
+# ** RBAC
+
+# /Role-Based Access Control/ (contrôle d'accès à base de rôles)
+
+# - Utilisateur
+# - *Rôle*
+# - Fonctionnalité
+#   - Permissions
+
+# #+BEGIN_NOTES
+# Au-lieu d'attribuer des permissions à un utilisateur, on les attribue
+# à un rôle, qu'on délègue à un utilisateur : les permission sont gérées
+# en fonction de la structure de l'organisation, indépendamment des
+# embauches, départs ou changement de responsabilité des individus.
+# #+END_NOTES
+
+# * Symfony
+# :PROPERTIES:
+# :REVEAL_EXTRA_ATTR: class="center"
+# :reveal_background: #dbdbed
+# :END:
+# ** Gestion des utilisateurs avec =FOSUserBundle=
+
+# - Classe =User= du Modèle (et /mapping/ Doctrine en base)
+# - Définition de règles dans le /firewall/ Symfony
+# - Rôles 
+# - Routes et /templates/ standards :
+#   - Login + password
+#   - Logout
+#   - Inscription, rappel du mot-de-passe,
+
+# Cf. https://symfony.com/doc/master/bundles/FOSUserBundle/index.html
+
+# ** Classe =User=
+
+# # +class User implements UserInterface+
+
+# #+BEGIN_example
+#   use FOS\UserBundle\Model\User as BaseUser;
+#   use Doctrine\ORM\Mapping as ORM;
+
+#   /**
+#    ,* @ORM\Entity
+#    ,* @ORM\Table(name="fos_user")
+#    ,*/
+#   class User extends BaseUser
+#   {
+#       // ...
+
+# #+END_example
+
+# - =FOS\UserBundle\Model\User= fournit déjà :
+#   - username
+#   - email
+#   - password
+
+# Sera sérialisé dans la session à la fin de chaque réponse
+
+# ** Hiérarchie de rôles
+
+# Arbitraire, selon les besoins de l'application
+
+# Exemple :
+#   1. ROLE_SUPER_ADMIN
+#   2. ROLE_ADMIN
+#   3. ROLE_CLIENT
+#   4. ROLE_USER
+
+# #+BEGIN_EXAMPLE
+#   # security.yml
+
+#   role_hierarchy:
+#       ROLE_CLIENT:      ROLE_USER
+#       ROLE_ADMIN:       ROLE_USER
+#       ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN]
+# #+END_EXAMPLE
+
+
+# ** /Firewall/
+
+# Contrôle l'accès aux URLs en fonction des rôles :
+# #+BEGIN_EXAMPLE
+# # app/config/security.yml
+# security:
+#     # ...
+
+#     firewalls:
+#         # ...
+#         default:
+#             # ...
+
+#     access_control:
+#         # require ROLE_ADMIN for /admin*
+#         - { path: ^/admin, roles: ROLE_ADMIN }
+
+# #+END_EXAMPLE
+
+# ** Utilisation dans les contrôleurs
+
+# - Contrôle d'accès sur les routes :
+#   #+BEGIN_EXAMPLE
+#   @Route("/comment/{postSlug}/new", name="comment_new")
+#   @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+#   #+END_EXAMPLE
+
+# - Contrôle d'autorisation dans le code des méthodes :
+#   #+BEGIN_EXAMPLE
+#     $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
+#   #+END_EXAMPLE
+
+# #+REVEAL: split
+
+# - Accès aux propriétés de l'utilisateur :
+#   #+BEGIN_EXAMPLE
+#   $this->getUser()
+
+#   // ...
+
+#   $post->setAuthorEmail($this->getUser()->getEmail());
+#   #+END_EXAMPLE
+
+# ** Personalisation apparence
+
+# - Dans templates Twig :
+#   #+BEGIN_EXAMPLE
+#   {% if is_granted('ROLE_ADMIN') %}
+#     <a href="...">Delete</a>
+#   {% endif %}
+#   #+END_EXAMPLE
+
+
+# ** Gestion des utilisateurs
+
+# - Via du code PHP (API de Symfony)
+# - Par console en ligne de commande :
+#   #+BEGIN_SRC sh
+#   php bin/console fos:user:create testuser test@example.com p@ssword
+#   #+END_SRC
+
+#   #+BEGIN_SRC sh
+#   php bin/console fos:user:promote testuser ROLE_ADMIN
+#   #+END_SRC
+
+# * Concepts avancés                                                 :noexport:
+# ** Délégation d'authentification
+
+# *** Principe
+
+# - Déléguer l'authentification à un service dédié
+# - SSO
+
+# *** CAS (Central Authentication Service)
+# - Authentification unique (SSO)
+# - Tickets (Ticket Granting Ticket, Service Ticket)
+# - Utilise beaucoup les redirections
+# - https://cas.tem-tsp.eu/cas/login
+
+# *** Protocole
+
+# # Source Ohsie, David :
+# # http://www.plantuml.com/plantuml/svg/jLP_J-D64FtR_XIZLDSU4WbqwIz519I48xqAIeITwjfoGXjx8NiuNdTt7Sgtx-nwuzY9at0IbH1WUtPsvisRUVETUk8f39ASNOkOoTJtDTS9wyAm7y10YcV590GyVKnOE-2FgKWXOF_aB8qON73wAEdSzscaXOJSc5854p-ZKlE8PpJLq79EMkRJeFx9t14mkN1VX_MlOoaqYpIBePzbrc2ymm2-8OKDyNs_ruDBBfM6VXGnfQ3Ny_q9jCzW0DsHq09Q55tw_KZp1TKCungOhsFemkX323EjCzKzEaAZ3lkNphE4TI8nFpA95WV6UE2qtROdJeu9N8c8QYxIRdasegfs5f-F4l78q_Ex5E5Oy8ZrJlcPDNztqdz7Bl5dxK9ySth4p_mKymJ97sVQzrn6N46UqbpFM8g0K0E24k1x3q8-Kna3vcZGnKUeM6647TzhkVjRW8MKBu2WqZdJJFhUrimzl71oUmLOUEH9xBCq1XEMvtb-p2gu54WEwq2-9HXqLRJotw7lwZ4iY7jbVCEbaFCQTXF3q5WmPKA76LqmeCZdu0PPg1I2Ks2OIQOGCB0H6WZdPRhLN8T8gTCs3BhO22fBw8kv-Ywjt5sQJWpx3Fsw4EJJETSRfXM_anB2yKqG_k-4CcsROlqFaGTAFGiP7o8giSiUQVF4q8fAPiD1dfctCmPJ4R_KQ501PkWIw5S8QkV3gam1q-sX44-yc3NXQDWBHs6RdFpmuqy__tANDdVLEYynzoB2NX2sltU7DskEvDtebKWo4vMRRQgORU-H30UW2ZRuNX4OH3PE_9DgobDbqm_jjJ2IE8hGnVBvFIPnu7kXiHY5vc9Zx1p24tknBMdU6JYK9T_okcQILHu6hhl6kyVKUGCabGuTlw917Q7-e0cFyTJNKUpRfg9iy6urlT43BDnDoWe2NeGOEaI3y02exHXGLYn0c5ysYXLc5SJ6IuwHusFu-zFr5GonSbZypqK02NlGjhOWcSub5XIdW36BHPJFJUS_ptWqGw97IHupXUnFyI5s4nJ40wZSZk53MyawjNnFvTClc5dHHY8pPsYIl60IMl9fZabkARNJb7fp_1Py28AFDxz_lEZr1qC7vslxeuOuUgsnqT7QHBcK3T-phUrqVqgZ9wCaDiaiIvO0F7CzSwQE5cvEWC8CimnH40yFfWkG_qi0y1lB06Vh0h4gsc9v3m8SnzB8sfHAU91Y3d4nKard6SiWR8HiNFR3JhHUBUfZvst9-pMeLWMop7AiCdpOvlnpFTg9FLzHZ68FgRTufzEn6qp0SE34onKc513Wb3QhJba7kzOKid9hbZ9SU115aSk8LMMot6tsK6eNIgNVEg4AT0g_PjWPtSHg9WBhPbbYYYUBs9h5ujMWO_mj2_kj2wNiwbOZoB12kGo-6UZQgcXmTi2l8xs-G9A63P9ihf1a6zt8CZNovbiaQLBzAafajQZjKk6tMEB8wxUuvTvGKW63MQqCZUEERDy76hO1C_HNKgETIkCsa0gty2293L-vh2ov-mMPxAdw-KPKrL8W0TvQaiakJQueSbKsoNRTR98fKjUfwvkB-_ua_FKUCRuFUf_-_6k_LgsrHfsW9R9xR_YAZXkJzfdnkMVOa9qZdkoOyQHvo9FwbFyF
+# # via
+# # https://www.mail-archive.com/cas-dev%40lists.jasig.org/msg05740.html
+
+# #+ATTR_HTML: :title "Diagramme UML du protocole CAS" 
+# [[file:./media/cas-uml.png]]
+
+# *** Exemple
+# #+BEGIN_EXAMPLE
+#   $ curl -v http://www-cours.tem-tsp.eu/~berger_o/index.txt
+#   ,* Hostname was NOT found in DNS cache
+#   ,*   Trying 2001:660:3203:100:1:0:80:107...
+#   ,* Connected to www-cours.tem-tsp.eu (2001:660:3203:100:1:0:80:107) port 80 (#0)
+#   > GET /~berger_o/index.txt HTTP/1.1
+#   > User-Agent: curl/7.38.0
+#   > Host: www-cours.tem-tsp.eu
+#   > Accept: */*
+#   > 
+#   < HTTP/1.1 302 Found
+#   < Date: Tue, 30 Aug 2016 08:43:39 GMT
+#   ,* Server Apache/2.2.15 (CentOS) is not blacklisted
+#   < Server: Apache/2.2.15 (CentOS)
+#   < Location: https://cas.tem-tsp.eu/cas/login?service=http%3a%2f%2fwww-cours.tem-tsp.eu%2f%7eberger_o%2findex.txt
+#   < Content-Length: 370
+#   < Connection: close
+#   < Content-Type: text/html; charset=iso-8859-1
+#   < 
+#   <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+#   <html><head>
+#   <title>302 Found</title>
+#   </head><body>
+#   <h1>Found</h1>
+#   <p>The document has moved <a href="https://cas.tem-tsp.eu/cas/login?service=http%3a%2f%2fwww-cours.tem-tsp.eu%2f%7eberger_o%2findex.txt">here</a>.</p>
+#   <hr>
+#   <address>Apache/2.2.15 (CentOS) Server at www-cours.tem-tsp.eu Port 80</address>
+#   </body></html>
+#   ,* Closing connection 0
+# #+END_EXAMPLE
+# *** Shibboleth
+# - Fédération d'identité
+# - L'identification est faite au sein de la fédération
+# - L'authentication est faite dans chaque autorité participante
+
+# - Transport d'attribut
+
+# - Exemple : https://zimbra.mines-telecom.fr/
+
+# *** OpenID, OAuth, Twitter, Facebook, Google, etc...
+
+# *** OpenID Connect 
+
+# #+BEGIN_HTML
+# <iframe width="640" height="480" src="https://www.youtube.com/embed/Kb56GzQ2pSk?rel=0" frameborder="0" allowfullscreen></iframe>
+# #+END_HTML
+
+# ** Délégation d'autorisation
+
+# *** Principe
+# - Effectuer des interactions avec un serveur pour le compte d'un utilisateur
+# - Avantage
+#   - Permettre à des programmes d'agir sans utilisateur aux commandes (hors session Web dans un navigateur)
+#   - Avec (un sous-ensemble) des privilèges de l'utilisateur
+#   - Pas de création d'un nouveau compte
+#   - Pas de divulgation des lettres de créance réelles de l'utilisateur (mot-de-passe)
+
+# *** Valet de parking
+
+# - Gare les voitures (de luxe) pour le compte des clients
+# - Clé de contact spéciale
+# - Conduire
+#   - Pas loin
+#   - Pas vite
+# - Pas appeler avec le téléphone de bord
+# - Pas d'accès au mini-bar
+# - ...
+
+# #+BEGIN_NOTES
+# - *ENSEIGNANTSSEULEMENT* :: Pas sûr que ça fonctionne vraiment comme ça... quelqu'un a une ferrari à me prêter ?
+# #+END_NOTES
+
+# *** OAuth 2.0
+
+# http://oauth.net
+
+# - Spécifications : [[https://tools.ietf.org/html/rfc6749][The OAuth 2.0 Authorization Framework]]
+# - [[https://aaronparecki.com/2012/07/29/2/oauth2-simplified][OAuth 2 Simplified]]
+# - Supporté par HTTP : parfait pour APIs REST
+
+# *** Protagonistes
+
+# - Utilisateur d'un service : /Resource Owner/ (propriétaire de ressources) :: souhaite déléguer l'accès à certaines fonctionnalités auxquelles il a accès
+
+# - Service / API : /Resource Server/ (Serveur de ressources) :: les interfaces du service sur lequel on accède aux informations
+
+# - Application tierce : /Client/ :: l'application qui tente d'accéder au service au nom de l'utilisateur. Elle doit avoir reçu des permissions de la part de l'utilisateur avant de pouvoir y arriver.
+
+# *** Protocole simplifié
+
+# #+BEGIN_SRC plantuml :file media/oauth2.png
+# @startuml oauth2-flow.png
+
+# title Protocole OAuth 2.0 Simplifié
+# autonumber
+
+# participant "Resource Owner\n(//utilisateur//)" as Owner
+# participant "Client\n(//appli tierce//)" as Client
+# participant "Serveur d'autorisation" as AuthzServer
+# participant "Serveur de ressource" as ResourceServer
+
+# Client->Owner: Requête d'autorisation
+
+# Owner->Client: Obtention d'une délégation d'autorisation
+
+# Client->AuthzServer: Demande jeton d'accès sur présentation délégation d'autorisation
+
+# AuthzServer->Client: Jeton d'accès
+
+# Client->ResourceServer: Accès à ressource (API) grâce au jeton d'accès
+
+# ResourceServer->Client: Fourniture de la ressource protégée
+
+# @enduml
+# #+END_SRC
+
+# #+RESULTS:
+# [[file:media/oauth2.png]]
+
+# #+BEGIN_NOTES
+# On se place dans la situation où une application mobile (par exemple),
+# dénommée le "Client" va interagir avec l'API d'un site Web (Serveur de
+# ressource), pour le compte d'un utilisateur du site (Propiétaire de
+# ressource). L'application pourra interagir avec le site en tâche de
+# fond sans que l'utilisateur soit sollicité. Par contre l'application
+# n'aura pas le droit d'effectuer toutes les actions que l'utilisateur
+# aurait le droit de faire via l'interface du site. Par exemple,
+# l'application n'aurait accès qu'aux fonctionnalités en lecture seule,
+# mais pas en modification.
+
+# L'application effectue une demande initiale de délégation
+# d'autorisations auprès de l'utilisateur (1 et 2). L'utilisateur valide
+# cette demande. En général, cette validation passe par une connexion au
+# site dans un navigateur, où l'utilisateur doit confirmer qu'il désire
+# bien déléguer certaines autorisations à l'application. Cette
+# délégation approuvée par l'utilisateur est alors connue du Serveur
+# d'autorisation, et pourrait être définie pour une durée limitée, et
+# révoquée à tout moment par l'utilisateur.
+
+# L'application peut désormais effectuer des demandes de jeton d'accès
+# auprès du serveur d'autorisations (3), qui lui serviront, pendant une
+# certaine durée, à interagir avec l'API du site (5).
+# #+END_NOTES
+
+
+# * Postface
+# :PROPERTIES:
+# :REVEAL_EXTRA_ATTR: class="center"
+# :reveal_background: #dbdbed
+# :END:
+
+# ** Et maintenant
+
+# TP Symfony application de blog
+
+# # ** Crédits illustrations
+
+# # #+HTML: <small>
+# # - Photo TPLs "Conservatoire du Contrôle-Commande du Réseau français de Transport d'Electricité" http://esconce2014.estelenerg.org/8-tableaux-de-commandes/8-3-composants-divers/
+# # - [[https://en.wikipedia.org/wiki/File:Apple_Macintosh_Desktop.png][Apple_Macintosh_Desktop.png]] (source Wikipedia)
+# # - Diagrammes HATEOAS / TWitter extraits de "[[http://fr.slideshare.net/apigee/hateoas-101-opinionated-introduction-to-a-rest-api-style][HATEOAS 101 - Opinionated Introduction to a REST API Style]]" par Brian Mulloy (Apigee) [[http://creativecommons.org/licenses/by-sa/4.0/][CC-by-SA]]
+# # #+HTML: </small>
+
+# # # Autres ressources :
+# # # https://www.oboqo.com/blog/trousse-outils-ideale-demarrer-web/
+*** Title screen picture (logos, etc.)
+
+#+BEGIN_SRC org
+  ,#+REVEAL_TITLE_SLIDE_BACKGROUND: ./media/title-slide-background.png
+#+END_SRC
+
+
+* Annex                                                       :handbookonly:
+
+
+* COMMENT TODO
+
+
+* COMMENT Footer 
+
+# Local Variables:
+# org-image-actual-width: nil
+# End:

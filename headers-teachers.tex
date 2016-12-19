@@ -1,0 +1,31 @@
+% This defines the LaTeX headers that will be included in the
+% generated LaTeX source for the handbook for the teachers, in order to define a
+% handbook title page
+
+% This is a hack as I'm no LaTeX guru, and I just borrowed stuff from
+% colleagues. Clearly could be improved. Contributions welcome.
+
+
+% \usepackage[french]{babel}
+\usepackage[top=20mm, bottom=20mm, left=25mm , right=25mm]{geometry}
+
+\usepackage{fancyhdr} %For headers and footers
+\pagestyle{fancy} %For headers and footers
+\usepackage{lastpage} %For getting page x of y
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage}
+
+\usepackage{draftwatermark}
+\SetWatermarkLightness{0.8}
+\SetWatermarkAngle{35}
+\SetWatermarkScale{2}
+\SetWatermarkFontSize{2cm}
+\SetWatermarkText{TEACHERS}
+
+\usepackage{framed}
+\usepackage{xcolor}
+\definecolor{shadecolor}{gray}{.95}

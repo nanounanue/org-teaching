@@ -1,0 +1,35 @@
+# This document is meant to be converted to PDF via the LateX exporter
+# of org-mode, to generate an augmented handbook for the teachers.
+
+# This document shouldn't need to be edited in most cases.
+
+# See also [[./slides.org]] for the version for presentation in the classroom
+# and [[./handbook.org]] for the version of the handbook
+# provided to the students
+
+# Export the PDF via C-c C-e l o
+
+#+EXCLUDE_TAGS: slidesonly noexport
+
+#+OPTIONS: toc:2
+
+
+#+LaTeX_HEADER: \input{headers-teachers}
+
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper]
+
+#+LaTeX_HEADER: \lhead{org-teaching}
+#+LaTeX_HEADER: \rhead{Example lesson}
+#+LaTeX_HEADER: \lfoot{TEACHERS HANDBOOK}
+
+#+LATEX_HEADER_EXTRA: \newenvironment{NOTES}{\begin{lrbox}{\mybox}\begin{minipage}{0.9\textwidth}\begin{shaded}}{\end{shaded}\end{minipage}\end{lrbox}\fbox{\usebox{\mybox}}}
+
+
+#+BEGIN_ABSTRACT
+\begin{shaded}
+This document is meant to be read only by the teachers
+\end{shaded}
+#+END_ABSTRACT
+
+#+INCLUDE: lesson.org :minlevel 1
