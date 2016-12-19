@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-12-19 lun. 17:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Supporting management of teaching material with org-mode</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Olivier Berger" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Supporting management of teaching material with org-mode</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org2ff5a56">1. Goal</a></li>
+<li><a href="#orgca30efc">2. Home of the project</a></li>
+<li><a href="#org79d3a6b">3. Testing it</a></li>
+<li><a href="#org297d154">4. Features</a>
+<ul>
+<li><a href="#orgd603d0c">4.1. Single source</a></li>
+<li><a href="#org4dffe3f">4.2. Teaching to the audience with a slides deck</a></li>
+<li><a href="#orgc6c393b">4.3. Providing a reference handbook to students</a></li>
+<li><a href="#org289b4d4">4.4. Providing additional material to teachers</a></li>
+</ul>
+</li>
+<li><a href="#org72ada61">5. History</a></li>
+<li><a href="#orgaca817d">6. Copyright &amp; license</a></li>
+</ul>
+</div>
+</div>
+<p>
+<i>This file is <code>README.org</code> and is best viewed in org-mode in Emacs&#x2026; go git clone ;-)</i>
+</p>
+
+<div id="outline-container-org2ff5a56" class="outline-2">
+<h2 id="org2ff5a56"><span class="section-number-2">1</span> Goal</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This repository contains an example of how to manage some source files
+of teaching material, using <a href="http://orgmode.org/">org-mode</a> in Emacs.
+</p>
+
+<p>
+It uses <a href="https://github.com/yjwen/org-reveal/">org-reveal</a> in addition to the standard LaTeX exporter.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgca30efc" class="outline-2">
+<h2 id="orgca30efc"><span class="section-number-2">2</span> Home of the project</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+The project sources are available in <a href="https://gitlab.com/olberger/org-teaching">https://gitlab.com/olberger/org-teaching</a>
+</p>
+
+<p>
+A more or less up to date snapshot may be found at <a href="http://www-public.tem-tsp.eu/~berger_o/org-teaching/slides.html"><a href="http://www-public.tem-tsp.eu/~berger_o/org-teaching/">http://www-public.tem-tsp.eu/~berger_o/org-teaching/</a></a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org79d3a6b" class="outline-2">
+<h2 id="org79d3a6b"><span class="section-number-2">3</span> Testing it</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Checkout the git submodules contents to retrieve org-reveal and
+reveal.js.
+</p>
+
+<p>
+Then, RTFM ;-)
+</p>
+
+<p>
+See the generated files (<i>note that these links may be best viewed in Emacs from a local clone of the Git repo, as Gitlab may not provide the best experience</i>):
+</p>
+<ul class="org-ul">
+<li>slides in: <a href="./slides.html">./slides.html</a></li>
+<li>the handbook for the students: <a href="./handbook.pdf">./handbook.pdf</a></li>
+<li>the handbook for the teachers: <a href="./teacher-handbook.pdf">./teacher-handbook.pdf</a></li>
+</ul>
+
+<p>
+All these are generated from the corresponding <code>.org</code> files, which all
+include the common lesson content from <a href="./lesson.html">./lesson.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org297d154" class="outline-2">
+<h2 id="org297d154"><span class="section-number-2">4</span> Features</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+The following features are provided:
+</p>
+</div>
+
+<div id="outline-container-orgd603d0c" class="outline-3">
+<h3 id="orgd603d0c"><span class="section-number-3">4.1</span> Single source</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+A single org-mode source file contains the core of the lesson
+including listings and/or executable bits managed with org-babel or
+other classical org-mode features.
+</p>
+
+<p>
+This single file is meant for editing, and the rest of the files
+provide the framework for generating the different outputs described below.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4dffe3f" class="outline-3">
+<h3 id="org4dffe3f"><span class="section-number-3">4.2</span> Teaching to the audience with a slides deck</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+We deliver the course by presenting a slides deck for each lesson,
+using <a href="http://lab.hakim.se/reveal-js/">reveal.js</a>. Reveal.js displays slides as Web pages (using the Web
+browser in fullscreen mode) with a 2-dimensional structure of slides
+allowing the presentation of a main track of slides (horizontal ones),
+and additional slides (vertical ones), if need is, to dive into more
+details on a specific section of the lesson (typically for Q/A).
+Reveal.js also offers support for a "presentation mode" allowing the
+use of multiple displays so that the presenter can read additional
+notes.
+I've chose to "tune down" reveal.js to avoid fancy 3D animations, and
+stick to a more sober display, but YMMV.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc6c393b" class="outline-3">
+<h3 id="orgc6c393b"><span class="section-number-3">4.3</span> Providing a reference handbook to students</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+The content of the presentation is also rendered as a handbook which
+is provided to the students. It contains the same things as the slides
+deck, where presenter notes are embedded in the document.
+</p>
+
+<p>
+This handbook is rendered with LaTeX as an "article" A4 PDF.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org289b4d4" class="outline-3">
+<h3 id="org289b4d4"><span class="section-number-3">4.4</span> Providing additional material to teachers</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+An additional document is produced which contains the same stuff as
+the students handbook, but also embeds additional sections meant to be
+read only by the teachers. 
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org72ada61" class="outline-2">
+<h2 id="org72ada61"><span class="section-number-2">5</span> History</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+I've been teaching a course on Web architecture and applications
+(CSC4101) at Telecom SudParis and wanted to manage the sources for the
+different teaching materials using org-mode.
+</p>
+
+<p>
+Org-mode allows me to save the sources of documents in a revision
+control system (typically Git), as it's based on plain text.
+</p>
+
+<p>
+It also allow the generation of different documents for different uses
+or audiances from a single source.
+</p>
+
+<p>
+As I was teaching Web stuff, I also wanted to drink my own champagne
+using as much Web as I could (i.e. HTML).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgaca817d" class="outline-2">
+<h2 id="orgaca817d"><span class="section-number-2">6</span> Copyright &amp; license</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+This content is provided under the clauses of the MIT License, unless
+otherwise specified.
+</p>
+
+<p>
+Copyright (c) 2016 Olivier Berger and Institut Mines Telecom
+</p>
+
+<p>
+[See also the LICENSE file].
+</p>
+
+<p>
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+</p>
+
+<p>
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+</p>
+
+<p>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Olivier Berger</p>
+<p class="date">Created: 2016-12-19 lun. 17:58</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
