@@ -1,0 +1,89 @@
+#+TITLE: Supporting management of teaching material with org-mode
+
+* Goal
+
+This repository contains an example of how to manage some source files
+of teaching material, using [[http://orgmode.org/][org-mode]] in Emacs.
+
+* Features
+
+The following features are provided:
+
+** Single source
+
+A single org-mode source file contains the core of the lesson
+including listings and/or executable bits managed with org-babel or
+other classical org-mode features.
+
+This single file is meant for editing, and the rest of the files
+provide the framework for generating the different outputs described below.
+
+** Teaching to the audience with a slides deck
+
+We deliver the course by presenting a slides deck for each lesson,
+using [[http://lab.hakim.se/reveal-js/][reveal.js]]. Reveal.js displays slides as Web pages (using the Web
+browser in fullscreen mode) with a 2-dimensional structure of slides
+allowing the presentation of a main track of slides (horizontal ones),
+and additional slides (vertical ones), if need is, to dive into more
+details on a specific section of the lesson (typically for Q/A).
+Reveal.js also offers support for a "presentation mode" allowing the
+use of multiple displays so that the presenter can read additional
+notes.
+I've chose to "tune down" reveal.js to avoid fancy 3D animations, and
+stick to a more sober display, but YMMV.
+
+** Providing a reference handbook to students
+
+The content of the presentation is also rendered as a handbook which
+is provided to the students. It contains the same things as the slides
+deck, where presenter notes are embedded in the document.
+
+This handbook is rendered with LaTeX as an "article" A4 PDF.
+
+** Providing additional material to teachers
+
+An additional document is produced which contains the same stuff as
+the students handbook, but also embeds additional sections meant to be
+read only by the teachers. 
+
+* History
+
+I've been teaching a course on Web architecture and applications
+(CSC4101) at Telecom SudParis and wanted to manage the sources for the
+different teaching materials using org-mode.
+
+Org-mode allows me to save the sources of documents in a revision
+control system (typically Git), as it's based on plain text.
+
+It also allow the generation of different documents for different uses
+or audiances from a single source.
+
+As I was teaching Web stuff, I also wanted to drink my own champagne
+using as much Web as I could (i.e. HTML).
+
+* Copyright & license
+
+This content is provided under the clauses of the MIT License, unless
+otherwise specified.
+
+Copyright (c) 2016 Olivier Berger and Institut Mines Telecom
+
+[See also the LICENSE file].
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
