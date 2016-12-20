@@ -45,6 +45,39 @@
 
 
 
+* Introduction
+
+This is a demo document about the
+[[http://www-public.tem-tsp.eu/~berger_o/org-teaching/][codename =org-teaching=]] framework.
+
+#+ATTR_REVEAL: :frag (appear)
+- /You're viewing a [[http://lab.hakim.se/reveal-js/][reveal.js]] Web slides deck. You may press 's' to view presenter notes./
+
+#+BEGIN_NOTES
+You'll find the source code at Gitlab : https://gitlab.com/olberger/org-teaching
+
+I mention /codename/ =org-teaching= because it really hasn't yet a proper name, and may never have. This is far from a full fledged product.
+#+END_NOTES
+
+** Org-mode powa
+
+This framework heavily relies on [[http://orgmode.org/][org-mode]] (version 9 at the time of writing) and the [[https://github.com/yjwen/org-reveal/][org-reveal]] exporter for =reveal.js=.
+
+* About this slides deck                                         :slidesonly:
+
+These slides are one variant of the same teaching material, also available [[./handbook.pdf][as a handbook]].
+
+You may prefer to view them in your Web browser in full-screen (=F11= for instance).
+
+#+BEGIN_NOTES
+This section is displayed only in the slides variant, but not in the /handbook/ variant, which contains, in turn, a section that is different.
+#+END_NOTES
+
+* About this handbook                                          :handbookonly:
+
+This PDF handbook is one variant of the same teaching material, also available [[./slides.html][as a slides deck]].
+
+This section may contain content that is best viewed in (LaTeX) PDF export of org-mode.
 
 * Features
 :PROPERTIES:
@@ -52,46 +85,115 @@
 :reveal_background: #dbdbed
 :END:
 
+** Writing teaching material in org-mode
 
+The goal is to be able to edit a single file (namely =lesson.org=) which will contain, in a single source, all the content of a lesson, written with org-mode syntax.
 
-** Presenter notes
+From this single source, several documents are generated :
+- *slides* (as a dynamic Web document) for overhead presentation
+- a *handbook* that contains the same information (or more) and can be handed to the students for work outside the classroom (a PDF file)
+- another *handbook* for the teaching team, to provide additional instructions (also a PDF file)
 
-TBD
+#+BEGIN_NOTES
+The handbook LaTeX formatting has a summarized content table and nice looking (in principle) title page. Customize at will
+
+The teachers handbook contains a less nice-looking format, includes a detailed table of contents, and has a watermark. Again, customize at will and submit improvements.
+#+END_NOTES
+
+** org-reveal slides
+
+Pretty much all features of =reveal.js= supported by the org-mode reveal.js exporter [[https://github.com/yjwen/org-reveal/][org-reveal]], should be supported too.
+
+An example =org-reveal= document is [[./elisp/org-reveal/Readme.html][available here]] for inspiration (it's the export of org-reveal's =README.org=, actually).
+
+#+BEGIN_NOTES
+If you're already familiar with reveal.js, you may have noticed that the current settings adopted for our slides generation are quite frugal: no fancy 3D effects and likes.
+
+It's a matter of taste : I didn't want to show off, and prefer to give students a clear content on the projector behind me.
+#+END_NOTES
+
+** Structure of the sections / slides
+
+I'm using the 3 levels of outlining / sectioning so that the content can be sectioned in the same way in =lesson.org= and appear appropriately in the slides and handbook, with these principles:
+
+1. First level outlines define main sections of the document.
+2. Second level outlines are the main "horizontal" slides that will be played with page up/down
+3. Third level outlines may be used for additional content ("vertical" slides) that may be skipped for the presentation, but is still accessible with cursor keys.
+
+#+BEGIN_NOTES
+The first level outlines can be rendered as a "separating" slides which may get a different =reveal_background= and ~class="center"~ slide layout, but that isn't automatic. See [[*Section separators][Section separators]].
+#+END_NOTES
+
+** Presenter notes / content for the handbook
+
+[[https://github.com/yjwen/org-reveal/#speaker-notes][org-reveal's /Speaker notes/]] may be added to the slides (and will only appear on dual-screen presentation after having pressed 's': standard reveal.js feature).
+
+They will be masked for the audience, but will, by default appear in the handbook given to the students.
+
+#+BEGIN_SRC org
+  ,#+BEGIN_NOTES
+  This is a note
+  ,#+END_NOTES
+#+END_SRC
 
 ** Masking content for some audiences
 
-- Slides only material
-- Teachers only material
+I've implemented some easy ways to preserve some of the content of the same =lesson.org= source for certain outputs (using org exporter's standard =EXCLUDE_TAGS=):
+
+- /Slides only/ material :: that won't be embedded in the handbook : surprise stuff for live audience, or HTML-only hacks;
+- /Teachers only/ material :: secret knowledge that only adults need to know (for instance), which won't be exported;
+- /Handbook only/ material :: stuff that only fits in the handbook, and/or only exports as LaTeX and not HTML.
+
+#+BEGIN_NOTES
+The choice to reveal or not some details to the students is quite arbitrary and depends on your pedagogical approach. I'm not advisable in this matter. YMMV.
+#+END_NOTES
 
 ** Stuff only meant for presentation
 
-*** Slides only material
+Tagging a section/slide with =:slidesonly:= means it isn't exported in the handbooks.
+
+Below is an example (or not)...
+
+*** Regular slide (no tag on heading line)
 
 There should be no "Only in the slides" after this section, in the
 handbooks, as it has been tagged with =slidesonly=.
 
 *** Only in the slides                                         :slidesonly:
 
-On the contrary, in the slides view, this appears.
+On the contrary, in the slides view, this appears, as there's a =:slidesonly:= tag on the current head line.
 
 ** Stuff only meant for teachers
 
-*** Teachers only sections
+Tagging a section/slide with =:teachersonly:= means it isn't exported in the students handbook (nor in the slides).
+
+Below is an example...
+
+*** Regular slide (no tag on heading line)
 
 There should be no "Only for teachers" after this section, in the slides or in the
 students handbook, as it has been tagged with =teachersonly=.
 
 *** Only for teachers                                        :teachersonly:
 
-On the contrary this appears in the teachers handbook.
+On the contrary this appears in the teachers handbook, as there's a =:teachersonly:= tag on the current head line.
 
-*** Notes only for the teachers
+** Notes only for the teachers
 
 This slide/section contains notes, but only part of it is displayed in
-the presentation notes included in the handbook, and are kept only for
-the teachers handbook.
+the presentation notes included in the handbook. Special notes and are
+kept only for the teachers handbook.
 
-We use a drawer for that.
+We use an org-mode drawer for that (additional benefit is that the content is folded by default in emacs, as it may be verbose and/or "sensitive") :
+#+BEGIN_SRC org
+  ,#+BEGIN_NOTES
+  This part of the note can be viewed by the students in the handbook.
+
+  :TEACHERSONLY:
+  Not this one
+  :END:
+  ,#+END_NOTES
+#+END_SRC
 
 #+BEGIN_NOTES
 
@@ -100,13 +202,48 @@ but not the rest.
 
 :TEACHERSONLY:
 - *TEACHERSONLY* :: but this part is only for the teachers.
+
+You naughty ;-)
 :END:
 
 #+END_NOTES
 
 ** Stuff only in the handbooks
 
-TBD re =handbookonly= (see *Annex* section for instance)
+Just like sections are for slides only, others can be for the handbook
+only, using the =handbookonly= tag. This may be useful for *Annex*
+sections for instance, or for stuff that the HTML exporter won't like, with inline LaTeX.
+
+** Code colorization
+Code is colorized / highlighted in the slides :-)
+
+#+BEGIN_NOTES
+Nice when like me, you're teaching Computer Science stuff
+#+END_NOTES
+** Misc org-mode
+
+*** Babel powa
+As you're using org-mode, its =babel= components are available, to embed source code in the same =lesson.org= source, and manage executable code and teaching material at once.
+
+Look for /literate programing/ instructions in the [[http://orgmode.org/manual/Working-with-source-code.html][org-mode docs]] to know more.
+
+** Missing features ?
+
+Please try and talk to me to suggest new stuff and/or provide patches ;)
+
+#+BEGIN_NOTES
+See the teacher's handbook for some ideas
+
+:TEACHERSONLY:
+- a way to manage graphics alongside the slides/handbook source... not yet found a perfect solution, unless for plantuml with babel or likes (tikz...).
+
+- some breadcrumb or recap feature / template to help give a sense of
+  the progression in the slides : only the progress bar isn't enough
+  and doesn't help giving the audience some kind of scaffolding to
+  hang on, for long presentations.
+
+:END:
+#+END_NOTES
 
 * HowTo
 :PROPERTIES:
@@ -114,48 +251,113 @@ TBD re =handbookonly= (see *Annex* section for instance)
 :reveal_background: #dbdbed
 :END:
 
+** Use Emacs
+
+There's no production chain, makefiles or other authoring tools. 
+
+No new Elisp either.
+
+#+BEGIN_NOTES
+You're welcome to suggest improvements. But I'm not an Elisp hacker,
+so I may not be able to maintain them. At the moment, the intent is to
+rely on the original org-reveal only, as much as possible.
+#+END_NOTES
+
+** Modify only the lesson.org
+
+*Only one file should be edited for writing the lesson's material : =lesson.org=*
+
+Only exception is modification of some configurations for title pages
+and other bits that shouldn't change much in time (see next section).
+
 ** Configuration
 
+Each lesson.org needs some configuration :
 - Configure =org-reveal-title-slide= in =slides.org=.
 
 - Configure header (=\lhead{...}= and =\rhead{...}=) and footer
-(=\lfoot{...}= and =\rfoot{...}=) elements in the headers like =#+LaTeX_HEADER: \rhead{...}=
-in =handbook.org= and =teacher-handbook.org=.
+  (=\lfoot{...}= and =\rfoot{...}=) elements in the headers like
+  =#+LaTeX_HEADER: \rhead{...}= in =handbook.org= and
+  =teacher-handbook.org=.
 
-** Exporting slides to HTML with org-reveal
+#+BEGIN_NOTES
+These may be better handled, but some limitations of the exporters or
+my lack of knowledge/time have prevented a better result so
+far. Improvements much welcome.
+#+END_NOTES
+
+** Generating final documents
+
+We're using the standard exporters so each output format will be exported from its corresponding umbrella =.org= source :
+
+#+REVEAL: split
+
+- slides :: open =slides.org=, then =C-c C-e R ...= for =org-reveal= export (to =slides.html=), provided that you have loaded org-reveal in Emacs
+- handbook :: open =handbook.org=, then =C-c C-e l ...= for LaTeX export (to =handbook.pdf=)
+- teacher handbook :: open =teacher-handbook.org=, then =C-c C-e l ...= for LaTeX export (to =teacher-handbook.pdf=)
+
+*** Exporting slides to HTML with org-reveal
+
+Depending on how you installed org-reveal ([[*Git submodules][Git submodules]] or otherwise), =org-reveal= may already be available.
+
+If not yet, load it with =M-x load-file= from the location of its Git submodule (=elisp/org-reveal/ox-reveal.el= by default).
+
+#+BEGIN_NOTES
+I'm not sure which solution is better : org-reveal from Git (hence the Git submodule) or from an Emacs package. Please report.
+#+END_NOTES
 
 *** Printing slides
 
-** Exporting PDF handbooks
+TBD
 
-*** For students
-
-*** For teacher colleagues
-
-** Presenting in the classroom
+** Known Issues
 
 *** Firefox issues ?
 
-*** Presenter mode in dual screen
+We have experienced issues with presentations made on some versions of Firefox, which are known by reveal.js maintainer... maybe best viewed in chrome.
 
-* How it works
+You may prefer to have a PDF variant of the slides (see [[*Printing slides][Printing slides]]) in case.
+
+
+
+* How it works / Installation
 :PROPERTIES:
 :REVEAL_EXTRA_ATTR: class="center"
 :reveal_background: #dbdbed
 :END:
 
+** Use the source Luke
+
+See the contents of the files... but be wary that it's sometimes messy and incrementally obtained.
+
+Emacs is your buddy.
+
+Git clone from =https://gitlab.com/olberger/org-teaching.git= (see the [[https://gitlab.com/olberger/org-teaching][Gitlab project]])
+
 ** Git submodules
 
+The repository contains Git submodules for :
 - reveal.js
 - org-reveal
+
+So :
+#+BEGIN_SRC sh
+git submodule init
+git submodule update
+#+END_SRC
+You may prefer to install them another way (ELPA repo, CDN, etc.)
+
+#+BEGIN_NOTES
+Refer to [[https://github.com/yjwen/org-reveal/#requirements-and-installation][org-reveal's documentation]] for more details.
+#+END_NOTES
 
 ** Slides appearance
 
 *** Reveal.js settings
 
-See the org-reveal settings for detailed explanation.
+See the org-reveal settings set in the sources and the docs for a detailed explanation.
 
-I'm using the following for a "sober" look close to what
+I'm using the following for a "frugal" look close to what
 powerpoint or beamer (?) could look like :
 
 #+BEGIN_SRC org
@@ -168,880 +370,53 @@ powerpoint or beamer (?) could look like :
   ,#+REVEAL_ROOT: ./reveal.js
 
   ,#+OPTIONS: reveal_center:nil 
-
-
 #+END_SRC
+
 *** Section separators
+
+The highest level sections include the following properties below the heading line, to customize the look of the slide. 
 
 #+BEGIN_SRC org
 :PROPERTIES:
 :REVEAL_EXTRA_ATTR: class="center"
 :reveal_background: #dbdbed
 :END:
-
 #+END_SRC
 
+This is intended to provide some visual sense of the transitions between sections. Please adapt and report.
 
-# * Préface
-# :PROPERTIES:
-# :REVEAL_EXTRA_ATTR: class="center"
-# :reveal_background: #dbdbed
-# :END:
-
-# ** Rappel séances précédentes
-# - Modèle (Doctrine)
-# - Vues (templates Twig, HTML)
-# - Contrôleurs, routeurs, formulaires Symfony, etc.
-
-# ** Objectifs de cette séance
-# - Sessions
-# - Permissions
-# - Sécurité
-
-
-# * Sessions
-# :PROPERTIES:
-# :REVEAL_EXTRA_ATTR: class="center"
-# :reveal_background: #dbdbed
-# :END:
-
-# ** Session d'application Web
-# - Les requêtes HTTP sont déclenchées lors des demandes de transition
-#   d'un état à l'autre de l'application
-# - L'exécution (PHP) résultante s'effectue sur un serveur HTTP sans
-#   mémoire des interactions précédentes entre le client et le serveur (/stateless/)
-# - Offrir à l'utilisateur une impression de continuité d'une seule
-#   session d'utilisation de l'application où les requêtes successives
-#   se suivent et ont des relations de causalité
-# - Différentes solutions techniques, dont les /cookies/
-
-# #+BEGIN_NOTES
-# Une autre solution consiste par exemple à matérialiser l'historique
-# des dialogues requête-réponse précédents entre le même client et le
-# mêm serveur dans l'URL (arguments).
-# #+END_NOTES
-
-# ** Cookies
-
-# - Reconnaître le client HTTP lors de chaque requête
-#   - Permet de raccrocher :
-#     - une nouvelle requête effectuée par un client HTTP (qui transmet dans les en-têtes de requête HTTP
-#       *la valeur d'un /cookie/ existant*)
-#     - avec la *mémoire de l'état précédent* sauvegardé côté serveur à la *fin de la réponse HTTP précédente* pour le même client
-# - Taille limitée
-# - Données en clair dans le stockage de cookies du navigateur
-# - Durée de vie potentiellement grande
-
-# *** Identification du clients par cookie
-
-# # #+ATTR_HTML: :title "multiples clients et pages"
-# # [[file:./media/id-session.png]]
-
-# - Identifie le client
-# - Commun à un ensemble d'URLs
-
-# #+BEGIN_NOTES
-# Identifiant fourni systématiquement au serveur, chaque fois que le
-# même client HTTP se connecte
-
-# Attention, pas nécessairement le même utilisateur final : plusieurs
-# navigateurs ouverts en même temps sur le même site (sur plusieurs
-# machines, ou avec plusieurs profils différents) => plusieurs cookies.
-
-# Est-ce suffisant pour déterminer tout le contexte d'exécution de
-# l'application ?
-# #+END_NOTES
-
-# *** Cookies
-
-# - Juste un "jeton" unique sur un certain périmètre (serveur, chemin
-#   d'URL, application, ...)
-# - Format choisi par le serveur
-# - Peut contenir complètement un état de l'application : des données, mais *taille limitée*
-# - Le serveur peut trouver en base de données des données plus
-#   complètes sur présentation du jeton
-
-# #+BEGIN_NOTES
-# Attention aux problématiques de sécurité : pas de mot de passe dans un
-# Cookie, par exemple.
-
-# Les cookies sont consultables par un attaquant ayant accès aux données
-# stockées dans les données d'un profil du navigateur.
-# #+END_NOTES
-
-# *** Stockage d'une session
-
-# - Session stockée sur le serveur (pas contrainte taille)
-# - Objets de l'application stockés dans la session
-# - Session retrouvée via un identifiant
-#   - Identifiant fourni par un /cookie/
-# - Durée de vie et unicité des sessions au choix du serveur
-# # +REVEAL: split
-
-# # #+ATTR_HTML: :title "stockage session côté serveur"
-# # [[file:./media/utilisation-session.png]]
-
-# #+BEGIN_NOTES
-# La session est potentiellement grosse, peut-être stockée en base de
-# données, ...
-
-# Le "même" document accédé par deux clients présentant des ID
-# différents, ne sera peut-être pas le même document, s'il est généré
-# dynamiquement en fonction des informations présentes dans la session.
-
-# La plate-forme du langage de programmation rend l'utilisation de la
-# session très facile pour le programmeur.
-
-# En pratique, la session n'est pas obligatoirement stockées dans un
-# SGBD, mais plus souvent sur un système de fichiers ou dans une mémoire
-# partagées (pour la gestion de cohérence si le serveur d'application
-# est dans un environnement d'exécution distribuée).
-# #+END_NOTES
-  
-# *** Détails cookie
-
-# - Le serveur crée les cookies et les intégre dans la réponse HTTP
-# - Il utilise le champ "header" particulier "=Set-Cookie=" (sur une
-#   seule ligne)
-#   #+BEGIN_EXAMPLE
-#     Set-Cookie: <nom>=<valeur>;expires=<Date>;domain=<NomDeDomaine>; path=<Path>; secure
-#   #+END_EXAMPLE
-
-#   Exemple de réponse HTTP :
-#   #+BEGIN_EXAMPLE
-#     HTTP/1.1 200 OK
-#     Server: Netscape-Entreprise/2.01
-#     Content-Type: text/html
-#     Content-Length: 100
-#     Set-Cookie: clientID=6969;domain=unsite.com; path=/jeux
-#   #+END_EXAMPLE
-# - Ce cookie sera renvoyé avec chaque requête ayant comme URL de début =http://www.unsite.com/jeux/...=
-
-# #+BEGIN_NOTES
-# Il peut y avoir plusieurs champs "Set-Cookie" dans le message HTTP, afin de
-# représenter plusieurs cookies différents.
-# #+END_NOTES
-
-
-# ** Session PHP
-
-# - Stocker des données au niveau du serveur HTTP entre les requêtes HTTP
-# - Implémente une "session" de navigation en cours dans l'application.
-
-# #+BEGIN_NOTES
-# Les données placées dans la session par un programme PHP lors de
-# l'exécution d'une requête HTTP seront
-# accesibles dans des exécutions futures pour les requêtes ultérieures.
-
-# Équivalent en complexité pour le programmeur PHP à sauvegarder ou
-# recharger des données dans une variable globale, qui n'est pas
-# partagée "dans l'espace" entre différentes fonctions du même programme
-# PHP, mais plutôt "dans le temps" entre différentes exécutions
-# successives des programmes PHP.
-
-# Le stockage clé-valeur est plus facile à utiliser qu'une gestion de
-# base de données relationnelle, par exemple.
-
-# Cf. http://www.w3schools.com/php/php_sessions.asp pour en découvrir plus
-# #+END_NOTES
-
-# *** Détails
-
-# - Accès clé - valeur
-# - Stockage de données volumineuses
-# - Utilise un cookie =PHPSESSID= (ou bien dans l'URL)
-# - Mémorisé localement au niveau du serveur d'exécution PHP :
-#   - stocké dans système de fichiers
-#   - ou partagé (mémoire distribuée, ...) entre différents serveurs
-#     (objectif : session cohérente même si partage de charge entre plusieurs serveurs)
-# - Durée de vie limitée (/garbage collection/) pour protéger le serveur
-#   si l'application est très utilisée (/Denial of Service/ ...)
-
-
-# ** Session Symfony
-
-# - Basé sur sessions PHP (par défaut)
-# - API Objet
-
-#   #+BEGIN_SRC php
-#     $session = $this->get('session');
-
-#     $objet = $session->get('idobjet');
-
-#     $session->set('idobjet', $objet);
-    
-#   #+END_SRC
-# http://symfony.com/doc/current/components/http_foundation/sessions.html
-
-# *** TODO Session courante dans les formulaires                   :noexport:
-
-# app.session.get...
-# *** /Flash messages/ via session
-
-# http://symfony.com/doc/current/components/http_foundation/sessions.html#flash-messages
-
-# #+BEGIN_SRC php
-#   use Symfony\Component\HttpFoundation\Request;
-
-#   public function modificationAction(Request $request)
-#   {
-#       // ...
-
-#       if ($form->isValid()) {
-#           // sauvegarder les données ...
-
-#           $this->addFlash(
-#               'notice',
-#               'Modifications enregistrées !'
-#           );
-#           // $this->addFlash est équivalent à $request->getSession()->getFlashBag()->add
-
-#           return $this->redirectToRoute(...);
-#       }
-
-#       return $this->render(...);
-#   }
-# #+END_SRC
-
-
-# * Sécurité
-# :PROPERTIES:
-# :REVEAL_EXTRA_ATTR: class="center"
-# :reveal_background: #dbdbed
-# :END:
-
-# ** Protéger les données / fonctions
-
-# - La sécurité des applications revêt différents aspects, en général
-#   - Contrôle d'accès
-#   - Confidentialité
-#   - ...
-# # - La sécurité des applications Web ajoute certains éléments spécifiques
-
-# # ** TODO Caractérisation des risques / enjeux
-# # - (D)DOS
-# # - ...
-
-# ** Contrôle des accès
-# - Protéger l'accès aux fonctionnalités de l'application
-# - Qui est autorisé à faire quoi
-
-# *** Sécurité par obscurcissement ?
-# - Ne pas protéger spécifiquement, 
-# - et ne pas documenter / expliquer / rendre visible ?
-
-# Ce n'est pas parce que le code de l'application est caché sur le serveur que les méchants ne trouveront pas des failles !
-
-# *#Fail*
-
-# *** Contrôle effectif
-# - Au niveau du serveur (ne pas permettre aux clients de découvrir les
-#   failles en regardant le source)
-# - Profiter des bienfaits du /framework/ pour le même prix
-# - Mesures complémentaires (audit, etc.)
-
-# ** Modèle général
-
-# - Identification :: l'utilisateur fournit à un service un moyen de le
-#      reconnaître : *identité*
-# - Authentification :: le service *vérifie* cette identité
-# - Autorisation :: le service donne à l'utilisateur certaines *permissions*
-
-# *** Identification
-
-# - L'identification doit être confirmée par l'authentification
-# - Identifiants :
-#   - email
-#   - identifiant d'utilisateur (/login/)
-#   - certificat client X509 (TLS)
-#   - ...
-
-
-# *** Authentification
-
-# - Valide le fait que celui qui essaye d'utiliser le service est bien
-#   le propriétaire légitime de l'identifiant présenté
-# - Protocole de vérification :
-#   - mot-de-passe
-#   - signature valide d'une donnée quelconque (/challenge/) avec la clé privée
-#     associée au certificat client
-#   - service externe
-#   - ...
-
-# *** Autorisations
-
-# - Permissions applicatives associées à l'identifiant
-# - Pour une certaine période
-# - Génération d'un jeton temporaire (session authentifiée)
-#   - /Cookie/
-
-# ** Dans protocole HTTP
-# - Identification / authentification de "bas niveau" dans le protocole
-#   HTTP
-# - Rappel : HTTP est sans état
-#   - Le client HTTP doit se réauthentifier à chaque requête
-# - Permet de transporter l'authentification dans les en-têtes
-# - Alternative : *authentification applicative* + session applicative
-
-# ** /Single Sign-On/ (SSO)                                         :noexport:
-# - Mécanisme permettant de partager une authentification entre
-#   plusieurs applications
-# - Identification commune
-# - Authentification une seule fois pour une certaine période
-# - Chaque application définit ses autorisations
-# - Exemples : CAS, Shibboleth
-
-# ** TODO HTTPS / TLS                                               :noexport:
-
-# - Chiffrement des requêtes / réponses HTTP dans un tunnel TLS
-# - Vérification de l'identité des serveurs (ou clients)
-# - Pas confidentialité ultime
-# - HTTPS par défaut :
-#   - protéger les éléments de sécurité (mots-de-passe, cookies, etc.)
-#   - protéger les clients de la surveillance
-
-# Cf. [[http://www.ssi.gouv.fr/actualite/le-nouveau-guide-de-recommandations-de-securite-relatives-a-tls/][Recommandations de sécurité relatives à TLS]]
-
-# ** Sécurité des applis Web
-
-# Approfondir :
-# -
-#   [[https://wiki.mozilla.org/Security/Guidelines/Web_Security][Guidelines Web Security Mozilla]]
-# - Les 10 risques de sécurité Applicatifs Web les plus critiques : [[https://www.owasp.org/index.php/Top10#tab=OWASP_Top_10_for_2013][OWASP Top 10 2013]] (ou [[http://owasptop10.googlecode.com/files/OWASP%20Top%2010%20-%202013%20-%20French.pdf][en français]])
-# - [[http://www.ssi.gouv.fr/entreprise/guide/recommandations-pour-la-securisation-des-sites-web/][Recommandations pour la sécurisation des sites web ANSSI]]
-
-
-# * Mécanismes d'authentification
-# :PROPERTIES:
-# :REVEAL_EXTRA_ATTR: class="center"
-# :reveal_background: #dbdbed
-# :END:
-
-# ** Authentification au niveau HTTP                                :noexport:
-# :PROPERTIES:
-# :REVEAL_EXTRA_ATTR: class="center"
-# :END:
-
-# *** /HTTP/1.1 Authentification/ (RFC 7235)
-
-# Spécification :
-# [[https://tools.ietf.org/html/rfc7235][Hypertext Transfer Protocol (HTTP/1.1): Authentication - RFC 7235]]
-
-# - Mécanisme *défi/réponse*
-
-# *** Accès à ressource protégée
-
-# 1. Requête =GET= accès à ressource protégée
-# 2. Réponse intermédiaire du serveur : défi
-#    - code de statut =401 Unauthorized=
-#    - en-tête de réponse =WWW-Authenticate=
-# 3. Requête de réponse du client au défi du serveur
-#    - en-tête =Authorization=
-# 4. Réponse finale du serveur :
-#    - contenu ressource demandée (code de statut =200 OK=)
-#    /ou/ :
-#    - code de statut =403 Forbidden= : autorisation refusée
-
-# #+BEGIN_NOTES
-# A priori, le client HTTP ne sait pas que la ressource est protégée. Il le découvre en obtenant un code de réponse =401=.
-
-# Mais s'il le sait, il peut déjà s'y préparer et sauter directement à l'étape 3 en fournissant déjà l'en-tête =Authorization= avec sa requête.
-# #+END_NOTES
-
-# *** Défi
-# - En-tête de réponse =WWW-Authenticate=
-#   - Type d'authentification demandé par le serveur
-#   - Périmètre de l'authentification : "royaume" (/realm/)
-#   - Paramètres additionnels
-# - Exemple :
-
-#   #+BEGIN_EXAMPLE
-#   WWW-Authenticate: Basic realm="INT"
-#   #+END_EXAMPLE
-
-# *** Réponse au défi
-# - En-tête de requête =Authorization=
-#   - données des /lettres de créance/
-
-# ** Exemple type authentification =Basic=                          :noexport:
-
-# Exemple de requête =https://qg.example.org/tresor/= :
-
-# #+BEGIN_EXAMPLE
-# > GET /tresor/ HTTP/1.1
-# > Host: qg.example.org
-# > 
-# < HTTP/1.1 401 Unauthorized
-# < WWW-Authenticate: Basic realm="Acces au tresor"
-# ...
-# #+END_EXAMPLE
-
-# Exemple de réponse au défi avec login =perefouras= mot-de-passe =maitredescles= :
-# #+BEGIN_EXAMPLE
-# ...
-# > GET /tresor/ HTTP/1.1
-# > Authorization: Basic cGVyZWZvdXJhczptYWl0cmVkZXNjbGVz
-# > Host: qg.example.org
-# ...
-# < HTTP/1.1 200 OK
-# #+END_EXAMPLE
-
-# *** Génération de l'en-tête =Authorization= en authentification =Basic=
-
-# - Login =perefouras= + mot-de-passe =maitredescles=
-# - Concaténation des deux, séparés par un =:=
-# - Encodage via variante de /Base64/
-#   #+BEGIN_SRC sh
-#   echo -n "perefouras:maitredescles" | base64
-#   #+END_SRC
-
-# Résultat :
-# #+BEGIN_EXAMPLE
-# Authorization: Basic cGVyZWZvdXJhczptYWl0cmVkZXNjbGVz
-# #+END_EXAMPLE
-
-# *** Décodage de la réponse au défi
-
-# - En-tête =Authorization: Basic cGVyZWZvdXJhczptYWl0cmVkZXNjbGVz=
-# - Décodage Base64 de =cGVyZWZvdXJhczptYWl0cmVkZXNjbGVz=
-#   #+BEGIN_SRC sh
-#   echo "cGVyZWZvdXJhczptYWl0cmVkZXNjbGVz" | base64 --decode
-#   #+END_SRC
-# - Séparation de la chaîne obtenue (=perefouras:maitredescle=)
-
-# *PAS SÛR SUR HTTP EN CLAIR : UTILISER TLS*
-
-# *** TODO Authentification Basic dans le navigateur
-
-# - Boîte dialogue
-# - Mémorisation pour la session
-# - Pas possible de se déconnecter
-
-# *** Autres types d'authentification HTTP
-
-# - OAuth (cf. ci-après)
-# - Extensible
-# - ...
-
-# ** Authentification applicative
-# :PROPERTIES:
-# :REVEAL_EXTRA_ATTR: class="center"
-# :END:
-
-# *** Principe
-
-# - L'authentification est une des fonctionnnalités de l'application, via la session
-# - *Formulaire* d'authentification
-#   - Login
-#   - Mot-de-passe
-# - Création d'un compte
-
-# *** Formulaire d'authentification
-# - Formulaire "standard"
-# - Champs :
-#   - Login ou email
-#   - Mot-de-passe (saisie cachée)
-#   - Réinitialisation du mot-de-passe
-
-# *** Vérification de l'authentification
-
-# - Comparer avec profil d'utilisateur connu (en base de données)
-# - Générer une *session*
-# - Attention : attaques force brute
-#   - Invalider un compte/profil, ou faire une gestion de surcharge qui désactive les tentatives (/throttling/, /blacklist/ réseau, etc.)
-
-# *** Dans Symfony
-# - Composant =Security=
-# - Flexible : gestion souple et extensible de l'authentification
-# - Composant /Firewall/ qui vérifie le routage des requêtes entrantes, et demande l'authentification de l'utilisateur si nécessaire
-# - Utilisera le /bundle/ =FOSUserBundle= pour nous simplifier la vie en gérant les utilisateurs via la base de données
-
-# *** Sécurité                                                     :noexport:
-# - Gestion des mots-de-passe (qualité aléa, longueur, stockage approprié, etc.)
-# - Récupération de compte si oubli mot-de-passe
-#   - Canal sécurisé ou envoi jeton de réinitialisation sur email (implique gestion emails)
-# - Confirmations d'authentification pour sections critiques de l'application
-# - Garder des traces (audit, obligations légales)
-
-# *** Captcha                                                      :noexport:
-
-# /Completely Automated Public Turing test to tell Computers and Humans Apart/
-
-# - Vérifier qu'un humain est aux commandes
-# - Problèmes accessibilité
-# - Travail dissimulé
-# - Surveillance
-# - Pas infaillible
-
-# *** Authentification à double facteur                            :noexport:
-# - Pas uniquement élément connu
-# plus
-# - Élément en possession
-
-# Exemples
-# - carte bancaire (possession) + code PIN (connu)
-# - login + mdp (connu) + SMS reçu (possession mobile)
-# - login + mdp (connu) + badge de sécurité générant un code unique (possession)
-
-# #+BEGIN_NOTES
-# Authentification plus forte.
-
-# Attention : certains mécanismes s'avèrent moins fiable que prévu (SMS)
-
-# Attention aux exigences de sécurité réglementaires.
-# #+END_NOTES
-
-# # ** Certificat client
-
-
-# * Contrôle d'accès et permissions
-# :PROPERTIES:
-# :REVEAL_EXTRA_ATTR: class="center"
-# :reveal_background: #dbdbed
-# :END:
-
-# ** RBAC
-
-# /Role-Based Access Control/ (contrôle d'accès à base de rôles)
-
-# - Utilisateur
-# - *Rôle*
-# - Fonctionnalité
-#   - Permissions
-
-# #+BEGIN_NOTES
-# Au-lieu d'attribuer des permissions à un utilisateur, on les attribue
-# à un rôle, qu'on délègue à un utilisateur : les permission sont gérées
-# en fonction de la structure de l'organisation, indépendamment des
-# embauches, départs ou changement de responsabilité des individus.
-# #+END_NOTES
-
-# * Symfony
-# :PROPERTIES:
-# :REVEAL_EXTRA_ATTR: class="center"
-# :reveal_background: #dbdbed
-# :END:
-# ** Gestion des utilisateurs avec =FOSUserBundle=
-
-# - Classe =User= du Modèle (et /mapping/ Doctrine en base)
-# - Définition de règles dans le /firewall/ Symfony
-# - Rôles 
-# - Routes et /templates/ standards :
-#   - Login + password
-#   - Logout
-#   - Inscription, rappel du mot-de-passe,
-
-# Cf. https://symfony.com/doc/master/bundles/FOSUserBundle/index.html
-
-# ** Classe =User=
-
-# # +class User implements UserInterface+
-
-# #+BEGIN_example
-#   use FOS\UserBundle\Model\User as BaseUser;
-#   use Doctrine\ORM\Mapping as ORM;
-
-#   /**
-#    ,* @ORM\Entity
-#    ,* @ORM\Table(name="fos_user")
-#    ,*/
-#   class User extends BaseUser
-#   {
-#       // ...
-
-# #+END_example
-
-# - =FOS\UserBundle\Model\User= fournit déjà :
-#   - username
-#   - email
-#   - password
-
-# Sera sérialisé dans la session à la fin de chaque réponse
-
-# ** Hiérarchie de rôles
-
-# Arbitraire, selon les besoins de l'application
-
-# Exemple :
-#   1. ROLE_SUPER_ADMIN
-#   2. ROLE_ADMIN
-#   3. ROLE_CLIENT
-#   4. ROLE_USER
-
-# #+BEGIN_EXAMPLE
-#   # security.yml
-
-#   role_hierarchy:
-#       ROLE_CLIENT:      ROLE_USER
-#       ROLE_ADMIN:       ROLE_USER
-#       ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN]
-# #+END_EXAMPLE
-
-
-# ** /Firewall/
-
-# Contrôle l'accès aux URLs en fonction des rôles :
-# #+BEGIN_EXAMPLE
-# # app/config/security.yml
-# security:
-#     # ...
-
-#     firewalls:
-#         # ...
-#         default:
-#             # ...
-
-#     access_control:
-#         # require ROLE_ADMIN for /admin*
-#         - { path: ^/admin, roles: ROLE_ADMIN }
-
-# #+END_EXAMPLE
-
-# ** Utilisation dans les contrôleurs
-
-# - Contrôle d'accès sur les routes :
-#   #+BEGIN_EXAMPLE
-#   @Route("/comment/{postSlug}/new", name="comment_new")
-#   @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-#   #+END_EXAMPLE
-
-# - Contrôle d'autorisation dans le code des méthodes :
-#   #+BEGIN_EXAMPLE
-#     $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
-#   #+END_EXAMPLE
-
-# #+REVEAL: split
-
-# - Accès aux propriétés de l'utilisateur :
-#   #+BEGIN_EXAMPLE
-#   $this->getUser()
-
-#   // ...
-
-#   $post->setAuthorEmail($this->getUser()->getEmail());
-#   #+END_EXAMPLE
-
-# ** Personalisation apparence
-
-# - Dans templates Twig :
-#   #+BEGIN_EXAMPLE
-#   {% if is_granted('ROLE_ADMIN') %}
-#     <a href="...">Delete</a>
-#   {% endif %}
-#   #+END_EXAMPLE
-
-
-# ** Gestion des utilisateurs
-
-# - Via du code PHP (API de Symfony)
-# - Par console en ligne de commande :
-#   #+BEGIN_SRC sh
-#   php bin/console fos:user:create testuser test@example.com p@ssword
-#   #+END_SRC
-
-#   #+BEGIN_SRC sh
-#   php bin/console fos:user:promote testuser ROLE_ADMIN
-#   #+END_SRC
-
-# * Concepts avancés                                                 :noexport:
-# ** Délégation d'authentification
-
-# *** Principe
-
-# - Déléguer l'authentification à un service dédié
-# - SSO
-
-# *** CAS (Central Authentication Service)
-# - Authentification unique (SSO)
-# - Tickets (Ticket Granting Ticket, Service Ticket)
-# - Utilise beaucoup les redirections
-# - https://cas.tem-tsp.eu/cas/login
-
-# *** Protocole
-
-# # Source Ohsie, David :
-# # http://www.plantuml.com/plantuml/svg/jLP_J-D64FtR_XIZLDSU4WbqwIz519I48xqAIeITwjfoGXjx8NiuNdTt7Sgtx-nwuzY9at0IbH1WUtPsvisRUVETUk8f39ASNOkOoTJtDTS9wyAm7y10YcV590GyVKnOE-2FgKWXOF_aB8qON73wAEdSzscaXOJSc5854p-ZKlE8PpJLq79EMkRJeFx9t14mkN1VX_MlOoaqYpIBePzbrc2ymm2-8OKDyNs_ruDBBfM6VXGnfQ3Ny_q9jCzW0DsHq09Q55tw_KZp1TKCungOhsFemkX323EjCzKzEaAZ3lkNphE4TI8nFpA95WV6UE2qtROdJeu9N8c8QYxIRdasegfs5f-F4l78q_Ex5E5Oy8ZrJlcPDNztqdz7Bl5dxK9ySth4p_mKymJ97sVQzrn6N46UqbpFM8g0K0E24k1x3q8-Kna3vcZGnKUeM6647TzhkVjRW8MKBu2WqZdJJFhUrimzl71oUmLOUEH9xBCq1XEMvtb-p2gu54WEwq2-9HXqLRJotw7lwZ4iY7jbVCEbaFCQTXF3q5WmPKA76LqmeCZdu0PPg1I2Ks2OIQOGCB0H6WZdPRhLN8T8gTCs3BhO22fBw8kv-Ywjt5sQJWpx3Fsw4EJJETSRfXM_anB2yKqG_k-4CcsROlqFaGTAFGiP7o8giSiUQVF4q8fAPiD1dfctCmPJ4R_KQ501PkWIw5S8QkV3gam1q-sX44-yc3NXQDWBHs6RdFpmuqy__tANDdVLEYynzoB2NX2sltU7DskEvDtebKWo4vMRRQgORU-H30UW2ZRuNX4OH3PE_9DgobDbqm_jjJ2IE8hGnVBvFIPnu7kXiHY5vc9Zx1p24tknBMdU6JYK9T_okcQILHu6hhl6kyVKUGCabGuTlw917Q7-e0cFyTJNKUpRfg9iy6urlT43BDnDoWe2NeGOEaI3y02exHXGLYn0c5ysYXLc5SJ6IuwHusFu-zFr5GonSbZypqK02NlGjhOWcSub5XIdW36BHPJFJUS_ptWqGw97IHupXUnFyI5s4nJ40wZSZk53MyawjNnFvTClc5dHHY8pPsYIl60IMl9fZabkARNJb7fp_1Py28AFDxz_lEZr1qC7vslxeuOuUgsnqT7QHBcK3T-phUrqVqgZ9wCaDiaiIvO0F7CzSwQE5cvEWC8CimnH40yFfWkG_qi0y1lB06Vh0h4gsc9v3m8SnzB8sfHAU91Y3d4nKard6SiWR8HiNFR3JhHUBUfZvst9-pMeLWMop7AiCdpOvlnpFTg9FLzHZ68FgRTufzEn6qp0SE34onKc513Wb3QhJba7kzOKid9hbZ9SU115aSk8LMMot6tsK6eNIgNVEg4AT0g_PjWPtSHg9WBhPbbYYYUBs9h5ujMWO_mj2_kj2wNiwbOZoB12kGo-6UZQgcXmTi2l8xs-G9A63P9ihf1a6zt8CZNovbiaQLBzAafajQZjKk6tMEB8wxUuvTvGKW63MQqCZUEERDy76hO1C_HNKgETIkCsa0gty2293L-vh2ov-mMPxAdw-KPKrL8W0TvQaiakJQueSbKsoNRTR98fKjUfwvkB-_ua_FKUCRuFUf_-_6k_LgsrHfsW9R9xR_YAZXkJzfdnkMVOa9qZdkoOyQHvo9FwbFyF
-# # via
-# # https://www.mail-archive.com/cas-dev%40lists.jasig.org/msg05740.html
-
-# #+ATTR_HTML: :title "Diagramme UML du protocole CAS" 
-# [[file:./media/cas-uml.png]]
-
-# *** Exemple
-# #+BEGIN_EXAMPLE
-#   $ curl -v http://www-cours.tem-tsp.eu/~berger_o/index.txt
-#   ,* Hostname was NOT found in DNS cache
-#   ,*   Trying 2001:660:3203:100:1:0:80:107...
-#   ,* Connected to www-cours.tem-tsp.eu (2001:660:3203:100:1:0:80:107) port 80 (#0)
-#   > GET /~berger_o/index.txt HTTP/1.1
-#   > User-Agent: curl/7.38.0
-#   > Host: www-cours.tem-tsp.eu
-#   > Accept: */*
-#   > 
-#   < HTTP/1.1 302 Found
-#   < Date: Tue, 30 Aug 2016 08:43:39 GMT
-#   ,* Server Apache/2.2.15 (CentOS) is not blacklisted
-#   < Server: Apache/2.2.15 (CentOS)
-#   < Location: https://cas.tem-tsp.eu/cas/login?service=http%3a%2f%2fwww-cours.tem-tsp.eu%2f%7eberger_o%2findex.txt
-#   < Content-Length: 370
-#   < Connection: close
-#   < Content-Type: text/html; charset=iso-8859-1
-#   < 
-#   <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-#   <html><head>
-#   <title>302 Found</title>
-#   </head><body>
-#   <h1>Found</h1>
-#   <p>The document has moved <a href="https://cas.tem-tsp.eu/cas/login?service=http%3a%2f%2fwww-cours.tem-tsp.eu%2f%7eberger_o%2findex.txt">here</a>.</p>
-#   <hr>
-#   <address>Apache/2.2.15 (CentOS) Server at www-cours.tem-tsp.eu Port 80</address>
-#   </body></html>
-#   ,* Closing connection 0
-# #+END_EXAMPLE
-# *** Shibboleth
-# - Fédération d'identité
-# - L'identification est faite au sein de la fédération
-# - L'authentication est faite dans chaque autorité participante
-
-# - Transport d'attribut
-
-# - Exemple : https://zimbra.mines-telecom.fr/
-
-# *** OpenID, OAuth, Twitter, Facebook, Google, etc...
-
-# *** OpenID Connect 
-
-# #+BEGIN_HTML
-# <iframe width="640" height="480" src="https://www.youtube.com/embed/Kb56GzQ2pSk?rel=0" frameborder="0" allowfullscreen></iframe>
-# #+END_HTML
-
-# ** Délégation d'autorisation
-
-# *** Principe
-# - Effectuer des interactions avec un serveur pour le compte d'un utilisateur
-# - Avantage
-#   - Permettre à des programmes d'agir sans utilisateur aux commandes (hors session Web dans un navigateur)
-#   - Avec (un sous-ensemble) des privilèges de l'utilisateur
-#   - Pas de création d'un nouveau compte
-#   - Pas de divulgation des lettres de créance réelles de l'utilisateur (mot-de-passe)
-
-# *** Valet de parking
-
-# - Gare les voitures (de luxe) pour le compte des clients
-# - Clé de contact spéciale
-# - Conduire
-#   - Pas loin
-#   - Pas vite
-# - Pas appeler avec le téléphone de bord
-# - Pas d'accès au mini-bar
-# - ...
-
-# #+BEGIN_NOTES
-# - *ENSEIGNANTSSEULEMENT* :: Pas sûr que ça fonctionne vraiment comme ça... quelqu'un a une ferrari à me prêter ?
-# #+END_NOTES
-
-# *** OAuth 2.0
-
-# http://oauth.net
-
-# - Spécifications : [[https://tools.ietf.org/html/rfc6749][The OAuth 2.0 Authorization Framework]]
-# - [[https://aaronparecki.com/2012/07/29/2/oauth2-simplified][OAuth 2 Simplified]]
-# - Supporté par HTTP : parfait pour APIs REST
-
-# *** Protagonistes
-
-# - Utilisateur d'un service : /Resource Owner/ (propriétaire de ressources) :: souhaite déléguer l'accès à certaines fonctionnalités auxquelles il a accès
-
-# - Service / API : /Resource Server/ (Serveur de ressources) :: les interfaces du service sur lequel on accède aux informations
-
-# - Application tierce : /Client/ :: l'application qui tente d'accéder au service au nom de l'utilisateur. Elle doit avoir reçu des permissions de la part de l'utilisateur avant de pouvoir y arriver.
-
-# *** Protocole simplifié
-
-# #+BEGIN_SRC plantuml :file media/oauth2.png
-# @startuml oauth2-flow.png
-
-# title Protocole OAuth 2.0 Simplifié
-# autonumber
-
-# participant "Resource Owner\n(//utilisateur//)" as Owner
-# participant "Client\n(//appli tierce//)" as Client
-# participant "Serveur d'autorisation" as AuthzServer
-# participant "Serveur de ressource" as ResourceServer
-
-# Client->Owner: Requête d'autorisation
-
-# Owner->Client: Obtention d'une délégation d'autorisation
-
-# Client->AuthzServer: Demande jeton d'accès sur présentation délégation d'autorisation
-
-# AuthzServer->Client: Jeton d'accès
-
-# Client->ResourceServer: Accès à ressource (API) grâce au jeton d'accès
-
-# ResourceServer->Client: Fourniture de la ressource protégée
-
-# @enduml
-# #+END_SRC
-
-# #+RESULTS:
-# [[file:media/oauth2.png]]
-
-# #+BEGIN_NOTES
-# On se place dans la situation où une application mobile (par exemple),
-# dénommée le "Client" va interagir avec l'API d'un site Web (Serveur de
-# ressource), pour le compte d'un utilisateur du site (Propiétaire de
-# ressource). L'application pourra interagir avec le site en tâche de
-# fond sans que l'utilisateur soit sollicité. Par contre l'application
-# n'aura pas le droit d'effectuer toutes les actions que l'utilisateur
-# aurait le droit de faire via l'interface du site. Par exemple,
-# l'application n'aurait accès qu'aux fonctionnalités en lecture seule,
-# mais pas en modification.
-
-# L'application effectue une demande initiale de délégation
-# d'autorisations auprès de l'utilisateur (1 et 2). L'utilisateur valide
-# cette demande. En général, cette validation passe par une connexion au
-# site dans un navigateur, où l'utilisateur doit confirmer qu'il désire
-# bien déléguer certaines autorisations à l'application. Cette
-# délégation approuvée par l'utilisateur est alors connue du Serveur
-# d'autorisation, et pourrait être définie pour une durée limitée, et
-# révoquée à tout moment par l'utilisateur.
-
-# L'application peut désormais effectuer des demandes de jeton d'accès
-# auprès du serveur d'autorisations (3), qui lui serviront, pendant une
-# certaine durée, à interagir avec l'API du site (5).
-# #+END_NOTES
-
-
-# * Postface
-# :PROPERTIES:
-# :REVEAL_EXTRA_ATTR: class="center"
-# :reveal_background: #dbdbed
-# :END:
-
-# ** Et maintenant
-
-# TP Symfony application de blog
-
-# # ** Crédits illustrations
-
-# # #+HTML: <small>
-# # - Photo TPLs "Conservatoire du Contrôle-Commande du Réseau français de Transport d'Electricité" http://esconce2014.estelenerg.org/8-tableaux-de-commandes/8-3-composants-divers/
-# # - [[https://en.wikipedia.org/wiki/File:Apple_Macintosh_Desktop.png][Apple_Macintosh_Desktop.png]] (source Wikipedia)
-# # - Diagrammes HATEOAS / TWitter extraits de "[[http://fr.slideshare.net/apigee/hateoas-101-opinionated-introduction-to-a-rest-api-style][HATEOAS 101 - Opinionated Introduction to a REST API Style]]" par Brian Mulloy (Apigee) [[http://creativecommons.org/licenses/by-sa/4.0/][CC-by-SA]]
-# # #+HTML: </small>
-
-# # # Autres ressources :
-# # # https://www.oboqo.com/blog/trousse-outils-ideale-demarrer-web/
 *** Title screen picture (logos, etc.)
+
+I'm not yet sure how much may be achieved with HTML and CSS for the
+title page of the slides deck, so I've relied on the embedding of a
+background image that will contain the logos and additional graphics. 
 
 #+BEGIN_SRC org
   ,#+REVEAL_TITLE_SLIDE_BACKGROUND: ./media/title-slide-background.png
 #+END_SRC
 
+I'm quite sure this could be improved.
 
-* Annex                                                       :handbookonly:
 
+* Annex                                                       
+
+** Thanks
+
+- All contributors to org-mode (special kudos to Carsten Dominik and Bastien Guerry)
+- Yujie Wen for =org-reveal=
+- Hakim El Hattab for =reveal.js=
+- My colleagues at Telecom SudParis who had to teach with this tool without much rehersal
+- Our students who endured it for a brand new course (and included bugs)
+
+** Feedback
+
+I may be contacted from [[http://www-public.tem-tsp.eu/~berger_o/#sec-3][my Web page]] or via [[https://gitlab.com/olberger/org-teaching][the Gitlab project]].
+
+** Usage reports :handbookonly:
+
+*** 2016 at Telecom SudParis
+
+Created and used for the first time for teaching "Web Architecture and Applications" in the CSC4101 module at Telecom SudParis (Olivier Berger and colleagues)
 
 * COMMENT TODO
 

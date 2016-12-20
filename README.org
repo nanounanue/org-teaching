@@ -20,10 +20,11 @@ A more or less up to date snapshot may be found at [[http://www-public.tem-tsp.e
 Checkout the git submodules contents to retrieve org-reveal and
 reveal.js.
 
-Then, RTFM ;-)
+Then, RTFM in the following documents.
 
 See the generated files (/note that these links may be best viewed in Emacs from a local clone of the Git repo, as Gitlab may not provide the best experience/):
-- slides in: [[file:./slides.html]]
+- slides in: [[file:./slides.html]] (and additional variant is a regulat
+  HTML export in file:./lesson.html)
 - the handbook for the students: [[file:./handbook.pdf]]
 - the handbook for the teachers: [[file:./teacher-handbook.pdf]]
 
