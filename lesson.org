@@ -8,7 +8,7 @@
 #+TITLE: How to teach using org-mode for fun and profit
 #+DESCRIPTION: Olivier Berger's org-mode framework for teaching
 #+AUTHOR: Olivier Berger
-#+DATE: 2016-12-19
+#+DATE: 2017-05-18
 
 
 
@@ -67,7 +67,10 @@ This framework heavily relies on [[http://orgmode.org/][org-mode]] (version 9 at
 
 These slides are one variant of the same teaching material, also available [[./handbook.pdf][as a handbook]].
 
-You may prefer to view them in your Web browser in full-screen (=F11= for instance).
+You may prefer to view them in your Web browser in full-screen (=F11=
+for instance). Should =Reveal-JS= fail on displaying slides, an
+alternate format would be the [[./slides.pdf][printed PDF]] (but
+you're gonna lose the ability to display speaker notes).
 
 #+BEGIN_NOTES
 This section is displayed only in the slides variant, but not in the /handbook/ variant, which contains, in turn, a section that is different.
@@ -75,7 +78,9 @@ This section is displayed only in the slides variant, but not in the /handbook/ 
 
 * About this handbook                                          :handbookonly:
 
-This PDF handbook is one variant of the same teaching material, also available [[./slides.html][as a slides deck]].
+This PDF handbook is one variant of the same teaching material, also
+available [[./slides.html][as a slides deck]]. Note that the layout is
+formatted as a portrait handbook, including speaker notes.
 
 This section may contain content that is best viewed in (LaTeX) PDF export of org-mode.
 
@@ -308,7 +313,18 @@ I'm not sure which solution is better : org-reveal from Git (hence the Git submo
 
 *** Printing slides
 
-TBD
+I've tested [[https://github.com/astefanutti/decktape][DeckTape]] using a Docker container containing =PhantomJS= and
+=decktape= to convert the slides to a [[file:slides.pdf][single PDF document]].
+
+See the provided [[file:bin/decktape.sh][decktape.sh]] script that runs the container, bind-mounting the
+working dir into the container, so that input and output files can be
+found.
+
+Note that I used a rebuilt Docker image, reusing the [[https://raw.githubusercontent.com/astefanutti/decktape/master/Dockerfile][DeckTape
+Dockerfile]], rebuilding with something alongside:
+#+BEGIN_SRC sh
+docker build -t obergixlocal/decktape .
+#+END_SRC
 
 ** Known Issues
 

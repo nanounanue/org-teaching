@@ -23,8 +23,8 @@ reveal.js.
 Then, RTFM in the following documents.
 
 See the generated files (/note that these links may be best viewed in Emacs from a local clone of the Git repo, as Gitlab may not provide the best experience/):
-- slides in: [[file:./slides.html]] (and additional variant is a regulat
-  HTML export in file:./lesson.html)
+- slides in: [[file:./slides.html]] (an additional variant is a regular
+  HTML export in file:./lesson.html; another is [[file:./slides.pdf]["printed slides" in PDF]])
 - the handbook for the students: [[file:./handbook.pdf]]
 - the handbook for the teachers: [[file:./teacher-handbook.pdf]]
 
