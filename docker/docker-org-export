@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# example: ./docker-org-export org-html-export-to-html slides.org
+# example: ./docker-org-export org-latex-export-to-pdf handbook.org
+# example: ./docker-org-export org-latex-export-to-pdf teacher-handbook.org
+# example: ./docker-org-export org-reveal-export-to-html slides.org
+set -x
+
+
+docker run --rm -i -t -v $(pwd):$(pwd) --workdir=$(pwd) -u $(id -u) obergixlocal/docker-org-export:latest emacs --batch --load /emacs/export.el --file $2 --eval "($1)"
