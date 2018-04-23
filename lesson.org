@@ -8,7 +8,7 @@
 #+TITLE: How to teach using org-mode for fun and profit
 #+DESCRIPTION: Olivier Berger's org-mode framework for teaching
 #+AUTHOR: Olivier Berger
-#+DATE: 2017-05-18
+#+DATE: 2018-04-23
 
 
 
@@ -449,9 +449,9 @@ I may be contacted from [[http://www-public.tem-tsp.eu/~berger_o/#sec-3][my Web 
 
 ** Usage reports :handbookonly:
 
-*** 2016 at Telecom SudParis
+*** 2016-2018 at Telecom SudParis
 
-Created and used for the first time for teaching "Web Architecture and Applications" in the CSC4101 module at Telecom SudParis (Olivier Berger and colleagues)
+Created and used for 2 editions of teaching "Web Architecture and Applications" in the CSC4101 module at Telecom SudParis (Olivier Berger and colleagues)
 
 * COMMENT TODO
 

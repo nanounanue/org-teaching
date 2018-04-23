@@ -1,13 +1,16 @@
 #!/bin/bash
 
-# Launch decktape inside docker to create PDF version of reveal.js HTML5+JS slides
+set -x
+
+# Launch decktape 1.x inside docker to create PDF version of reveal.js HTML5+JS slides
 
 # uses the Dockerfile from : https://github.com/astefanutti/decktape
 
-# Creation of docker image :
-#  docker build -t obergixlocal/decktape .
+# Creation of docker image from 41861c135a3a9c0af1d06d370ba25f56e4811aec :
+#  git checkout 41861c135a3a9c0af1d06d370ba25f56e4811aec
+#  docker build -t obergixlocal/decktape:1.x .
 
-DOCKERIMAGE=obergixlocal/decktape
+DOCKERIMAGE=obergixlocal/decktape:1.x
 
 SCRIPTNAME="$(basename "$0")"
 USAGE=`sed "s/__SCRIPTNAME__/$SCRIPTNAME/g" <<"EOF"

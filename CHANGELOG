@@ -1,1 +1,8 @@
-- 2017-05-18 Initial release
+Mon Apr 23 16:25:53 2018  Olivier Berger  <olivier.berger@it-sudparis.eu>
+
+	* Bits of docs improvements
+	* Added reveal.js jump plugin
+
+2017-05-18  Olivier Berger  <olivier.berger@it-sudparis.eu>
+
+	* Initial release

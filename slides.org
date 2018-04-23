@@ -25,6 +25,6 @@
 
 # Local Variables:
 # org-image-actual-width: nil
-# org-reveal-title-slide: "<h1 class=\"title\">Example lesson<h1><h2>How to teach using org-mode for fun and profit</h2><h2></h2><h3>Olivier Berger<h3><h3 class=\"date\">2017-05-18</h3>"
+# org-reveal-title-slide: "<h1 class=\"title\">Example lesson<h1><h2>How to teach using org-mode for fun and profit</h2><h2></h2><h3>Olivier Berger<h3><h3 class=\"date\">2018-04-23</h3>"
 # End:
 
