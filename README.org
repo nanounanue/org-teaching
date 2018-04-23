@@ -17,7 +17,12 @@ A more or less up to date snapshot may be found at [[http://www-public.tem-tsp.e
 
 * Testing it
 
-Checkout the [[https://git-scm.com/book/en/v2/Git-Tools-Submodules][git submodules]] contents to retrieve [[file:elisp/org-reveal]] and
+See the contents of the files under Emacs, equipped with org-mode.
+
+Checkout the [[file:docker/]] tools which should allow reproducible
+exports (including org-reveal).
+
+Pay attention to the [[https://git-scm.com/book/en/v2/Git-Tools-Submodules][git submodules]] contents to retrieve [[file:elisp/org-reveal]] and
 [[file:reveal.js]].
 
 Then, RTFM in the following documents:
