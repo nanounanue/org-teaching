@@ -4,7 +4,8 @@
 # example: ./docker-org-export org-latex-export-to-pdf handbook.org
 # example: ./docker-org-export org-latex-export-to-pdf teacher-handbook.org
 # example: ./docker-org-export org-reveal-export-to-html slides.org
-set -x
+#set -x
 
+docker_image=olberger/docker-org-export:latest
 
-docker run --rm -i -t -v $(pwd):$(pwd) --workdir=$(pwd) -u $(id -u) obergixlocal/docker-org-export:latest emacs -nw --load /emacs/export.el --file $2 --eval "($1)" --kill
+docker run --rm -i -t -v $(pwd):$(pwd) --workdir=$(pwd) -u $(id -u) $docker_image emacs -nw --load /emacs/export.el --file $2 --eval "($1)" --kill

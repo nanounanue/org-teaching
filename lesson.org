@@ -370,10 +370,13 @@ Git clone from =https://gitlab.com/olberger/org-teaching.git= (see the [[https:/
 
 ** TODO Use docker
 
-You may use the docker container I've prepared, to make org-mode
-exports. Or you may rebuild it yourself.
+You may use the =olberger/docker-org-export= docker container image
+I've prepared, to make org-mode exports. Or you may rebuild it
+yourself (see below).
 
 *** Build the Docker container image
+
+This is recommended to avoid man in the middle, IMHO:
 
 #+BEGIN_SRC sh
 cd docker
@@ -382,7 +385,8 @@ docker build -t obergixlocal/docker-org-export .
 
 *** Run the container
 
-Use the provided =docker/docker-org-export= script. See how [[file:Makefile]] does it.
+Use the provided =docker/docker-org-export= script, which relies on
+the =olberger/docker-org-export= container image. See how [[file:Makefile]] does it.
 
 ** Git submodules
 
