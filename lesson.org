@@ -50,6 +50,7 @@
 This is a demo document about the
 [[http://www-public.tem-tsp.eu/~berger_o/org-teaching/][codename =org-teaching=]] framework.
 
+* Slides                                                         :slidesonly:
 #+ATTR_REVEAL: :frag (appear)
 - /You're viewing a [[http://lab.hakim.se/reveal-js/][reveal.js]] Web slides deck. You may press 's' to view presenter notes./
 
@@ -59,7 +60,7 @@ You'll find the source code at Gitlab : https://gitlab.com/olberger/org-teaching
 I mention /codename/ =org-teaching= because it really hasn't yet a proper name, and may never have. This is far from a full fledged product.
 #+END_NOTES
 
-** Org-mode powa
+* Org-mode powa
 
 This framework heavily relies on [[http://orgmode.org/][org-mode]] (version 9 at the time of writing) and the [[https://github.com/yjwen/org-reveal/][org-reveal]] exporter for =reveal.js=.
 
@@ -96,11 +97,15 @@ The goal is to be able to edit a single file (namely =lesson.org=) which will co
 
 From this single source, several documents are generated :
 - *slides* (as a dynamic Web document) for overhead presentation
-- a *handbook* that contains the same information (or more) and can be handed to the students for work outside the classroom (a PDF file)
-- another *handbook* for the teaching team, to provide additional instructions (also a PDF file)
+- a *handbook* that contains the same information (or more) and can be
+  handed to the _students_ for work outside the classroom (a [[file:handbook.pdf][PDF file]])
+
+#+REVEAL: split
+
+- another *handbook* for the _teaching team_, to provide additional instructions (also a [[file:teacher-handbook.pdf][PDF file]])
 
 #+BEGIN_NOTES
-The handbook LaTeX formatting has a summarized content table and nice looking (in principle) title page. Customize at will
+The handbook LaTeX formatting has a summarized content table and nice looking (in principle) title page. Customize at will.
 
 The teachers handbook contains a less nice-looking format, includes a detailed table of contents, and has a watermark. Again, customize at will and submit improvements.
 #+END_NOTES
@@ -131,7 +136,9 @@ The first level outlines can be rendered as a "separating" slides which may get 
 
 ** Presenter notes / content for the handbook
 
-[[https://github.com/yjwen/org-reveal/#speaker-notes][org-reveal's /Speaker notes/]] may be added to the slides (and will only appear on dual-screen presentation after having pressed 's': standard reveal.js feature).
+[[https://github.com/yjwen/org-reveal/#speaker-notes][org-reveal's /Speaker notes/]] may be added to the slides (and will only appear on
+dual-screen presentation after having pressed '/s/': standard reveal.js
+feature).
 
 They will be masked for the audience, but will, by default appear in the handbook given to the students.
 
@@ -146,7 +153,9 @@ They will be masked for the audience, but will, by default appear in the handboo
 I've implemented some easy ways to preserve some of the content of the same =lesson.org= source for certain outputs (using org exporter's standard =EXCLUDE_TAGS=):
 
 - /Slides only/ material :: that won't be embedded in the handbook : surprise stuff for live audience, or HTML-only hacks;
-- /Teachers only/ material :: secret knowledge that only adults need to know (for instance), which won't be exported;
+- /Teachers only/ material :: secret knowledge that only adults need
+     to know (for instance), which won't be exported;
+#+REVEAL: split
 - /Handbook only/ material :: stuff that only fits in the handbook, and/or only exports as LaTeX and not HTML.
 
 #+BEGIN_NOTES
@@ -284,13 +293,15 @@ and other bits that shouldn't change much in time (see next section).
 
 ** Configuration
 
-Each lesson.org needs some configuration :
+Each =lesson.org= needs some configuration :
 - Configure =org-reveal-title-slide= in =slides.org=.
 
-- Configure header (=\lhead{...}= and =\rhead{...}=) and footer
-  (=\lfoot{...}= and =\rfoot{...}=) elements in the headers like
-  =#+LaTeX_HEADER: \rhead{...}= in =handbook.org= and
-  =teacher-handbook.org=.
+- Configure in the headers elements like:
+  - /header/ (=\lhead{...}= and =\rhead{...}=)
+  - and /footer/ (=\lfoot{...}= and =\rfoot{...}=) 
+
+  ex: =#+LaTeX_HEADER: \rhead{...}= in =handbook.org= and
+    =teacher-handbook.org=.
 
 #+BEGIN_NOTES
 These may be better handled, but some limitations of the exporters or
