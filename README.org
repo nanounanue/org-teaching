@@ -11,7 +11,7 @@ It uses [[https://github.com/yjwen/org-reveal/][org-reveal]] in addition to the 
 
 * Home of the project
 
-The project sources are available in https://gitlab.com/olberger/org-teaching
+The project sources are available in [[https://gitlab.com/olberger/org-teaching]]
 
 A more or less up to date snapshot may be found at [[http://www-public.tem-tsp.eu/~berger_o/org-teaching/slides.html][http://www-public.tem-tsp.eu/~berger_o/org-teaching/]]
 
