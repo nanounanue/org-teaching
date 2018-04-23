@@ -48,7 +48,9 @@
 * Introduction
 
 This is a demo document about the
-[[http://www-public.tem-tsp.eu/~berger_o/org-teaching/][codename =org-teaching=]] framework.
+[[http://www-public.tem-tsp.eu/~berger_o/org-teaching/][codename
+=org-teaching=]] framework, which aims at managing teaching material
+using Org-mode.
 
 * Slides                                                         :slidesonly:
 #+ATTR_REVEAL: :frag (appear)
@@ -62,7 +64,16 @@ I mention /codename/ =org-teaching= because it really hasn't yet a proper name, 
 
 * Org-mode powa
 
-This framework heavily relies on [[http://orgmode.org/][org-mode]] (version 9 at the time of writing) and the [[https://github.com/yjwen/org-reveal/][org-reveal]] exporter for =reveal.js=.
+Attention, this framework heavily relies on: 
+
+- [[http://orgmode.org/][org-mode]] (version 9 at the time of writing)
+- and the [[https://github.com/yjwen/org-reveal/][org-reveal]] exporter for =reveal.js=.
+
+#+BEGIN_NOTES
+Since Org-mode is plain text, you may be able to edit contents without
+Emacs and org-mode, but I'd recommend learning org-mode for serious
+work ;-)
+#+END_NOTES
 
 * About this slides deck                                         :slidesonly:
 
@@ -93,7 +104,9 @@ This section may contain content that is best viewed in (LaTeX) PDF export of or
 
 ** Writing teaching material in org-mode
 
-The goal is to be able to edit a single file (namely =lesson.org=) which will contain, in a single source, all the content of a lesson, written with org-mode syntax.
+The goal is to be able to edit a single file (namely =lesson.org=)
+which will contain, in a *single source*, all the content of a lesson,
+written with org-mode syntax.
 
 From this single source, several documents are generated :
 - *slides* (as a dynamic Web document) for overhead presentation
@@ -102,17 +115,17 @@ From this single source, several documents are generated :
 
 #+REVEAL: split
 
-- another *handbook* for the _teaching team_, to provide additional instructions (also a [[file:teacher-handbook.pdf][PDF file]])
+- optionaly, another *handbook* for the _teaching team_, to provide additional instructions (also a [[file:teacher-handbook.pdf][PDF file]])
 
 #+BEGIN_NOTES
-The handbook LaTeX formatting has a summarized content table and nice looking (in principle) title page. Customize at will.
+The student handbook's LaTeX formatting has a summarized content table and nice looking (in principle) title page. Customize at will.
 
 The teachers handbook contains a less nice-looking format, includes a detailed table of contents, and has a watermark. Again, customize at will and submit improvements.
 #+END_NOTES
 
-** org-reveal slides
+** Frugal org-reveal/reveal.js slides
 
-Pretty much all features of =reveal.js= supported by the org-mode reveal.js exporter [[https://github.com/yjwen/org-reveal/][org-reveal]], should be supported too.
+Pretty much all features of =reveal.js=, supported by the org-mode reveal.js exporter ([[https://github.com/yjwen/org-reveal/][org-reveal]]), should be supported too.
 
 An example =org-reveal= document is [[./elisp/org-reveal/Readme.html][available here]] for inspiration (it's the export of org-reveal's =README.org=, actually).
 
@@ -140,7 +153,7 @@ The first level outlines can be rendered as a "separating" slides which may get 
 dual-screen presentation after having pressed '/s/': standard reveal.js
 feature).
 
-They will be masked for the audience, but will, by default appear in the handbook given to the students.
+They will be masked for the audience, but will, by default, appear in the handbook given to the students.
 
 #+BEGIN_SRC org
   ,#+BEGIN_NOTES
@@ -150,7 +163,7 @@ They will be masked for the audience, but will, by default appear in the handboo
 
 ** Masking content for some audiences
 
-I've implemented some easy ways to preserve some of the content of the same =lesson.org= source for certain outputs (using org exporter's standard =EXCLUDE_TAGS=):
+I've implemented some "easy ways" to preserve some of the content of the same =lesson.org= source for certain outputs (using org exporter's standard =EXCLUDE_TAGS=):
 
 - /Slides only/ material :: that won't be embedded in the handbook : surprise stuff for live audience, or HTML-only hacks;
 - /Teachers only/ material :: secret knowledge that only adults need
@@ -234,6 +247,7 @@ Code is colorized / highlighted in the slides :-)
 #+BEGIN_NOTES
 Nice when like me, you're teaching Computer Science stuff
 #+END_NOTES
+
 ** Misc org-mode
 
 *** Babel powa
@@ -266,23 +280,11 @@ See the teacher's handbook for some ideas
 :END:
 #+END_NOTES
 
-* HowTo
+* Authoring
 :PROPERTIES:
 :REVEAL_EXTRA_ATTR: class="center"
 :reveal_background: #dbdbed
 :END:
-
-** Use Emacs
-
-There's no production chain, makefiles or other authoring tools. 
-
-No new Elisp either.
-
-#+BEGIN_NOTES
-You're welcome to suggest improvements. But I'm not an Elisp hacker,
-so I may not be able to maintain them. At the moment, the intent is to
-rely on the original org-reveal only, as much as possible.
-#+END_NOTES
 
 ** Modify only the lesson.org
 
@@ -290,6 +292,38 @@ rely on the original org-reveal only, as much as possible.
 
 Only exception is modification of some configurations for title pages
 and other bits that shouldn't change much in time (see next section).
+
+** Use Emacs org-mode exporters or the Docker container
+
+You have 2 options to generate the different formats:
+- either manualy use org-mode exporters from inside Emacs
+- or use the Docker container for automation / reproducibility
+
+#+BEGIN_NOTES
+You're welcome to suggest improvements. But I'm not an Elisp hacker,
+so I may not be able to maintain them. At the moment, the intent is to
+rely on the original org-reveal only, as much as possible.
+#+END_NOTES
+
+** Use docker
+
+You may use the =olberger/docker-org-export= docker container image
+I've prepared, to make org-mode exports. Or you may rebuild it
+yourself (see below).
+
+*** Build the Docker container image
+
+This is recommended to avoid man in the middle, IMHO:
+
+#+BEGIN_SRC sh
+cd docker
+docker build -t obergixlocal/docker-org-export .
+#+END_SRC
+
+*** Run the container
+
+Use the provided =docker/docker-org-export= script, which relies on
+the =olberger/docker-org-export= container image. See how [[file:Makefile]] does it.
 
 ** Configuration
 
@@ -360,7 +394,8 @@ You may prefer to have a PDF variant of the slides (see [[*Printing slides][Prin
 :reveal_background: #dbdbed
 :END:
 
-** Use the source Luke
+
+** Use the source (Luke)
 
 See the contents of the files... but be wary that it's sometimes messy and incrementally obtained.
 
@@ -368,27 +403,7 @@ Emacs is your buddy.
 
 Git clone from =https://gitlab.com/olberger/org-teaching.git= (see the [[https://gitlab.com/olberger/org-teaching][Gitlab project]])
 
-** TODO Use docker
-
-You may use the =olberger/docker-org-export= docker container image
-I've prepared, to make org-mode exports. Or you may rebuild it
-yourself (see below).
-
-*** Build the Docker container image
-
-This is recommended to avoid man in the middle, IMHO:
-
-#+BEGIN_SRC sh
-cd docker
-docker build -t obergixlocal/docker-org-export .
-#+END_SRC
-
-*** Run the container
-
-Use the provided =docker/docker-org-export= script, which relies on
-the =olberger/docker-org-export= container image. See how [[file:Makefile]] does it.
-
-** Git submodules
+*** Git submodules
 
 The repository contains Git submodules for :
 - =reveal.js/=
@@ -406,7 +421,7 @@ You may prefer to install them another way (ELPA repo, CDN, etc.)
 Refer to [[https://github.com/yjwen/org-reveal/#requirements-and-installation][org-reveal's documentation]] for more details.
 #+END_NOTES
 
-** Slides appearance
+** Customize slides appearance
 
 *** Reveal.js settings
 
