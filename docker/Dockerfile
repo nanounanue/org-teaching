@@ -2,8 +2,9 @@ FROM debian:testing
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && apt-get -y --no-install-recommends install emacs
-RUN apt-get -y --no-install-recommends install texlive-latex-base texlive-fonts-recommended texlive-latex-extra
+RUN apt-get update && apt-get -y upgrade
+RUN apt-get -y --no-install-recommends install emacs
+RUN apt-get -y --no-install-recommends install texlive-latex-recommended texlive-plain-generic texlive-fonts-recommended texlive-latex-extra
 
 # Some Emacs packages installation
 ADD install.el /emacs/install.el

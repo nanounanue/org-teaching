@@ -368,6 +368,22 @@ Emacs is your buddy.
 
 Git clone from =https://gitlab.com/olberger/org-teaching.git= (see the [[https://gitlab.com/olberger/org-teaching][Gitlab project]])
 
+** TODO Use docker
+
+You may use the docker container I've prepared, to make org-mode
+exports. Or you may rebuild it yourself.
+
+*** Build the Docker container image
+
+#+BEGIN_SRC sh
+cd docker
+docker build -t obergixlocal/docker-org-export .
+#+END_SRC
+
+*** Run the container
+
+Use the provided =docker/docker-org-export= script. See how [[file:Makefile]] does it.
+
 ** Git submodules
 
 The repository contains Git submodules for :
