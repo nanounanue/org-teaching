@@ -92,7 +92,7 @@ using as much Web as I could (i.e. HTML).
 This content is provided under the clauses of the MIT License, unless
 otherwise specified.
 
-Copyright (c) 2016 Olivier Berger and Institut Mines Telecom
+Copyright (c) 2016-2018 Olivier Berger and Institut Mines Telecom
 
 [See also the LICENSE file].
 
