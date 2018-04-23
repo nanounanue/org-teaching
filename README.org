@@ -17,10 +17,10 @@ A more or less up to date snapshot may be found at [[http://www-public.tem-tsp.e
 
 * Testing it
 
-Checkout the git submodules contents to retrieve org-reveal and
-reveal.js.
+Checkout the [[https://git-scm.com/book/en/v2/Git-Tools-Submodules][git submodules]] contents to retrieve [[file:elisp/org-reveal]] and
+[[file:reveal.js]].
 
-Then, RTFM in the following documents.
+Then, RTFM in the following documents:
 
 See the generated files (/note that these links may be best viewed in Emacs from a local clone of the Git repo, as Gitlab may not provide the best experience/):
 - slides in: [[file:./slides.html]] (an additional variant is a regular

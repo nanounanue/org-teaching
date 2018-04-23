@@ -4,3 +4,6 @@
 [submodule "elisp/org-reveal"]
 	path = elisp/org-reveal
 	url = https://github.com/yjwen/org-reveal.git
+[submodule "reveal.js-jump-plugin"]
+	path = reveal.js-jump-plugin
+	url = https://github.com/SethosII/reveal.js-jump-plugin.git

@@ -30,7 +30,7 @@
 #+REVEAL_EXTRA_CSS: ./presentation.css
 #+REVEAL_ROOT: ./reveal.js
 # +REVEAL_TITLE_SLIDE_BACKGROUND: ./media/title-slide-background.png
-
+#+REVEAL_EXTRA_JS:      { src: './reveal.js-jump-plugin/jump/jump.js', async: true }
 
 # org-reveal options : 
 #+OPTIONS: reveal_center:nil 
@@ -232,6 +232,13 @@ As you're using org-mode, its =babel= components are available, to embed source 
 
 Look for /literate programing/ instructions in the [[http://orgmode.org/manual/Working-with-source-code.html][org-mode docs]] to know more.
 
+*** Jumping to slide number
+
+Included is the use of the
+[[https://github.com/SethosII/reveal.js-jump-plugin][reveal.js jump
+plugin]] to allow jumping directly to slides # by entering a number
+and hitting RETURN. Quite handy while writing and testing slides.
+
 ** Missing features ?
 
 Please try and talk to me to suggest new stuff and/or provide patches ;)
@@ -353,8 +360,9 @@ Git clone from =https://gitlab.com/olberger/org-teaching.git= (see the [[https:/
 ** Git submodules
 
 The repository contains Git submodules for :
-- reveal.js
-- org-reveal
+- =reveal.js/=
+- =elisp/org-reveal=
+- reveal.js's jump plugin (=reveal.js-jump-plugin/=)
 
 So :
 #+BEGIN_SRC sh
