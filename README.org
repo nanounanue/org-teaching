@@ -13,7 +13,12 @@ It uses [[https://github.com/yjwen/org-reveal/][org-reveal]] in addition to the 
 
 The project sources are available in [[https://gitlab.com/olberger/org-teaching]]
 
-A more or less up to date snapshot may be found at [[http://www-public.tem-tsp.eu/~berger_o/org-teaching/slides.html][http://www-public.tem-tsp.eu/~berger_o/org-teaching/]]
+See the generated documents at the Gitlab pages (generated from CI) :
+- [[https://olberger.gitlab.io/org-teaching/slides.html][slides version]]
+- [[https://olberger.gitlab.io/org-teaching/handbook.pdf][student handbook version]]
+- [[https://olberger.gitlab.io/org-teaching/teacher-handbook.pdf][teacher handbook version]]
+
++A more or less up to date snapshot may be found at [[http://www-public.tem-tsp.eu/~berger_o/org-teaching/slides.html][http://www-public.tem-tsp.eu/~berger_o/org-teaching/]]+
 
 * Testing it
 
