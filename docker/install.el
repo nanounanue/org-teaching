@@ -8,5 +8,7 @@
 ;(package-install 'json-mode)
 ;(package-install 'erlang)
 (package-install 'ox-reveal)
-(package-install 'org-beautify-theme)
-(load-theme 'org-beautify t)
+
+;; not using org-beautify as it renders better with X. Instead use custom faces (see export.el)
+;(package-install 'org-beautify-theme)
+;(load-theme 'org-beautify t)

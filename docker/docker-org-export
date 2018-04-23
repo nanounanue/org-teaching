@@ -7,4 +7,4 @@
 set -x
 
 
-docker run --rm -i -t -v $(pwd):$(pwd) --workdir=$(pwd) -u $(id -u) obergixlocal/docker-org-export:latest emacs --batch --load /emacs/export.el --file $2 --eval "($1)"
+docker run --rm -i -t -v $(pwd):$(pwd) --workdir=$(pwd) -u $(id -u) obergixlocal/docker-org-export:latest emacs -nw --load /emacs/export.el --file $2 --eval "($1)" --kill
