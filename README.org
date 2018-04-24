@@ -100,7 +100,8 @@ using as much Web as I could (i.e. HTML).
 * Copyright & license
 
 This content is provided under the clauses of the MIT License, unless
-otherwise specified.
+otherwise specified (in particular, copies of org-reveal and reveal.js
+are provided under their respective terms).
 
 Copyright (c) 2016-2018 Olivier Berger and Institut Mines Telecom
 
