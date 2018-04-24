@@ -19,3 +19,8 @@ slides.pdf: slides.html
 
 README.html:	README.org
 	./docker/docker-org-export org-html-export-to-html $<
+
+org-reveal_Readme.html:	elisp/org-reveal/Readme.org
+	./docker/docker-org-export org-reveal-export-to-html elisp/org-reveal/Readme.org
+	cp elisp/org-reveal/Readme.html org-reveal_Readme.html
+

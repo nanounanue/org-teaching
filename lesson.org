@@ -52,7 +52,7 @@ This is a demo document about the
 =org-teaching=]] framework, which aims at managing teaching material
 using Org-mode.
 
-* Slides                                                         :slidesonly:
+* This is a HTML slides deck                                     :slidesonly:
 #+ATTR_REVEAL: :frag (appear)
 - /You're viewing a [[http://lab.hakim.se/reveal-js/][reveal.js]] Web slides deck. You may press 's' to view presenter notes./
 
@@ -77,7 +77,8 @@ work ;-)
 
 * About this slides deck                                         :slidesonly:
 
-These slides are one variant of the same teaching material, also available [[./handbook.pdf][as a handbook]].
+These slides are one variant of the same teaching material, also
+available [[./handbook.pdf][as a PDF handbook]].
 
 You may prefer to view them in your Web browser in full-screen (=F11=
 for instance). Should =Reveal-JS= fail on displaying slides, an
@@ -88,13 +89,19 @@ you're gonna lose the ability to display speaker notes).
 This section is displayed only in the slides variant, but not in the /handbook/ variant, which contains, in turn, a section that is different.
 #+END_NOTES
 
-* About this handbook                                          :handbookonly:
+* About this PDF handbook                                      :handbookonly:
 
 This PDF handbook is one variant of the same teaching material, also
 available [[./slides.html][as a slides deck]]. Note that the layout is
 formatted as a portrait handbook, including speaker notes.
 
 This section may contain content that is best viewed in (LaTeX) PDF export of org-mode.
+
+** License
+
+The contents of this project is Copyright (c) 2016-2018 Olivier
+Berger - IMT/Télécom SudParis, unless otherwise specified. See the
+[[file:LICENSE]] file for more details.
 
 * Features
 :PROPERTIES:
@@ -115,7 +122,7 @@ From this single source, several documents are generated :
 
 #+REVEAL: split
 
-- optionaly, another *handbook* for the _teaching team_, to provide additional instructions (also a [[file:teacher-handbook.pdf][PDF file]])
+- optionaly, another version of the *handbook* for the _teaching team_, to provide additional instructions (also a [[file:teacher-handbook.pdf][PDF file]])
 
 #+BEGIN_NOTES
 The student handbook's LaTeX formatting has a summarized content table and nice looking (in principle) title page. Customize at will.
@@ -127,12 +134,16 @@ The teachers handbook contains a less nice-looking format, includes a detailed t
 
 Pretty much all features of =reveal.js=, supported by the org-mode reveal.js exporter ([[https://github.com/yjwen/org-reveal/][org-reveal]]), should be supported too.
 
-An example =org-reveal= document is [[./elisp/org-reveal/Readme.html][available here]] for inspiration (it's the export of org-reveal's =README.org=, actually).
+If you're already familiar with reveal.js, you may have noticed that
+the current settings adopted for our slides generation are quite
+frugal: no fancy 3D effects and likes.
+
 
 #+BEGIN_NOTES
-If you're already familiar with reveal.js, you may have noticed that the current settings adopted for our slides generation are quite frugal: no fancy 3D effects and likes.
+It's a matter of taste : I didn't want to show off, and prefer to give
+students a clear content on the projector behind me.
 
-It's a matter of taste : I didn't want to show off, and prefer to give students a clear content on the projector behind me.
+An example =org-reveal= document is [[file:elisp/org-reveal/Readme.html][available here]] for inspiration (it's the export of org-reveal's =README.org=, actually).
 #+END_NOTES
 
 ** Structure of the sections / slides
@@ -477,6 +488,9 @@ I'm quite sure this could be improved.
 - Hakim El Hattab for =reveal.js=
 - My colleagues at Telecom SudParis who had to teach with this tool without much rehersal
 - Our students who endured it for a brand new course (and included bugs)
+- Alexey Lebedeff for his
+  [[https://github.com/binarin/docker-org-export][docker-org-export]]
+  Docker container
 
 ** Feedback
 

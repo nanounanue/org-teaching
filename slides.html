@@ -36,14 +36,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgffed0ea">Introduction</a></li>
-<li><a href="#/slide-org0126790">Slides</a></li>
-<li><a href="#/slide-org395d9a3">Org-mode powa</a></li>
-<li><a href="#/slide-org7cb899d">About this slides deck</a></li>
-<li><a href="#/slide-orga220fe6">Features</a></li>
-<li><a href="#/slide-org9654b4e">Authoring</a></li>
-<li><a href="#/slide-orgf4ad98a">How it works / Installation</a></li>
-<li><a href="#/slide-org111e618">Annex</a></li>
+<li><a href="#/slide-org31c2844">Introduction</a></li>
+<li><a href="#/slide-orgc506b0e">This is a HTML slides deck</a></li>
+<li><a href="#/slide-orgbe23819">Org-mode powa</a></li>
+<li><a href="#/slide-orgd3614aa">About this slides deck</a></li>
+<li><a href="#/slide-orgbc8240c">Features</a></li>
+<li><a href="#/slide-org47ef626">Authoring</a></li>
+<li><a href="#/slide-org2066ae8">How it works / Installation</a></li>
+<li><a href="#/slide-orgeb21726">Annex</a></li>
 </ul>
 </div>
 </div>
@@ -52,8 +52,8 @@
 
 
 <section>
-<section id="slide-orgffed0ea">
-<h2 id="orgffed0ea">Introduction</h2>
+<section id="slide-org31c2844">
+<h2 id="org31c2844">Introduction</h2>
 <p>
 This is a demo document about the
 <a href="http://www-public.tem-tsp.eu/~berger_o/org-teaching/">codename
@@ -64,8 +64,8 @@ using Org-mode.
 </section>
 </section>
 <section>
-<section id="slide-org0126790">
-<h2 id="org0126790">Slides</h2>
+<section id="slide-orgc506b0e">
+<h2 id="orgc506b0e">This is a HTML slides deck</h2>
 <ul>
 <li class="fragment appear"><i>You're viewing a <a href="http://lab.hakim.se/reveal-js/">reveal.js</a> Web slides deck. You may press 's' to view presenter notes.</i></li>
 
@@ -85,8 +85,8 @@ I mention <i>codename</i> <code>org-teaching</code> because it really hasn't yet
 </section>
 </section>
 <section>
-<section id="slide-org395d9a3">
-<h2 id="org395d9a3">Org-mode powa</h2>
+<section id="slide-orgbe23819">
+<h2 id="orgbe23819">Org-mode powa</h2>
 <p>
 Attention, this framework heavily relies on: 
 </p>
@@ -109,10 +109,11 @@ work ;-)
 </section>
 </section>
 <section>
-<section id="slide-org7cb899d">
-<h2 id="org7cb899d">About this slides deck</h2>
+<section id="slide-orgd3614aa">
+<h2 id="orgd3614aa">About this slides deck</h2>
 <p>
-These slides are one variant of the same teaching material, also available <a href="./handbook.pdf">as a handbook</a>.
+These slides are one variant of the same teaching material, also
+available <a href="./handbook.pdf">as a PDF handbook</a>.
 </p>
 
 <p>
@@ -132,13 +133,13 @@ This section is displayed only in the slides variant, but not in the <i>handbook
 </section>
 </section>
 <section>
-<section id="slide-orga220fe6" data-background="#dbdbed" class="center">
-<h2 id="orga220fe6">Features</h2>
+<section id="slide-orgbc8240c" data-background="#dbdbed" class="center">
+<h2 id="orgbc8240c">Features</h2>
 </section>
 </section>
 <section>
-<section id="slide-org1c47cf0">
-<h3 id="org1c47cf0">Writing teaching material in org-mode</h3>
+<section id="slide-orga775f2a">
+<h3 id="orga775f2a">Writing teaching material in org-mode</h3>
 <p>
 The goal is to be able to edit a single file (namely <code>lesson.org</code>)
 which will contain, in a <b>single source</b>, all the content of a lesson,
@@ -159,7 +160,7 @@ handed to the <span class="underline">students</span> for work outside the class
 <section >
 
 <ul>
-<li>optionaly, another <b>handbook</b> for the <span class="underline">teaching team</span>, to provide additional instructions (also a <a href="teacher-handbook.pdf">PDF file</a>)</li>
+<li>optionaly, another version of the <b>handbook</b> for the <span class="underline">teaching team</span>, to provide additional instructions (also a <a href="teacher-handbook.pdf">PDF file</a>)</li>
 
 </ul>
 
@@ -177,23 +178,27 @@ The teachers handbook contains a less nice-looking format, includes a detailed t
 </section>
 </section>
 <section>
-<section id="slide-orgc092860">
-<h3 id="orgc092860">Frugal org-reveal/reveal.js slides</h3>
+<section id="slide-org1cd4ac0">
+<h3 id="org1cd4ac0">Frugal org-reveal/reveal.js slides</h3>
 <p>
 Pretty much all features of <code>reveal.js</code>, supported by the org-mode reveal.js exporter (<a href="https://github.com/yjwen/org-reveal/">org-reveal</a>), should be supported too.
 </p>
 
 <p>
-An example <code>org-reveal</code> document is <a href="./elisp/org-reveal/Readme.html">available here</a> for inspiration (it's the export of org-reveal's <code>README.org</code>, actually).
+If you're already familiar with reveal.js, you may have noticed that
+the current settings adopted for our slides generation are quite
+frugal: no fancy 3D effects and likes.
 </p>
+
 
 <aside class="notes">
 <p>
-If you're already familiar with reveal.js, you may have noticed that the current settings adopted for our slides generation are quite frugal: no fancy 3D effects and likes.
+It's a matter of taste : I didn't want to show off, and prefer to give
+students a clear content on the projector behind me.
 </p>
 
 <p>
-It's a matter of taste : I didn't want to show off, and prefer to give students a clear content on the projector behind me.
+An example <code>org-reveal</code> document is <a href="elisp/org-reveal/Readme.html">available here</a> for inspiration (it's the export of org-reveal's <code>README.org</code>, actually).
 </p>
 
 </aside>
@@ -201,8 +206,8 @@ It's a matter of taste : I didn't want to show off, and prefer to give students 
 </section>
 </section>
 <section>
-<section id="slide-org24a47fe">
-<h3 id="org24a47fe">Structure of the sections / slides</h3>
+<section id="slide-org6085328">
+<h3 id="org6085328">Structure of the sections / slides</h3>
 <p>
 I'm using the 3 levels of outlining / sectioning so that the content can be sectioned in the same way in <code>lesson.org</code> and appear appropriately in the slides and handbook, with these principles:
 </p>
@@ -216,7 +221,7 @@ I'm using the 3 levels of outlining / sectioning so that the content can be sect
 
 <aside class="notes">
 <p>
-The first level outlines can be rendered as a "separating" slides which may get a different <code>reveal_background</code> and <code>class="center"</code> slide layout, but that isn't automatic. See <a href="#/slide-orga7e929d">Section separators</a>.
+The first level outlines can be rendered as a "separating" slides which may get a different <code>reveal_background</code> and <code>class="center"</code> slide layout, but that isn't automatic. See <a href="#/slide-org1c78aab">Section separators</a>.
 </p>
 
 </aside>
@@ -224,8 +229,8 @@ The first level outlines can be rendered as a "separating" slides which may get 
 </section>
 </section>
 <section>
-<section id="slide-org8e32638">
-<h3 id="org8e32638">Presenter notes / content for the handbook</h3>
+<section id="slide-org2666a9d">
+<h3 id="org2666a9d">Presenter notes / content for the handbook</h3>
 <p>
 <a href="https://github.com/yjwen/org-reveal/#speaker-notes">org-reveal's <i>Speaker notes</i></a> may be added to the slides (and will only appear on
 dual-screen presentation after having pressed '<i>s</i>': standard reveal.js
@@ -247,8 +252,8 @@ This is a note
 </section>
 </section>
 <section>
-<section id="slide-org6208bc9">
-<h3 id="org6208bc9">Masking content for some audiences</h3>
+<section id="slide-org80a4483">
+<h3 id="org80a4483">Masking content for some audiences</h3>
 <p>
 I've implemented some "easy ways" to preserve some of the content of the same <code>lesson.org</code> source for certain outputs (using org exporter's standard <code>EXCLUDE_TAGS</code>):
 </p>
@@ -276,8 +281,8 @@ The choice to reveal or not some details to the students is quite arbitrary and 
 </section>
 </section>
 <section>
-<section id="slide-org4fba580">
-<h3 id="org4fba580">Stuff only meant for presentation</h3>
+<section id="slide-org05dfdf1">
+<h3 id="org05dfdf1">Stuff only meant for presentation</h3>
 <p>
 Tagging a section/slide with <code>:slidesonly:</code> means it isn't exported in the handbooks.
 </p>
@@ -287,16 +292,16 @@ Below is an example (or not)&#x2026;
 </p>
 
 </section>
-<section id="slide-org4e6f9c9">
-<h4 id="org4e6f9c9">Regular slide (no tag on heading line)</h4>
+<section id="slide-org01fd787">
+<h4 id="org01fd787">Regular slide (no tag on heading line)</h4>
 <p>
 There should be no "Only in the slides" after this section, in the
 handbooks, as it has been tagged with <code>slidesonly</code>.
 </p>
 
 </section>
-<section id="slide-org4feeaed">
-<h4 id="org4feeaed">Only in the slides</h4>
+<section id="slide-org985b109">
+<h4 id="org985b109">Only in the slides</h4>
 <p>
 On the contrary, in the slides view, this appears, as there's a <code>:slidesonly:</code> tag on the current head line.
 </p>
@@ -304,8 +309,8 @@ On the contrary, in the slides view, this appears, as there's a <code>:slidesonl
 </section>
 </section>
 <section>
-<section id="slide-orge1d8487">
-<h3 id="orge1d8487">Stuff only meant for teachers</h3>
+<section id="slide-org4dac5ed">
+<h3 id="org4dac5ed">Stuff only meant for teachers</h3>
 <p>
 Tagging a section/slide with <code>:teachersonly:</code> means it isn't exported in the students handbook (nor in the slides).
 </p>
@@ -315,8 +320,8 @@ Below is an example&#x2026;
 </p>
 
 </section>
-<section id="slide-orgb165732">
-<h4 id="orgb165732">Regular slide (no tag on heading line)</h4>
+<section id="slide-org0f94b36">
+<h4 id="org0f94b36">Regular slide (no tag on heading line)</h4>
 <p>
 There should be no "Only for teachers" after this section, in the slides or in the
 students handbook, as it has been tagged with <code>teachersonly</code>.
@@ -325,8 +330,8 @@ students handbook, as it has been tagged with <code>teachersonly</code>.
 </section>
 </section>
 <section>
-<section id="slide-orgcb619c3">
-<h3 id="orgcb619c3">Notes only for the teachers</h3>
+<section id="slide-orgffb5b32">
+<h3 id="orgffb5b32">Notes only for the teachers</h3>
 <p>
 This slide/section contains notes, but only part of it is displayed in
 the presentation notes included in the handbook. Special notes and are
@@ -363,8 +368,8 @@ but not the rest.
 </section>
 </section>
 <section>
-<section id="slide-org4e807cb">
-<h3 id="org4e807cb">Stuff only in the handbooks</h3>
+<section id="slide-org65ad626">
+<h3 id="org65ad626">Stuff only in the handbooks</h3>
 <p>
 Just like sections are for slides only, others can be for the handbook
 only, using the <code>handbookonly</code> tag. This may be useful for <b>Annex</b>
@@ -374,8 +379,8 @@ sections for instance, or for stuff that the HTML exporter won't like, with inli
 </section>
 </section>
 <section>
-<section id="slide-org95e089f">
-<h3 id="org95e089f">Code colorization</h3>
+<section id="slide-org3df6f8c">
+<h3 id="org3df6f8c">Code colorization</h3>
 <p>
 Code is colorized / highlighted in the slides :-)
 </p>
@@ -390,13 +395,13 @@ Nice when like me, you're teaching Computer Science stuff
 </section>
 </section>
 <section>
-<section id="slide-org6e51420">
-<h3 id="org6e51420">Misc org-mode</h3>
-<div class="outline-text-3" id="text-org6e51420">
+<section id="slide-org93ea65d">
+<h3 id="org93ea65d">Misc org-mode</h3>
+<div class="outline-text-3" id="text-org93ea65d">
 </div>
 </section>
-<section id="slide-org87b6ace">
-<h4 id="org87b6ace">Babel powa</h4>
+<section id="slide-org9113e87">
+<h4 id="org9113e87">Babel powa</h4>
 <p>
 As you're using org-mode, its <code>babel</code> components are available, to embed source code in the same <code>lesson.org</code> source, and manage executable code and teaching material at once.
 </p>
@@ -406,8 +411,8 @@ Look for <i>literate programing</i> instructions in the <a href="http://orgmode.
 </p>
 
 </section>
-<section id="slide-org47bf788">
-<h4 id="org47bf788">Jumping to slide number</h4>
+<section id="slide-orge562f98">
+<h4 id="orge562f98">Jumping to slide number</h4>
 <p>
 Included is the use of the
 <a href="https://github.com/SethosII/reveal.js-jump-plugin">reveal.js jump
@@ -418,8 +423,8 @@ and hitting RETURN. Quite handy while writing and testing slides.
 </section>
 </section>
 <section>
-<section id="slide-orga804a1a">
-<h3 id="orga804a1a">Missing features ?</h3>
+<section id="slide-org824ca15">
+<h3 id="org824ca15">Missing features ?</h3>
 <p>
 Please try and talk to me to suggest new stuff and/or provide patches ;)
 </p>
@@ -434,13 +439,13 @@ See the teacher's handbook for some ideas
 </section>
 </section>
 <section>
-<section id="slide-org9654b4e" data-background="#dbdbed" class="center">
-<h2 id="org9654b4e">Authoring</h2>
+<section id="slide-org47ef626" data-background="#dbdbed" class="center">
+<h2 id="org47ef626">Authoring</h2>
 </section>
 </section>
 <section>
-<section id="slide-orgc257d5d">
-<h3 id="orgc257d5d">Modify only the lesson.org</h3>
+<section id="slide-org2af743b">
+<h3 id="org2af743b">Modify only the lesson.org</h3>
 <p>
 <b>Only one file should be edited for writing the lesson's material : <code>lesson.org</code></b>
 </p>
@@ -453,8 +458,8 @@ and other bits that shouldn't change much in time (see next section).
 </section>
 </section>
 <section>
-<section id="slide-org5215407">
-<h3 id="org5215407">Use Emacs org-mode exporters or the Docker container</h3>
+<section id="slide-org736956d">
+<h3 id="org736956d">Use Emacs org-mode exporters or the Docker container</h3>
 <p>
 You have 2 options to generate the different formats:
 </p>
@@ -476,8 +481,8 @@ rely on the original org-reveal only, as much as possible.
 </section>
 </section>
 <section>
-<section id="slide-orgf1225d7">
-<h3 id="orgf1225d7">Use docker</h3>
+<section id="slide-orgb005ba0">
+<h3 id="orgb005ba0">Use docker</h3>
 <p>
 You may use the <code>olberger/docker-org-export</code> docker container image
 I've prepared, to make org-mode exports. Or you may rebuild it
@@ -485,8 +490,8 @@ yourself (see below).
 </p>
 
 </section>
-<section id="slide-orgaa742aa">
-<h4 id="orgaa742aa">Build the Docker container image</h4>
+<section id="slide-org6c32d41">
+<h4 id="org6c32d41">Build the Docker container image</h4>
 <p>
 This is recommended to avoid man in the middle, IMHO:
 </p>
@@ -499,8 +504,8 @@ docker build -t obergixlocal/docker-org-export .
 </div>
 
 </section>
-<section id="slide-org841341f">
-<h4 id="org841341f">Run the container</h4>
+<section id="slide-org8b2a9d3">
+<h4 id="org8b2a9d3">Run the container</h4>
 <p>
 Use the provided <code>docker/docker-org-export</code> script, which relies on
 the <code>olberger/docker-org-export</code> container image. See how <a href="Makefile">Makefile</a> does it.
@@ -509,8 +514,8 @@ the <code>olberger/docker-org-export</code> container image. See how <a href="Ma
 </section>
 </section>
 <section>
-<section id="slide-orgd74fead">
-<h3 id="orgd74fead">Configuration</h3>
+<section id="slide-org618d9c6">
+<h3 id="org618d9c6">Configuration</h3>
 <p>
 Each <code>lesson.org</code> needs some configuration :
 </p>
@@ -545,8 +550,8 @@ far. Improvements much welcome.
 </section>
 </section>
 <section>
-<section id="slide-org857df52">
-<h3 id="org857df52">Generating final documents</h3>
+<section id="slide-org9dd1049">
+<h3 id="org9dd1049">Generating final documents</h3>
 <p>
 We're using the standard exporters so each output format will be exported from its corresponding umbrella <code>.org</code> source :
 </p>
@@ -562,10 +567,10 @@ We're using the standard exporters so each output format will be exported from i
 </dl>
 
 </section>
-<section id="slide-orgb7cc3d6">
-<h4 id="orgb7cc3d6">Exporting slides to HTML with org-reveal</h4>
+<section id="slide-orgfa44147">
+<h4 id="orgfa44147">Exporting slides to HTML with org-reveal</h4>
 <p>
-Depending on how you installed org-reveal (<a href="#/slide-org094fae1">Git submodules</a> or otherwise), <code>org-reveal</code> may already be available.
+Depending on how you installed org-reveal (<a href="#/slide-orgbb3c9da">Git submodules</a> or otherwise), <code>org-reveal</code> may already be available.
 </p>
 
 <p>
@@ -580,8 +585,8 @@ I'm not sure which solution is better : org-reveal from Git (hence the Git submo
 </aside>
 
 </section>
-<section id="slide-org5b17617">
-<h4 id="org5b17617">Printing slides</h4>
+<section id="slide-org2f97871">
+<h4 id="org2f97871">Printing slides</h4>
 <p>
 I've tested <a href="https://github.com/astefanutti/decktape">DeckTape</a> using a Docker container containing <code>PhantomJS</code> and
 <code>decktape</code> to convert the slides to a <a href="slides.pdf">single PDF document</a>.
@@ -606,19 +611,19 @@ Dockerfile</a>, rebuilding with something alongside:
 </section>
 </section>
 <section>
-<section id="slide-orge3c9189">
-<h3 id="orge3c9189">Known Issues</h3>
-<div class="outline-text-3" id="text-orge3c9189">
+<section id="slide-org1073f07">
+<h3 id="org1073f07">Known Issues</h3>
+<div class="outline-text-3" id="text-org1073f07">
 </div>
 </section>
-<section id="slide-orgd3ba9bd">
-<h4 id="orgd3ba9bd">Firefox issues ?</h4>
+<section id="slide-org6f84cfa">
+<h4 id="org6f84cfa">Firefox issues ?</h4>
 <p>
 We have experienced issues with presentations made on some versions of Firefox, which are known by reveal.js maintainer&#x2026; maybe best viewed in chrome.
 </p>
 
 <p>
-You may prefer to have a PDF variant of the slides (see <a href="#/slide-org5b17617">Printing slides</a>) in case.
+You may prefer to have a PDF variant of the slides (see <a href="#/slide-org2f97871">Printing slides</a>) in case.
 </p>
 
 
@@ -626,13 +631,13 @@ You may prefer to have a PDF variant of the slides (see <a href="#/slide-org5b17
 </section>
 </section>
 <section>
-<section id="slide-orgf4ad98a" data-background="#dbdbed" class="center">
-<h2 id="orgf4ad98a">How it works / Installation</h2>
+<section id="slide-org2066ae8" data-background="#dbdbed" class="center">
+<h2 id="org2066ae8">How it works / Installation</h2>
 </section>
 </section>
 <section>
-<section id="slide-org2fdb694">
-<h3 id="org2fdb694">Use the source (Luke)</h3>
+<section id="slide-org1d946eb">
+<h3 id="org1d946eb">Use the source (Luke)</h3>
 <p>
 See the contents of the files&#x2026; but be wary that it's sometimes messy and incrementally obtained.
 </p>
@@ -646,8 +651,8 @@ Git clone from <code>https://gitlab.com/olberger/org-teaching.git</code> (see th
 </p>
 
 </section>
-<section id="slide-org094fae1">
-<h4 id="org094fae1">Git submodules</h4>
+<section id="slide-orgbb3c9da">
+<h4 id="orgbb3c9da">Git submodules</h4>
 <p>
 The repository contains Git submodules for :
 </p>
@@ -681,13 +686,13 @@ Refer to <a href="https://github.com/yjwen/org-reveal/#requirements-and-installa
 </section>
 </section>
 <section>
-<section id="slide-orga4e7299">
-<h3 id="orga4e7299">Customize slides appearance</h3>
-<div class="outline-text-3" id="text-orga4e7299">
+<section id="slide-orgd1250d5">
+<h3 id="orgd1250d5">Customize slides appearance</h3>
+<div class="outline-text-3" id="text-orgd1250d5">
 </div>
 </section>
-<section id="slide-orgce01ea4">
-<h4 id="orgce01ea4">Reveal.js settings</h4>
+<section id="slide-org332dd70">
+<h4 id="org332dd70">Reveal.js settings</h4>
 <p>
 See the org-reveal settings set in the sources and the docs for a detailed explanation.
 </p>
@@ -712,8 +717,8 @@ powerpoint or beamer (?) could look like :
 </div>
 
 </section>
-<section id="slide-orga7e929d">
-<h4 id="orga7e929d">Section separators</h4>
+<section id="slide-org1c78aab">
+<h4 id="org1c78aab">Section separators</h4>
 <p>
 The highest level sections include the following properties below the heading line, to customize the look of the slide. 
 </p>
@@ -732,8 +737,8 @@ This is intended to provide some visual sense of the transitions between section
 </p>
 
 </section>
-<section id="slide-orga1a9a04">
-<h4 id="orga1a9a04">Title screen picture (logos, etc.)</h4>
+<section id="slide-orgffb2f19">
+<h4 id="orgffb2f19">Title screen picture (logos, etc.)</h4>
 <p>
 I'm not yet sure how much may be achieved with HTML and CSS for the
 title page of the slides deck, so I've relied on the embedding of a
@@ -754,29 +759,32 @@ I'm quite sure this could be improved.
 </section>
 </section>
 <section>
-<section id="slide-org111e618">
-<h2 id="org111e618">Annex</h2>
-<div class="outline-text-2" id="text-org111e618">
+<section id="slide-orgeb21726">
+<h2 id="orgeb21726">Annex</h2>
+<div class="outline-text-2" id="text-orgeb21726">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgcdb3942">
-<h3 id="orgcdb3942">Thanks</h3>
+<section id="slide-orgc697d44">
+<h3 id="orgc697d44">Thanks</h3>
 <ul>
 <li>All contributors to org-mode (special kudos to Carsten Dominik and Bastien Guerry)</li>
 <li>Yujie Wen for <code>org-reveal</code></li>
 <li>Hakim El Hattab for <code>reveal.js</code></li>
 <li>My colleagues at Telecom SudParis who had to teach with this tool without much rehersal</li>
 <li>Our students who endured it for a brand new course (and included bugs)</li>
+<li>Alexey Lebedeff for his
+<a href="https://github.com/binarin/docker-org-export">docker-org-export</a>
+Docker container</li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-orgdddecb0">
-<h3 id="orgdddecb0">Feedback</h3>
+<section id="slide-org0705b43">
+<h3 id="org0705b43">Feedback</h3>
 <p>
 I may be contacted from <a href="http://www-public.tem-tsp.eu/~berger_o/#sec-3">my Web page</a> or via <a href="https://gitlab.com/olberger/org-teaching">the Gitlab project</a>.
 </p>

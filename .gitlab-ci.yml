@@ -7,6 +7,7 @@ pages:
   script:
   - mkdir .public
   - cp -r * .public
+  - mv .public/org-reveal_Readme.html .public/elisp/org-reveal/Readme.html
   - mv .public public
   artifacts:
     paths:
