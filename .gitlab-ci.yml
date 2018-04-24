@@ -8,6 +8,7 @@ pages:
   - mkdir .public
   - cp -r * .public
   - mv .public/org-reveal_Readme.html .public/elisp/org-reveal/Readme.html
+  - cp -r .public/reveal.js .public/elisp/org-reveal/
   - mv .public public
   artifacts:
     paths:
