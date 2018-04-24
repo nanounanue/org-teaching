@@ -1,23 +1,32 @@
-# This document is meant to be converted to HTML for reveal.js.
+# - This document is meant to be converted to HTML for reveal.js and not
+# - to write the actual slides (see [[lesson.org]] instead).
 
-# It requires the use of the org-mode exporter for reveal:
+# - It requires the use of the org-reveal exporter for reveal.js:
 
-# made with https://github.com/hakimel/reveal.js/archive/3.3.0.tar.gz
+# Manual install of org-reveal :
+# Use with https://github.com/hakimel/reveal.js/archive/3.3.0.tar.gz
 # and git clone https://github.com/yjwen/org-reveal.git
 # 
 # M-x load-file : elisp/org-reveal/ox-reveal.el
 
-# Then export to HTML viewed in the Web browser: C-c C-e R B
+
+# - Export to HTML viewed in the Web browser: C-c C-e R B
 
 # For printing to PDF : https://github.com/hakimel/reveal.js#pdf-export
 
-# See also [[./handbook.org]] for a PDF version as a handbook
+# - See also [[./handbook.org]] for a PDF version as a handbook
+
+
+# - Customize specific slides org-mode settings if needed :
 
 #+EXCLUDE_TAGS: handbookonly teachersonly noexport
 
 #+OPTIONS: d:(not "TEACHERSONLY")
 
 #+OPTIONS: num:nil toc:1
+
+
+# - Main content included here:
 
 #+INCLUDE: lesson.org :minlevel 1
 

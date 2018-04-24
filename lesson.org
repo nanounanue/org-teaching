@@ -1,9 +1,17 @@
 
-# Main lesson contents file. Course writing happens here. Please edit
-# at will
+# - Main "org-teaching" example lesson contents file. 
 
-# See [[./handbook.org]] or [[./slides.org]], resp for the handbook
-# for students or the slides for presentation in the classroom.
+# - Course writing happens here. 
+# - Please edit at will with org-mode (in Emacs, see http://orgmode.org/)
+
+# - Load [[./handbook.org]] or [[./slides.org]] for generating final
+# - documents, resp. for the students handbook or the slides for
+# - presentation in the classroom.
+
+# ----------
+# Contents of this file is Copyright (c) 2016-2018 Olivier Berger - IMT/Télécom SudParis, 
+# and subject of the terms of the [[file:LICENCE]] file.
+# ----------
 
 #+TITLE: How to teach using org-mode for fun and profit
 #+DESCRIPTION: Olivier Berger's org-mode framework for teaching
@@ -19,6 +27,8 @@
 # #+REVEAL_HEAD_PREAMBLE: /*]]>*/-->
 # #+REVEAL_HEAD_PREAMBLE: </style>
 
+
+# - Customize at will these org-reveal params:
 
 #+REVEAL_HLEVEL: 2
 # +REVEAL_THEME: league
@@ -36,21 +46,25 @@
 #+OPTIONS: reveal_center:nil 
 # + OPTIONS: reveal_title_slide:<h1>%s</h1>
 
+
+# - Customize standard common org-mode headers (but you may check those in slides.org or handout.org instead)
+
 #+OPTIONS: tags:nil ^:nil
 
 #+LANGUAGE: en
 
 
-#+REVEAL_HEAD_PREAMBLE: <meta name="copyright" content="Teaching with org-mode / org-reveal for fun and profit -- Olivier Berger  -- 2016" />
+# - Customize HTML headers
 
+#+REVEAL_HEAD_PREAMBLE: <meta name="copyright" content="Teaching with org-mode / org-reveal for fun and profit -- Olivier Berger  -- 2016-2018" />
 
+# - Content here:
 
 * Introduction
 
 This is a demo document about the
-[[http://www-public.tem-tsp.eu/~berger_o/org-teaching/][codename
-=org-teaching=]] framework, which aims at managing teaching material
-using Org-mode.
+[[http://www-public.tem-tsp.eu/~berger_o/org-teaching/][codename =org-teaching=]] 
+framework, which aims at managing teaching material using Org-mode.
 
 * This is a HTML slides deck                                     :slidesonly:
 #+ATTR_REVEAL: :frag (appear)
@@ -93,7 +107,8 @@ This section is displayed only in the slides variant, but not in the /handbook/ 
 
 This PDF handbook is one variant of the same teaching material, also
 available [[./slides.html][as a slides deck]]. Note that the layout is
-formatted as a portrait handbook, including speaker notes.
+formatted as a portrait handbook, including the content placed in the
+speaker notes of slides[fn:1].
 
 This section may contain content that is best viewed in (LaTeX) PDF export of org-mode.
 
@@ -108,6 +123,8 @@ Berger - IMT/Télécom SudParis, unless otherwise specified. See the
 :REVEAL_EXTRA_ATTR: class="center"
 :reveal_background: #dbdbed
 :END:
+
+# Note the properties of this section title page for slides : different layout of the slide
 
 ** Writing teaching material in org-mode
 
@@ -166,11 +183,27 @@ feature).
 
 They will be masked for the audience, but will, by default, appear in the handbook given to the students.
 
+The syntax in the org-mode source is:
 #+BEGIN_SRC org
   ,#+BEGIN_NOTES
   This is a note
   ,#+END_NOTES
 #+END_SRC
+
+#+BEGIN_NOTES
+This is a note
+#+END_NOTES
+
+*** Usage                                                    :handbookonly:
+
+I've adopted this principle of exporting everything in the speaker
+notes to the students handbook, but YMMV. I'm not even sure this makes
+a lot of sense on a pedagogical ground.
+
+In case you're not completely satisfied, this could be modified by
+hacking the way the LaTeX PDF export works.
+
+An alternative is to use maked sections (see next section).
 
 ** Masking content for some audiences
 
@@ -257,6 +290,10 @@ Code is colorized / highlighted in the slides :-)
 
 #+BEGIN_NOTES
 Nice when like me, you're teaching Computer Science stuff
+
+Depending of whether you export from Emacs (in X, with a particular
+theme,...) or with the Docker container, you'd get different results,
+which depend on how htmlize is used, AFAIU.
 #+END_NOTES
 
 ** Misc org-mode
@@ -302,13 +339,24 @@ See the teacher's handbook for some ideas
 *Only one file should be edited for writing the lesson's material : =lesson.org=*
 
 Only exception is modification of some configurations for title pages
-and other bits that shouldn't change much in time (see next section).
+and other bits that shouldn't change much in time (see section [[*Configuration of layout][Configuration of layout]]).
 
 ** Use Emacs org-mode exporters or the Docker container
 
 You have 2 options to generate the different formats:
-- either manualy use org-mode exporters from inside Emacs
+- either manualy use the standard org-mode exporters from inside Emacs
 - or use the Docker container for automation / reproducibility
+
+** Manual export for final documents
+
+We're using the standard exporters so each output format will be exported from its corresponding umbrella =.org= source.
+
+#+REVEAL: split
+Open the corresponding org-mode source and export :
+
+- slides :: open =slides.org=, then =C-c C-e R ...= for =org-reveal= export (to =slides.html=), provided that you have loaded org-reveal in Emacs
+- handbook :: open =handbook.org=, then =C-c C-e l ...= for LaTeX export (to =handbook.pdf=)
+- teacher handbook :: open =teacher-handbook.org=, then =C-c C-e l ...= for LaTeX export (to =teacher-handbook.pdf=)
 
 #+BEGIN_NOTES
 You're welcome to suggest improvements. But I'm not an Elisp hacker,
@@ -316,7 +364,17 @@ so I may not be able to maintain them. At the moment, the intent is to
 rely on the original org-reveal only, as much as possible.
 #+END_NOTES
 
-** Use docker
+*** Exporting slides to HTML with org-reveal
+
+Depending on how you installed org-reveal ([[*Git submodules][Git submodules]] or otherwise), =org-reveal= may already be available.
+
+If not yet, load it with =M-x load-file= from the location of its Git submodule (=elisp/org-reveal/ox-reveal.el= by default).
+
+#+BEGIN_NOTES
+I'm not sure which solution is better : org-reveal from Git (hence the Git submodule) or from an Emacs package. Please report.
+#+END_NOTES
+
+** Use the docker container exporter
 
 You may use the =olberger/docker-org-export= docker container image
 I've prepared, to make org-mode exports. Or you may rebuild it
@@ -336,7 +394,7 @@ docker build -t obergixlocal/docker-org-export .
 Use the provided =docker/docker-org-export= script, which relies on
 the =olberger/docker-org-export= container image. See how [[file:Makefile]] does it.
 
-** Configuration
+** Configuration of layout
 
 Each =lesson.org= needs some configuration :
 - Configure =org-reveal-title-slide= in =slides.org=.
@@ -354,27 +412,8 @@ my lack of knowledge/time have prevented a better result so
 far. Improvements much welcome.
 #+END_NOTES
 
-** Generating final documents
 
-We're using the standard exporters so each output format will be exported from its corresponding umbrella =.org= source :
-
-#+REVEAL: split
-
-- slides :: open =slides.org=, then =C-c C-e R ...= for =org-reveal= export (to =slides.html=), provided that you have loaded org-reveal in Emacs
-- handbook :: open =handbook.org=, then =C-c C-e l ...= for LaTeX export (to =handbook.pdf=)
-- teacher handbook :: open =teacher-handbook.org=, then =C-c C-e l ...= for LaTeX export (to =teacher-handbook.pdf=)
-
-*** Exporting slides to HTML with org-reveal
-
-Depending on how you installed org-reveal ([[*Git submodules][Git submodules]] or otherwise), =org-reveal= may already be available.
-
-If not yet, load it with =M-x load-file= from the location of its Git submodule (=elisp/org-reveal/ox-reveal.el= by default).
-
-#+BEGIN_NOTES
-I'm not sure which solution is better : org-reveal from Git (hence the Git submodule) or from an Emacs package. Please report.
-#+END_NOTES
-
-*** Printing slides
+** Printing slides
 
 I've tested [[https://github.com/astefanutti/decktape][DeckTape]] using a Docker container containing =PhantomJS= and
 =decktape= to convert the slides to a [[file:slides.pdf][single PDF document]].
@@ -506,6 +545,10 @@ Created and used for 2 editions of teaching "Web Architecture and Applications" 
 
 
 * COMMENT Footer 
+
+* Footnotes
+
+[fn:1] the greyed box in the previous section is an example.
 
 # Local Variables:
 # org-image-actual-width: nil

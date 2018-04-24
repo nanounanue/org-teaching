@@ -1,13 +1,16 @@
-# This document is meant to be converted to PDF via the LateX exporter
-# of org-mode, to generate a handbook for the students.
+# - This document is meant to be converted to PDF via the LateX exporter
+# - of org-mode, to generate a handbook for the students.
 
-# This document shouldn't need to be edited in most cases.
+# - This document shouldn't need to be edited in most cases (see
+# - [[lesson.org]] instead).
 
-# See also [[./slides.org]] for the version for presentation in the classroom
-# and [[./teacher-handbook.org]] for the version of the handbook
-# provided to the teachers
+# - See also [[./slides.org]] for the version for presentation in the
+# - classroom and [[./teacher-handbook.org]] for the version of the
+# - handbook provided to the teachers
 
-# Export the PDF via C-c C-e l o
+# - Export the PDF via C-c C-e l o
+
+# - Customize specific org-mode settings for the handbook only if needed :
 
 # I've found this hack to manage the generation of a new title
 # page including the lesson's title... maybe that can be improved
@@ -31,6 +34,8 @@
 
 #+LaTeX_HEADER: \rhead{Example lesson}
 
+
+# - Main content included here:
 
 #+INCLUDE: lesson.org :minlevel 1
 

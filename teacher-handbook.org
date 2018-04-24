@@ -1,13 +1,17 @@
-# This document is meant to be converted to PDF via the LateX exporter
-# of org-mode, to generate an augmented handbook for the teachers.
+# - This document is meant to be converted to PDF via the LateX
+# - exporter of org-mode, to generate an augmented handbook for the
+# - teachers.
 
-# This document shouldn't need to be edited in most cases.
+# - This document shouldn't need to be edited in most cases (see
+# - [[lesson.org]] instead).
 
-# See also [[./slides.org]] for the version for presentation in the classroom
-# and [[./handbook.org]] for the version of the handbook
-# provided to the students
+# - See also [[./slides.org]] for the version for presentation in the
+# - classroom and [[./handbook.org]] for the version of the handbook
+# - provided to the students
 
-# Export the PDF via C-c C-e l o
+# - Export the PDF via C-c C-e l o
+
+# - Customize specific org-mode settings for the handbook only if needed :
 
 #+EXCLUDE_TAGS: slidesonly noexport
 
@@ -31,5 +35,7 @@
 This document is meant to be read only by the teachers
 \end{shaded}
 #+END_ABSTRACT
+
+# - Main content included here:
 
 #+INCLUDE: lesson.org :minlevel 1
