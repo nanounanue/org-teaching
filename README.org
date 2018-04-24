@@ -1,6 +1,6 @@
 #+TITLE: Supporting management of teaching material with org-mode
 
-/This file is =README.org= and is best viewed in org-mode in Emacs... go git clone ;-)/
+This file is =README.org= and is best viewed in org-mode in Emacs... go git clone, or [[https://olberger.gitlab.io/README.html][read it online]] ;-)
 
 * Goal
 
@@ -13,7 +13,7 @@ It uses [[https://github.com/yjwen/org-reveal/][org-reveal]] in addition to the 
 
 The project sources are available in [[https://gitlab.com/olberger/org-teaching]]
 
-See the generated documents at the Gitlab pages (generated from CI) :
+See the generated documents at the [[https://olberger.gitlab.io/][Gitlab pages]] (generated from CI) :
 - [[https://olberger.gitlab.io/org-teaching/slides.html][slides version]]
 - [[https://olberger.gitlab.io/org-teaching/handbook.pdf][student handbook version]]
 - [[https://olberger.gitlab.io/org-teaching/teacher-handbook.pdf][teacher handbook version]]
