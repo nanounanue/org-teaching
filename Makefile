@@ -3,7 +3,7 @@ DECKTAPESHCMD=bin/decktape.sh
 DECKTAPESHOPTS=
 
 
-all: slides.html slides.pdf handbook.pdf teacher-handbook.pdf
+all: slides.html slides.pdf handbook.pdf teacher-handbook.pdf README.html
 
 slides.html:	slides.org lesson.org
 	./docker/docker-org-export org-reveal-export-to-html slides.org
@@ -16,3 +16,6 @@ teacher-handbook.pdf: teacher-handbook.org lesson.org
 
 slides.pdf: slides.html
 	$(DECKTAPESHCMD) $(DECKTAPESHOPTS) slides.html slides.pdf
+
+README.html:	README.org
+	./docker/docker-org-export org-html-export-to-html $<
