@@ -1,6 +1,6 @@
 #+TITLE: Supporting management of teaching material with org-mode
 
-This file is =README.org= and is best viewed in org-mode in Emacs... go git clone, or [[https://olberger.gitlab.io/README.html][read it online]] ;-)
+This file is =README.org= and is best viewed in org-mode in Emacs... go git clone, or [[https://olberger.gitlab.io/org-teaching/README.html][read it online]] ;-)
 
 * Goal
 
