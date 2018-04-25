@@ -58,7 +58,7 @@ documentation from its source, drinking its own champaign.
 
 It uses the tools from the [[file:docker/]] subdir for the Docker
 container powering the org-mode exporters (see docs at
-https://gitlab.com/olberger/docker-org-teaching-export/).
+[[https://gitlab.com/olberger/docker-org-teaching-export/]]).
 
 In order to use it, pay attention to the
 [[https://git-scm.com/book/en/v2/Git-Tools-Submodules][git
