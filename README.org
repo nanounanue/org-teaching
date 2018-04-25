@@ -18,10 +18,10 @@ The project sources are available in
 [[https://gitlab.com/olberger/org-teaching]].
 
 See its generated documentation at the
-[[https://olberger.gitlab.io/][Gitlab pages]]:
-- [[https://olberger.gitlab.io/org-teaching/slides.html][slides version]]
-- [[https://olberger.gitlab.io/org-teaching/handbook.pdf][student handbook version]]
-- [[https://olberger.gitlab.io/org-teaching/teacher-handbook.pdf][teacher handbook version]]
+[[https://olberger.gitlab.io/][Gitlab pages]], either:
+- as [[https://olberger.gitlab.io/org-teaching/slides.html][a slides deck]],
+- or a printable A4 [[https://olberger.gitlab.io/org-teaching/handbook.pdf][PDF handbook]] variant of the above (including presenter notes),
+- or a printable [[https://olberger.gitlab.io/org-teaching/teacher-handbook.pdf][PDF handbook]] enhanced with remarks for the advanced users
 
 These documentes serve as an example of its use, in addition of the
 frameworks' documentation.
@@ -31,7 +31,7 @@ frameworks' documentation.
 
 * Testing it
 
-** Documentation
+** Documentation and example teaching materials
 Read the documentation first. See the contents of the provided HTML
 and PDF files, or directly =lesson.org= under Emacs, equipped
 with org-mode (org-mode should be there by default in recent Emacs
