@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-04-24 Tue 11:36 -->
+<!-- 2018-04-25 Wed 11:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Supporting management of teaching material with org-mode</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="unknown" />
+<meta name="author" content="Olivier Berger" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -234,19 +234,24 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org67a1e84">1. Goal</a></li>
-<li><a href="#org10fc505">2. Home of the project</a></li>
-<li><a href="#orgdc8c895">3. Testing it</a></li>
-<li><a href="#orgb0ac875">4. Features</a>
+<li><a href="#org0df7019">1. Goal</a></li>
+<li><a href="#org8ca6046">2. Home of the project</a></li>
+<li><a href="#org479deb1">3. Testing it</a>
 <ul>
-<li><a href="#org80e1307">4.1. Single source</a></li>
-<li><a href="#orgf0e984e">4.2. Teaching to the audience with a slides deck</a></li>
-<li><a href="#orgc9674f4">4.3. Providing a reference handbook to students</a></li>
-<li><a href="#org0594d4b">4.4. Providing additional material to teachers</a></li>
+<li><a href="#org872e9a7">3.1. Documentation</a></li>
+<li><a href="#orgb1ab210">3.2. Rebuilding the docs</a></li>
 </ul>
 </li>
-<li><a href="#org2709f3b">5. History</a></li>
-<li><a href="#orgd43d4cb">6. Copyright &amp; license</a></li>
+<li><a href="#org7f0ce08">4. Features</a>
+<ul>
+<li><a href="#orgcbd6ec8">4.1. Single source</a></li>
+<li><a href="#org4b265e0">4.2. Teaching to the audience with a slides deck</a></li>
+<li><a href="#org8fbd4de">4.3. Providing a reference handbook to students</a></li>
+<li><a href="#org9e54f33">4.4. Providing additional material to teachers</a></li>
+</ul>
+</li>
+<li><a href="#org2206877">5. History</a></li>
+<li><a href="#org9c3d5b5">6. Copyright &amp; license</a></li>
 </ul>
 </div>
 </div>
@@ -254,29 +259,33 @@ for the JavaScript code in this tag.
 This file is <code>README.org</code> and is best viewed in org-mode in Emacs&#x2026; go git clone, or <a href="https://olberger.gitlab.io/org-teaching/README.html">read it online</a> ;-)
 </p>
 
-<div id="outline-container-org67a1e84" class="outline-2">
-<h2 id="org67a1e84"><span class="section-number-2">1</span> Goal</h2>
+<div id="outline-container-org0df7019" class="outline-2">
+<h2 id="org0df7019"><span class="section-number-2">1</span> Goal</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This repository contains an example of how to manage some source files
-of teaching material, using <a href="http://orgmode.org/">org-mode</a> in Emacs.
+of teaching material, using <a href="http://orgmode.org/">org-mode</a> in
+Emacs.
 </p>
 
 <p>
-It uses <a href="https://github.com/yjwen/org-reveal/">org-reveal</a> in addition to the standard LaTeX exporter.
+It uses <a href="https://github.com/yjwen/org-reveal/">org-reveal</a> in
+addition to the standard LaTeX exporter.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org10fc505" class="outline-2">
-<h2 id="org10fc505"><span class="section-number-2">2</span> Home of the project</h2>
+<div id="outline-container-org8ca6046" class="outline-2">
+<h2 id="org8ca6046"><span class="section-number-2">2</span> Home of the project</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-The project sources are available in <a href="https://gitlab.com/olberger/org-teaching">https://gitlab.com/olberger/org-teaching</a>
+The project sources are available in
+<a href="https://gitlab.com/olberger/org-teaching">https://gitlab.com/olberger/org-teaching</a>.
 </p>
 
 <p>
-See the generated documents at the <a href="https://olberger.gitlab.io/">Gitlab pages</a> (generated from CI) :
+See its generated documentation at the
+<a href="https://olberger.gitlab.io/">Gitlab pages</a>:
 </p>
 <ul class="org-ul">
 <li><a href="https://olberger.gitlab.io/org-teaching/slides.html">slides version</a></li>
@@ -285,64 +294,100 @@ See the generated documents at the <a href="https://olberger.gitlab.io/">Gitlab 
 </ul>
 
 <p>
-<del>A more or less up to date snapshot may be found at <a href="http://www-public.tem-tsp.eu/~berger_o/org-teaching/slides.html">http://www-public.tem-tsp.eu/~berger<sub>o</sub>/org-teaching/</a></del>
+These documentes serve as an example of its use, in addition of the
+frameworks' documentation.
+</p>
+
+<p>
+<del>A more or less up to date snapshot may be found at
+<a href="http://www-public.tem-tsp.eu/~berger_o/org-teaching/slides.html">http://www-public.tem-tsp.eu/~berger<sub>o</sub>/org-teaching/</a></del>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgdc8c895" class="outline-2">
-<h2 id="orgdc8c895"><span class="section-number-2">3</span> Testing it</h2>
+<div id="outline-container-org479deb1" class="outline-2">
+<h2 id="org479deb1"><span class="section-number-2">3</span> Testing it</h2>
 <div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org872e9a7" class="outline-3">
+<h3 id="org872e9a7"><span class="section-number-3">3.1</span> Documentation</h3>
+<div class="outline-text-3" id="text-3-1">
 <p>
-See the contents of the files under Emacs, equipped with org-mode.
+Read the documentation first. See the contents of the provided HTML
+and PDF files, or directly <code>lesson.org</code> under Emacs, equipped
+with org-mode (org-mode should be there by default in recent Emacs
+distributions).
 </p>
 
 <p>
-Checkout the <a href="docker/">docker/</a> tools which should allow reproducible
-exports (including org-reveal).
-</p>
-
-<p>
-Pay attention to the <a href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">git submodules</a> contents to retrieve <a href="elisp/org-reveal">elisp/org-reveal</a> and
-<a href="reveal.js">reveal.js</a>.
-</p>
-
-<p>
-Then, RTFM in the following documents:
-</p>
-
-<p>
-See the generated files (<i>note that these links may be best viewed in Emacs from a local clone of the Git repo, as Gitlab may not provide the best experience</i>):
+These files represent the standard set of teaching materials in
+<i>org-teaching</i>, used for documenting the project, and as an example
+(<i>note that these links may be best viewed in Emacs from a local clone
+of the Git repo, as Gitlab may not provide the best experience</i>):
 </p>
 <ul class="org-ul">
-<li>slides in: <a href="./slides.html">./slides.html</a> (an additional variant is a regular
+<li><b>slides</b> in: <a href="./slides.html">./slides.html</a> (an additional variant is a regular
 HTML export in <a href="./lesson.html">./lesson.html</a>; another is <a href="./slides.pdf">"printed slides" in PDF</a>)</li>
-<li>the handbook for the students: <a href="./handbook.pdf">./handbook.pdf</a></li>
-<li>the handbook for the teachers: <a href="./teacher-handbook.pdf">./teacher-handbook.pdf</a></li>
+<li>the <b>handbook for the students</b>: <a href="./handbook.pdf">./handbook.pdf</a></li>
+<li>the <b>handbook for the teachers</b>: <a href="./teacher-handbook.pdf">./teacher-handbook.pdf</a>
+(this one has more details for this <i>org-teaching</i> documentation)</li>
 </ul>
 
 <p>
 All these are generated from the corresponding <code>.org</code> files, which all
-include the common lesson content from <a href="./lesson.html">./lesson.html</a>
+include the common lesson content from <code>lesson.org</code>. You may
+prefer to read this file directly with Emacs.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb0ac875" class="outline-2">
-<h2 id="orgb0ac875"><span class="section-number-2">4</span> Features</h2>
+<div id="outline-container-orgb1ab210" class="outline-3">
+<h3 id="orgb1ab210"><span class="section-number-3">3.2</span> Rebuilding the docs</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+The provided <a href="Makefile">Makefile</a> can be used to regenerate the
+documentation from its source, drinking its own champaign.
+</p>
+
+<p>
+It uses the tools from the <a href="docker/">docker/</a> subdir for the Docker
+container powering the org-mode exporters (see docs at
+<a href="https://gitlab.com/olberger/docker-org-teaching-export/">https://gitlab.com/olberger/docker-org-teaching-export/</a>).
+</p>
+
+<p>
+In order to use it, pay attention to the
+<a href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">git
+submodules</a> that need to be retrieved : <a href="elisp/org-reveal">elisp/org-reveal</a>,
+<a href="reveal.js">reveal.js</a> and <a href="docker/">docker/</a>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">git submodule init
+git submodule update
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org7f0ce08" class="outline-2">
+<h2 id="org7f0ce08"><span class="section-number-2">4</span> Features</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 The following features are provided:
 </p>
 </div>
 
-<div id="outline-container-org80e1307" class="outline-3">
-<h3 id="org80e1307"><span class="section-number-3">4.1</span> Single source</h3>
+<div id="outline-container-orgcbd6ec8" class="outline-3">
+<h3 id="orgcbd6ec8"><span class="section-number-3">4.1</span> Single source</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 A single org-mode source file contains the core of the lesson
 including listings and/or executable bits managed with org-babel or
-other classical org-mode features.
+other classical org-mode features. In the provided example, this is
+<code>lesson.org</code>.
 </p>
 
 <p>
@@ -352,32 +397,37 @@ provide the framework for generating the different outputs described below.
 </div>
 </div>
 
-<div id="outline-container-orgf0e984e" class="outline-3">
-<h3 id="orgf0e984e"><span class="section-number-3">4.2</span> Teaching to the audience with a slides deck</h3>
+<div id="outline-container-org4b265e0" class="outline-3">
+<h3 id="org4b265e0"><span class="section-number-3">4.2</span> Teaching to the audience with a slides deck</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 We deliver the course by presenting a slides deck for each lesson,
-using <a href="http://lab.hakim.se/reveal-js/">reveal.js</a>. Reveal.js displays slides as Web pages (using the Web
-browser in fullscreen mode) with a 2-dimensional structure of slides
-allowing the presentation of a main track of slides (horizontal ones),
-and additional slides (vertical ones), if need is, to dive into more
+using <a href="http://lab.hakim.se/reveal-js/">reveal.js</a>. In the provided
+example, this is <code>slides.html</code>.
+</p>
+
+<p>
+Reveal.js displays slides as Web pages (using the Web browser in
+fullscreen mode) with a 2-dimensional structure of slides allowing the
+presentation of a main track of slides (horizontal ones), and
+additional slides (vertical ones), if need is, to dive into more
 details on a specific section of the lesson (typically for Q/A).
 Reveal.js also offers support for a "presentation mode" allowing the
 use of multiple displays so that the presenter can read additional
-notes.
-I've chose to "tune down" reveal.js to avoid fancy 3D animations, and
-stick to a more sober display, but YMMV.
+notes.  I've chose to "tune down" reveal.js to avoid fancy 3D
+animations, and stick to a more sober display, but YMMV.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgc9674f4" class="outline-3">
-<h3 id="orgc9674f4"><span class="section-number-3">4.3</span> Providing a reference handbook to students</h3>
+<div id="outline-container-org8fbd4de" class="outline-3">
+<h3 id="org8fbd4de"><span class="section-number-3">4.3</span> Providing a reference handbook to students</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 The content of the presentation is also rendered as a handbook which
 is provided to the students. It contains the same things as the slides
-deck, where presenter notes are embedded in the document.
+deck, including presenter notes, which are embedded in the
+document. In the provided example, this is <code>handbook.pdf</code>.
 </p>
 
 <p>
@@ -386,20 +436,21 @@ This handbook is rendered with LaTeX as an "article" A4 PDF.
 </div>
 </div>
 
-<div id="outline-container-org0594d4b" class="outline-3">
-<h3 id="org0594d4b"><span class="section-number-3">4.4</span> Providing additional material to teachers</h3>
+<div id="outline-container-org9e54f33" class="outline-3">
+<h3 id="org9e54f33"><span class="section-number-3">4.4</span> Providing additional material to teachers</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
 An additional document is produced which contains the same stuff as
 the students handbook, but also embeds additional sections meant to be
-read only by the teachers. 
+read only by the teachers. In the provided example, this is
+<code>teacher-handbook.pdf</code>.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2709f3b" class="outline-2">
-<h2 id="org2709f3b"><span class="section-number-2">5</span> History</h2>
+<div id="outline-container-org2206877" class="outline-2">
+<h2 id="org2206877"><span class="section-number-2">5</span> History</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 I've been teaching a course on Web architecture and applications
@@ -424,12 +475,13 @@ using as much Web as I could (i.e. HTML).
 </div>
 </div>
 
-<div id="outline-container-orgd43d4cb" class="outline-2">
-<h2 id="orgd43d4cb"><span class="section-number-2">6</span> Copyright &amp; license</h2>
+<div id="outline-container-org9c3d5b5" class="outline-2">
+<h2 id="org9c3d5b5"><span class="section-number-2">6</span> Copyright &amp; license</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 This content is provided under the clauses of the MIT License, unless
-otherwise specified.
+otherwise specified (in particular, copies of org-reveal and reveal.js
+are provided under their respective terms).
 </p>
 
 <p>
@@ -467,8 +519,8 @@ SOFTWARE.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: unknown</p>
-<p class="date">Created: 2018-04-24 Tue 11:36</p>
+<p class="author">Author: Olivier Berger</p>
+<p class="date">Created: 2018-04-25 Wed 11:01</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

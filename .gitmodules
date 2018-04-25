@@ -7,3 +7,6 @@
 [submodule "reveal.js-jump-plugin"]
 	path = reveal.js-jump-plugin
 	url = https://github.com/SethosII/reveal.js-jump-plugin.git
+[submodule "docker-org-teaching-export"]
+	path = docker
+	url = https://gitlab.com/olberger/docker-org-teaching-export.git

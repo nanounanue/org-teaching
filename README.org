@@ -1,45 +1,75 @@
 #+TITLE: Supporting management of teaching material with org-mode
+#+AUTHOR: Olivier Berger
 
 This file is =README.org= and is best viewed in org-mode in Emacs... go git clone, or [[https://olberger.gitlab.io/org-teaching/README.html][read it online]] ;-)
 
 * Goal
 
 This repository contains an example of how to manage some source files
-of teaching material, using [[http://orgmode.org/][org-mode]] in Emacs.
+of teaching material, using [[http://orgmode.org/][org-mode]] in
+Emacs.
 
-It uses [[https://github.com/yjwen/org-reveal/][org-reveal]] in addition to the standard LaTeX exporter.
+It uses [[https://github.com/yjwen/org-reveal/][org-reveal]] in
+addition to the standard LaTeX exporter.
 
 * Home of the project
 
-The project sources are available in [[https://gitlab.com/olberger/org-teaching]]
+The project sources are available in
+[[https://gitlab.com/olberger/org-teaching]].
 
-See the generated documents at the [[https://olberger.gitlab.io/][Gitlab pages]] (generated from CI) :
+See its generated documentation at the
+[[https://olberger.gitlab.io/][Gitlab pages]]:
 - [[https://olberger.gitlab.io/org-teaching/slides.html][slides version]]
 - [[https://olberger.gitlab.io/org-teaching/handbook.pdf][student handbook version]]
 - [[https://olberger.gitlab.io/org-teaching/teacher-handbook.pdf][teacher handbook version]]
 
-+A more or less up to date snapshot may be found at [[http://www-public.tem-tsp.eu/~berger_o/org-teaching/slides.html][http://www-public.tem-tsp.eu/~berger_o/org-teaching/]]+
+These documentes serve as an example of its use, in addition of the
+frameworks' documentation.
+
++A more or less up to date snapshot may be found at
+[[http://www-public.tem-tsp.eu/~berger_o/org-teaching/slides.html][http://www-public.tem-tsp.eu/~berger_o/org-teaching/]]+
 
 * Testing it
 
-See the contents of the files under Emacs, equipped with org-mode.
+** Documentation
+Read the documentation first. See the contents of the provided HTML
+and PDF files, or directly =lesson.org= under Emacs, equipped
+with org-mode (org-mode should be there by default in recent Emacs
+distributions).
 
-Checkout the [[file:docker/]] tools which should allow reproducible
-exports (including org-reveal).
-
-Pay attention to the [[https://git-scm.com/book/en/v2/Git-Tools-Submodules][git submodules]] contents to retrieve [[file:elisp/org-reveal]] and
-[[file:reveal.js]].
-
-Then, RTFM in the following documents:
-
-See the generated files (/note that these links may be best viewed in Emacs from a local clone of the Git repo, as Gitlab may not provide the best experience/):
-- slides in: [[file:./slides.html]] (an additional variant is a regular
+These files represent the standard set of teaching materials in
+/org-teaching/, used for documenting the project, and as an example
+(/note that these links may be best viewed in Emacs from a local clone
+of the Git repo, as Gitlab may not provide the best experience/):
+- *slides* in: [[file:./slides.html]] (an additional variant is a regular
   HTML export in file:./lesson.html; another is [[file:./slides.pdf]["printed slides" in PDF]])
-- the handbook for the students: [[file:./handbook.pdf]]
-- the handbook for the teachers: [[file:./teacher-handbook.pdf]]
+- the *handbook for the students*: [[file:./handbook.pdf]]
+- the *handbook for the teachers*: [[file:./teacher-handbook.pdf]]
+  (this one has more details for this /org-teaching/ documentation)
 
 All these are generated from the corresponding =.org= files, which all
-include the common lesson content from [[file:./lesson.org]]
+include the common lesson content from =lesson.org=. You may
+prefer to read this file directly with Emacs.
+
+** Rebuilding the docs
+
+The provided [[file:Makefile]] can be used to regenerate the
+documentation from its source, drinking its own champaign.
+
+It uses the tools from the [[file:docker/]] subdir for the Docker
+container powering the org-mode exporters (see docs at
+https://gitlab.com/olberger/docker-org-teaching-export/).
+
+In order to use it, pay attention to the
+[[https://git-scm.com/book/en/v2/Git-Tools-Submodules][git
+submodules]] that need to be retrieved : [[file:elisp/org-reveal]],
+[[file:reveal.js]] and [[file:docker/]].
+
+#+BEGIN_SRC sh
+git submodule init
+git submodule update
+#+END_SRC
+
 
 * Features
 
@@ -49,7 +79,8 @@ The following features are provided:
 
 A single org-mode source file contains the core of the lesson
 including listings and/or executable bits managed with org-babel or
-other classical org-mode features.
+other classical org-mode features. In the provided example, this is
+=lesson.org=.
 
 This single file is meant for editing, and the rest of the files
 provide the framework for generating the different outputs described below.
@@ -57,22 +88,25 @@ provide the framework for generating the different outputs described below.
 ** Teaching to the audience with a slides deck
 
 We deliver the course by presenting a slides deck for each lesson,
-using [[http://lab.hakim.se/reveal-js/][reveal.js]]. Reveal.js displays slides as Web pages (using the Web
-browser in fullscreen mode) with a 2-dimensional structure of slides
-allowing the presentation of a main track of slides (horizontal ones),
-and additional slides (vertical ones), if need is, to dive into more
+using [[http://lab.hakim.se/reveal-js/][reveal.js]]. In the provided
+example, this is =slides.html=.
+
+Reveal.js displays slides as Web pages (using the Web browser in
+fullscreen mode) with a 2-dimensional structure of slides allowing the
+presentation of a main track of slides (horizontal ones), and
+additional slides (vertical ones), if need is, to dive into more
 details on a specific section of the lesson (typically for Q/A).
 Reveal.js also offers support for a "presentation mode" allowing the
 use of multiple displays so that the presenter can read additional
-notes.
-I've chose to "tune down" reveal.js to avoid fancy 3D animations, and
-stick to a more sober display, but YMMV.
+notes.  I've chose to "tune down" reveal.js to avoid fancy 3D
+animations, and stick to a more sober display, but YMMV.
 
 ** Providing a reference handbook to students
 
 The content of the presentation is also rendered as a handbook which
 is provided to the students. It contains the same things as the slides
-deck, where presenter notes are embedded in the document.
+deck, including presenter notes, which are embedded in the
+document. In the provided example, this is =handbook.pdf=.
 
 This handbook is rendered with LaTeX as an "article" A4 PDF.
 
@@ -80,7 +114,8 @@ This handbook is rendered with LaTeX as an "article" A4 PDF.
 
 An additional document is produced which contains the same stuff as
 the students handbook, but also embeds additional sections meant to be
-read only by the teachers. 
+read only by the teachers. In the provided example, this is
+=teacher-handbook.pdf=.
 
 * History
 
