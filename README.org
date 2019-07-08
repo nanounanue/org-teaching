@@ -117,6 +117,9 @@ the students handbook, but also embeds additional sections meant to be
 read only by the teachers. In the provided example, this is
 =teacher-handbook.pdf=.
 
+* Changelog
+- 2019/07 Update to docker-org-teaching-export 1.2
+
 * History
 
 I've been teaching a course on Web architecture and applications
