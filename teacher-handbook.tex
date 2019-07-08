@@ -1,4 +1,4 @@
-% Created 2018-04-25 Wed 10:47
+% Created 2019-07-08 Mon 13:42
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper]{article}
 \usepackage[utf8]{inputenc}
@@ -27,7 +27,7 @@
  pdftitle={How to teach using org-mode for fun and profit},
  pdfkeywords={},
  pdfsubject={Olivier Berger's org-mode framework for teaching},
- pdfcreator={Emacs 25.2.2 (Org mode 9.1.11)}, 
+ pdfcreator={Emacs 26.1 (Org mode 9.2.4)}, 
  pdflang={English}}
 \begin{document}
 
@@ -42,14 +42,14 @@ This document is meant to be read only by the teachers
 \end{ABSTRACT}
 
 \section{Introduction}
-\label{sec:org6b5490a}
+\label{sec:org30bb94c}
 
 This is a demo document about the
 \href{http://www-public.tem-tsp.eu/\~berger\_o/org-teaching/}{codename \texttt{org-teaching}} 
 framework, which aims at managing teaching material using Org-mode.
 
 \section{Org-mode powa}
-\label{sec:orga0ef22e}
+\label{sec:org4d26a26}
 
 Attention, this framework heavily relies on: 
 
@@ -65,7 +65,7 @@ work ;-)
 \end{NOTES}
 
 \section{About this PDF handbook}
-\label{sec:org70016e9}
+\label{sec:org739b3dc}
 
 This PDF handbook is one variant of the same teaching material, also
 available \href{./slides.html}{as a slides deck}. Note that the layout is
@@ -75,16 +75,16 @@ speaker notes of slides\footnote{the greyed box in the previous section is an ex
 This section may contain content that is best viewed in (\LaTeX{}) PDF export of org-mode.
 
 \subsection{License}
-\label{sec:orgc94ee75}
+\label{sec:orgaf9cc58}
 
 The contents of this project is Copyright (c) 2016-2018 Olivier
 Berger - IMT/Télécom SudParis, unless otherwise specified. See the
 \url{LICENSE} file for more details.
 
 \section{Features}
-\label{sec:org20a9a10}
+\label{sec:orgf64dcfc}
 \subsection{Writing teaching material in org-mode}
-\label{sec:org25c84ca}
+\label{sec:org0c57688}
 
 The goal is to be able to edit a single file (namely \texttt{lesson.org})
 which will contain, in a \textbf{single source}, all the content of a lesson,
@@ -108,7 +108,7 @@ The teachers handbook contains a less nice-looking format, includes a detailed t
 \end{NOTES}
 
 \subsection{Frugal org-reveal/reveal.js slides}
-\label{sec:org7edaf2a}
+\label{sec:org2254bb8}
 
 Pretty much all features of \texttt{reveal.js}, supported by the org-mode reveal.js exporter (\href{https://github.com/yjwen/org-reveal/}{org-reveal}), should be supported too.
 
@@ -125,7 +125,7 @@ An example \texttt{org-reveal} document is \href{elisp/org-reveal/Readme.html}{a
 \end{NOTES}
 
 \subsection{Structure of the sections / slides}
-\label{sec:org01f3b28}
+\label{sec:orgaea2ff1}
 
 I'm using the 3 levels of outlining / sectioning so that the content can be sectioned in the same way in \texttt{lesson.org} and appear appropriately in the slides and handbook, with these principles:
 
@@ -136,11 +136,11 @@ I'm using the 3 levels of outlining / sectioning so that the content can be sect
 \end{enumerate}
 
 \begin{NOTES}
-The first level outlines can be rendered as a "separating" slides which may get a different \texttt{reveal\_background} and \texttt{class="center"} slide layout, but that isn't automatic. See \hyperref[sec:org836384e]{Section separators}.
+The first level outlines can be rendered as a "separating" slides which may get a different \texttt{reveal\_background} and \texttt{class="center"} slide layout, but that isn't automatic. See \hyperref[sec:org468ee93]{Section separators}.
 \end{NOTES}
 
 \subsection{Presenter notes / content for the handbook}
-\label{sec:org040fdb2}
+\label{sec:org83999e2}
 
 \href{https://github.com/yjwen/org-reveal/\#speaker-notes}{org-reveal's \emph{Speaker notes}} may be added to the slides (and will only appear on
 dual-screen presentation after having pressed '\emph{s}': standard reveal.js
@@ -160,7 +160,7 @@ This is a note
 \end{NOTES}
 
 \subsubsection{Usage}
-\label{sec:org63f29fc}
+\label{sec:org37f70ca}
 
 I've adopted this principle of exporting everything in the speaker
 notes to the students handbook, but YMMV. I'm not even sure this makes
@@ -172,7 +172,7 @@ hacking the way the \LaTeX{} PDF export works.
 An alternative is to use maked sections (see next section).
 
 \subsection{Masking content for some audiences}
-\label{sec:orgbe9ada6}
+\label{sec:org850ffd3}
 
 I've implemented some "easy ways" to preserve some of the content of the same \texttt{lesson.org} source for certain outputs (using org exporter's standard \texttt{EXCLUDE\_TAGS}):
 
@@ -190,38 +190,38 @@ The choice to reveal or not some details to the students is quite arbitrary and 
 \end{NOTES}
 
 \subsection{Stuff only meant for presentation}
-\label{sec:org10f6515}
+\label{sec:orgcb1f956}
 
 Tagging a section/slide with \texttt{:slidesonly:} means it isn't exported in the handbooks.
 
 Below is an example (or not)\ldots{}
 
 \subsubsection{Regular slide (no tag on heading line)}
-\label{sec:org5d994b0}
+\label{sec:org391f453}
 
 There should be no "Only in the slides" after this section, in the
 handbooks, as it has been tagged with \texttt{slidesonly}.
 
 \subsection{Stuff only meant for teachers}
-\label{sec:org04f6951}
+\label{sec:orgfce3e94}
 
 Tagging a section/slide with \texttt{:teachersonly:} means it isn't exported in the students handbook (nor in the slides).
 
 Below is an example\ldots{}
 
 \subsubsection{Regular slide (no tag on heading line)}
-\label{sec:org31f9b21}
+\label{sec:org75452f6}
 
 There should be no "Only for teachers" after this section, in the slides or in the
 students handbook, as it has been tagged with \texttt{teachersonly}.
 
 \subsubsection{Only for teachers}
-\label{sec:org6d1bae8}
+\label{sec:orgb3067eb}
 
 On the contrary this appears in the teachers handbook, as there's a \texttt{:teachersonly:} tag on the current head line.
 
 \subsection{Notes only for the teachers}
-\label{sec:org0b84c9b}
+\label{sec:org0999576}
 
 This slide/section contains notes, but only part of it is displayed in
 the presentation notes included in the handbook. Special notes and are
@@ -252,14 +252,14 @@ You naughty ;-)
 \end{NOTES}
 
 \subsection{Stuff only in the handbooks}
-\label{sec:orgdbfd653}
+\label{sec:org04bbc23}
 
 Just like sections are for slides only, others can be for the handbook
 only, using the \texttt{handbookonly} tag. This may be useful for \textbf{Annex}
 sections for instance, or for stuff that the HTML exporter won't like, with inline \LaTeX{}.
 
 \subsection{Code colorization}
-\label{sec:org894a5a3}
+\label{sec:orgb5d52c6}
 Code is colorized / highlighted in the slides :-)
 
 \begin{NOTES}
@@ -271,16 +271,16 @@ which depend on how htmlize is used, AFAIU.
 \end{NOTES}
 
 \subsection{Misc org-mode}
-\label{sec:org3cb326c}
+\label{sec:orgc856fe5}
 
 \subsubsection{Babel powa}
-\label{sec:org0f0d079}
+\label{sec:orgedd1b66}
 As you're using org-mode, its \texttt{babel} components are available, to embed source code in the same \texttt{lesson.org} source, and manage executable code and teaching material at once.
 
 Look for \emph{literate programing} instructions in the \href{http://orgmode.org/manual/Working-with-source-code.html}{org-mode docs} to know more.
 
 \subsubsection{Jumping to slide number}
-\label{sec:org066df6e}
+\label{sec:org81e9d97}
 
 Included is the use of the
 \href{https://github.com/SethosII/reveal.js-jump-plugin}{reveal.js jump
@@ -288,7 +288,7 @@ plugin} to allow jumping directly to slides \# by entering a number
 and hitting RETURN. Quite handy while writing and testing slides.
 
 \subsection{Missing features ?}
-\label{sec:org342e553}
+\label{sec:org120685b}
 
 Please try and talk to me to suggest new stuff and/or provide patches ;)
 
@@ -306,17 +306,17 @@ hang on, for long presentations.
 \end{NOTES}
 
 \section{Authoring}
-\label{sec:orge1f594b}
+\label{sec:org7c9c48f}
 \subsection{Modify only the lesson.org}
-\label{sec:org50bc479}
+\label{sec:orgfb41172}
 
 \textbf{Only one file should be edited for writing the lesson's material : \texttt{lesson.org}}
 
 Only exception is modification of some configurations for title pages
-and other bits that shouldn't change much in time (see section \hyperref[sec:orgd2c7642]{Configuration of layout}).
+and other bits that shouldn't change much in time (see section \hyperref[sec:org2fc34d5]{Configuration of layout}).
 
 \subsection{Use Emacs org-mode exporters or the Docker container}
-\label{sec:orgce6ab05}
+\label{sec:orgf888d8c}
 
 You have 2 options to generate the different formats:
 \begin{itemize}
@@ -325,7 +325,7 @@ You have 2 options to generate the different formats:
 \end{itemize}
 
 \subsection{Manual export for final documents}
-\label{sec:org2a2597a}
+\label{sec:org42814da}
 
 We're using the standard exporters so each output format will be exported from its corresponding umbrella \texttt{.org} source.
 
@@ -344,9 +344,9 @@ rely on the original org-reveal only, as much as possible.
 \end{NOTES}
 
 \subsubsection{Exporting slides to HTML with org-reveal}
-\label{sec:org56689a1}
+\label{sec:org93e20d5}
 
-Depending on how you installed org-reveal (\hyperref[sec:org9b5ee48]{Git submodules} or otherwise), \texttt{org-reveal} may already be available.
+Depending on how you installed org-reveal (\hyperref[sec:org67a8a81]{Git submodules} or otherwise), \texttt{org-reveal} may already be available.
 
 If not yet, load it with \texttt{M-x load-file} from the location of its Git submodule (\texttt{elisp/org-reveal/ox-reveal.el} by default).
 
@@ -355,14 +355,14 @@ I'm not sure which solution is better : org-reveal from Git (hence the Git submo
 \end{NOTES}
 
 \subsection{Use the docker container exporter}
-\label{sec:orgd526df5}
+\label{sec:org366af11}
 
 You may use the \texttt{olberger/docker-org-export} docker container image
 I've prepared, to make org-mode exports. Or you may rebuild it
 yourself (see below).
 
 \subsubsection{Build the Docker container image}
-\label{sec:orgd105d4d}
+\label{sec:org6f18e27}
 
 This is recommended to avoid man in the middle, IMHO:
 
@@ -372,13 +372,13 @@ docker build -t obergixlocal/docker-org-export .
 \end{verbatim}
 
 \subsubsection{Run the container}
-\label{sec:org26864d8}
+\label{sec:org6c36056}
 
 Use the provided \texttt{docker/docker-org-export} script, which relies on
 the \texttt{olberger/docker-org-export} container image. See how \url{Makefile} does it.
 
 \subsection{Configuration of layout}
-\label{sec:orgd2c7642}
+\label{sec:org2fc34d5}
 
 Each \texttt{lesson.org} needs some configuration :
 \begin{itemize}
@@ -402,7 +402,7 @@ far. Improvements much welcome.
 
 
 \subsection{Printing slides}
-\label{sec:org3d520e1}
+\label{sec:orgd547078}
 
 I've tested \href{https://github.com/astefanutti/decktape}{DeckTape} using a Docker container containing \texttt{PhantomJS} and
 \texttt{decktape} to convert the slides to a \href{slides.pdf}{single PDF document}.
@@ -418,21 +418,21 @@ docker build -t obergixlocal/decktape .
 \end{verbatim}
 
 \subsection{Known Issues}
-\label{sec:org687196c}
+\label{sec:org8be730d}
 
 \subsubsection{Firefox issues ?}
-\label{sec:orgcc72e4b}
+\label{sec:orgf6dbe79}
 
 We have experienced issues with presentations made on some versions of Firefox, which are known by reveal.js maintainer\ldots{} maybe best viewed in chrome.
 
-You may prefer to have a PDF variant of the slides (see \hyperref[sec:org3d520e1]{Printing slides}) in case.
+You may prefer to have a PDF variant of the slides (see \hyperref[sec:orgd547078]{Printing slides}) in case.
 
 
 
 \section{How it works / Installation}
-\label{sec:org5aab14f}
+\label{sec:org1751ddd}
 \subsection{Use the source (Luke)}
-\label{sec:orgcae54db}
+\label{sec:org5b50bbb}
 
 See the contents of the files\ldots{} but be wary that it's sometimes messy and incrementally obtained.
 
@@ -441,7 +441,7 @@ Emacs is your buddy.
 Git clone from \texttt{https://gitlab.com/olberger/org-teaching.git} (see the \href{https://gitlab.com/olberger/org-teaching}{Gitlab project})
 
 \subsubsection{Git submodules}
-\label{sec:org9b5ee48}
+\label{sec:org67a8a81}
 
 The repository contains Git submodules for :
 \begin{itemize}
@@ -462,10 +462,10 @@ Refer to \href{https://github.com/yjwen/org-reveal/\#requirements-and-installati
 \end{NOTES}
 
 \subsection{Customize slides appearance}
-\label{sec:org02d74e4}
+\label{sec:org3b6eb9e}
 
 \subsubsection{Reveal.js settings}
-\label{sec:orge1e1dae}
+\label{sec:orgcc68bb7}
 
 See the org-reveal settings set in the sources and the docs for a detailed explanation.
 
@@ -485,7 +485,7 @@ powerpoint or beamer (?) could look like :
 \end{verbatim}
 
 \subsubsection{Section separators}
-\label{sec:org836384e}
+\label{sec:org468ee93}
 
 The highest level sections include the following properties below the heading line, to customize the look of the slide. 
 
@@ -499,7 +499,7 @@ The highest level sections include the following properties below the heading li
 This is intended to provide some visual sense of the transitions between sections. Please adapt and report.
 
 \subsubsection{Title screen picture (logos, etc.)}
-\label{sec:orgbb8cdff}
+\label{sec:orge34c314}
 
 I'm not yet sure how much may be achieved with HTML and CSS for the
 title page of the slides deck, so I've relied on the embedding of a
@@ -513,10 +513,10 @@ I'm quite sure this could be improved.
 
 
 \section{Annex}
-\label{sec:org5e37a46}
+\label{sec:org13a117e}
 
 \subsection{Thanks}
-\label{sec:orgbfeee1a}
+\label{sec:org2da0baf}
 
 \begin{itemize}
 \item All contributors to org-mode (special kudos to Carsten Dominik and Bastien Guerry)
@@ -530,15 +530,15 @@ Docker container
 \end{itemize}
 
 \subsection{Feedback}
-\label{sec:org62f35ef}
+\label{sec:org3b006dc}
 
 I may be contacted from \href{http://www-public.tem-tsp.eu/\~berger\_o/\#sec-3}{my Web page} or via \href{https://gitlab.com/olberger/org-teaching}{the Gitlab project}.
 
 \subsection{Usage reports}
-\label{sec:org1bb2881}
+\label{sec:orgdf6e411}
 
 \subsubsection{2016-2018 at Telecom SudParis}
-\label{sec:org89973f4}
+\label{sec:org0d45f94}
 
 Created and used for 2 editions of teaching "Web Architecture and Applications" in the CSC4101 module at Telecom SudParis (Olivier Berger and colleagues)
 \end{document}
