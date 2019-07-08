@@ -16,7 +16,7 @@
 #+TITLE: How to teach using org-mode for fun and profit
 #+DESCRIPTION: Olivier Berger's org-mode framework for teaching
 #+AUTHOR: Olivier Berger
-#+DATE: 2018-04-23
+#+DATE: 2019-07-08
 
 
 
