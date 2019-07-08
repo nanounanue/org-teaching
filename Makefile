@@ -8,10 +8,10 @@ all: slides.html slides.pdf handbook.pdf teacher-handbook.pdf README.html
 slides.html:	slides.org lesson.org
 	./docker/docker-org-teaching-export org-reveal-export-to-html slides.org
 
-handbook.pdf:	handbook.org lesson.org
+handbook.pdf:	handbook.org lesson.org headers-students.tex
 	./docker/docker-org-teaching-export org-latex-export-to-pdf handbook.org
 
-teacher-handbook.pdf: teacher-handbook.org lesson.org
+teacher-handbook.pdf: teacher-handbook.org lesson.org headers-teachers.tex
 	./docker/docker-org-teaching-export org-latex-export-to-pdf teacher-handbook.org
 
 slides.pdf: slides.html
