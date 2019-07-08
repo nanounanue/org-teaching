@@ -60,3 +60,9 @@
   \end{titlepage}
 }
 
+% Use Verdana, since we compile LaTeX with lualatex
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX} % to have the automatics ligatures of TeX
+\setromanfont{Verdana}
+% don't justify (better for dyslexic readers ?)
+\usepackage[document]{ragged2e}
